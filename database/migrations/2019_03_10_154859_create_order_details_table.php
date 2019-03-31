@@ -15,6 +15,13 @@ class CreateOrderDetailsTable extends Migration
     {
         Schema::create('order_details', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('book_detail_id');
+            $table->integer('order_id');
+            $table->decimal('price', 6,2);
+            $table->decimal('buying_price', 6,2);
+            $table->date('return_date');
+            $table->integer('return_percentage');
+            $table->decimal('return_amount', 6,2);
             $table->timestamps();
         });
     }

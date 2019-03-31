@@ -15,6 +15,7 @@ class CreateReturnLimitsTable extends Migration
     {
         Schema::create('return_limits', function (Blueprint $table) {
             $table->bigIncrements('id');
+
             $table->timestamps();
         });
     }

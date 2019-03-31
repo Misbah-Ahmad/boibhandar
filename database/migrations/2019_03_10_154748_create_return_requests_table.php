@@ -15,6 +15,10 @@ class CreateReturnRequestsTable extends Migration
     {
         Schema::create('return_requests', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('user_id');
+            $table->float('estimated_amount');
+            $table->float('refunded_amount');
+            $table->date('refunded_on');
             $table->timestamps();
         });
     }
