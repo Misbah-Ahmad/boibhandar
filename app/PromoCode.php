@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PromoCode extends Model
 {
-    //
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
