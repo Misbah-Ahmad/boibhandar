@@ -15,7 +15,8 @@ class CreateReturnLimitsTable extends Migration
     {
         Schema::create('return_limits', function (Blueprint $table) {
             $table->bigIncrements('id');
-
+            $table->integer('days');
+            $table->integer('percentage');
             $table->timestamps();
         });
     }
