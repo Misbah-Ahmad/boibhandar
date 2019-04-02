@@ -16,7 +16,7 @@ class CreatePromoCodesTable extends Migration
         Schema::create('promo_codes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('code');
-            $table->date('expired');
+            $table->date('expires_on');
             $table->decimal('discount_amount', 6,2);
             $table->string('type');
             $table->boolean('used');

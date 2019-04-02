@@ -2,6 +2,12 @@
 
 namespace App;
 
+use App\Book;
+use App\Cart;
+use App\Order;
+use App\Review;
+use App\Notification;
+
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -40,7 +46,7 @@ class User extends Authenticatable
 
     public function wishlists()
     {
-        return $this->belongsToMany(Wishlist::class, 'user_wishlist');
+        return $this->belongsToMany(Book::class, 'user_wishlist', 'user_id', 'book_id');
     }
 
     public function cart()
@@ -48,14 +54,14 @@ class User extends Authenticatable
         return $this->hasOne(Cart::class);
     }
 
-    public function promo_codes()
+    public function promoCodes()
     {
-        return $this->hasMany(PormoCode::class);
+        return $this->belongsToMany(PormoCode::class, 'user_promo_code', 'user_id', 'promo_code_id');
     }
 
     public function notifications()
     {
-        return $this->belongsToMany(Notification::class, 'user_notification');
+        return $this->belongsToMany(Notification::class,'user_notification')->withTimestamps();
     }
 
     /**

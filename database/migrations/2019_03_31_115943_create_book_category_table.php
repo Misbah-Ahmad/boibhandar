@@ -14,10 +14,12 @@ class CreateBookCategoryTable extends Migration
     public function up()
     {
         Schema::create('book_category', function (Blueprint $table) {
-            $table->bigIncrements('id');
+
             $table->integer('book_id');
             $table->integer('category_id');
-            $table->timestamps();
+
+            $table->primary(['book_id', 'category_id']);
+
         });
     }
 

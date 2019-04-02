@@ -14,14 +14,16 @@ class CreateOrderDetailsTable extends Migration
     public function up()
     {
         Schema::create('order_details', function (Blueprint $table) {
+
             $table->bigIncrements('id');
             $table->integer('book_detail_id');
             $table->integer('order_id');
+            $table->integer('return_reqeust_id')->nullable()->default(null);
             $table->decimal('price', 6,2);
             $table->decimal('buying_price', 6,2);
-            $table->date('return_date');
-            $table->integer('return_percentage');
-            $table->decimal('return_amount', 6,2);
+            $table->date('return_date')->nullable();
+            $table->integer('return_percentage')->default(0);
+            $table->decimal('return_amount', 6,2)->default(0);
             $table->timestamps();
         });
     }

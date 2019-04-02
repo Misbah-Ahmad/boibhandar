@@ -2,12 +2,15 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Model;
+use App\OrderDetail;
 
 class ReturnRequest extends Model
 {
-    public function book_details()
+
+    public function orderDetails()
     {
-        return $this->belongsToMany(BookDetail::class, 'bookdetails_returnrequest');
+        return $this->hasMany(OrderDetail::class);
     }
+
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBookPublisherTable extends Migration
+class CreatePivotTableCartBook extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateBookPublisherTable extends Migration
      */
     public function up()
     {
-        Schema::create('book_publisher', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('book_id');
-            $table->integer('publisher_id');
-            $table->timestamps();
+        Schema::create('cart_book', function (Blueprint $table) {
+            
+            $table->integer('cart_id')->unsigned();
+            $table->integer('book_id')->unsigned();
+
+            $table->primary(['cart_id', 'book_id']);
+
         });
     }
 
@@ -28,6 +30,6 @@ class CreateBookPublisherTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('book_publisher');
+        Schema::dropIfExists('cart_book');
     }
 }

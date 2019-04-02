@@ -2,11 +2,13 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Order;
+use App\BookDetail;
+use App\Model;
 
 class OrderDetail extends Model
 {
-    public function book_detail()
+    public function bookDetails()
     {
         return $this->belongsTo(BookDetail::class);
     }
@@ -15,4 +17,10 @@ class OrderDetail extends Model
     {
         return $this->belongsTo(Order::class);
     }
+
+    public function returnRequests()
+    {
+        return $this->belongsToMany(ReturnRequest::class);
+    }
+
 }

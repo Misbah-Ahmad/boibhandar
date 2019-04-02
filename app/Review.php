@@ -2,7 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Book;
+use App\User;
+use App\Model;
 
 class Review extends Model
 {

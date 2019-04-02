@@ -2,7 +2,10 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\User;
+use App\Model;
+use App\OrderDetail;
+use App\Transaction;
 
 class Order extends Model
 {
@@ -12,8 +15,13 @@ class Order extends Model
     }
 
 
-    public function order_details()
+    public function orderDetails()
     {
         return $this->hasMany(OrderDetail::class);
+    }
+
+    public function transaction()
+    {
+        return $this->hasOne(Transaction::class);
     }
 }

@@ -2,7 +2,10 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Book;
+use App\Model;
+use App\Category;
+use App\Publisher;
 
 class Author extends Model
 {

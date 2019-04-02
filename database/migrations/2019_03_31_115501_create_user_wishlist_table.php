@@ -14,10 +14,12 @@ class CreateUserWishlistTable extends Migration
     public function up()
     {
         Schema::create('user_wishlist', function (Blueprint $table) {
-            $table->bigIncrements('id');
+
             $table->integer('user_id');
-            $table->integer('wishlist_id');
-            $table->timestamps();
+            $table->integer('book_id');
+
+            $table->primary(['user_id', 'book_id']);
+
         });
     }
 

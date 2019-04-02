@@ -14,10 +14,11 @@ class CreateAuthorPublisherTable extends Migration
     public function up()
     {
         Schema::create('author_publisher', function (Blueprint $table) {
-            $table->bigIncrements('id');
             $table->integer('author_id');
             $table->integer('publisher_id');
-            $table->timestamps();
+
+            $table->primary(['author_id', 'publisher_id']);
+
         });
     }
 

@@ -17,6 +17,8 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id');
             $table->date('delivery_date');
+            $table->string('address');
+            $table->string('district');
             $table->timestamps();
         });
     }

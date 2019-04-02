@@ -2,7 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Book;
+use App\Model;
+use App\Author;
 
 class Publisher extends Model
 {
@@ -13,6 +15,6 @@ class Publisher extends Model
 
     public function books()
     {
-        return $this->belongsToMany(Book::class, 'book_publisher');
+        return $this->hasMany(Book::class);
     }
 }

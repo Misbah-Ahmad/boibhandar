@@ -2,7 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Book;
+use App\Model;
+use App\Author;
 
 class Category extends Model
 {

@@ -18,7 +18,7 @@ class CreateReviewsTable extends Migration
             $table->integer('user_id');
             $table->integer('book_id');
             $table->string('text');
-            $table->float('score');
+            $table->decimal('score', 4,2);
             $table->timestamps();
         });
     }
