@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Role;
 use App\User;
+use Illuminate\Support\Facades\Artisan;
 
 class UserObserver
 {
@@ -29,6 +30,13 @@ class UserObserver
     public function created(User $user)
     {
         $customerRole = Role::where('name', 'customer')->first();
+
+        if(!($customerRole instanceof Role))
+        {
+            Artisan::call('php artisan db:seed --class=RoleSeeder');
+            $customerRole = Role::where('name', 'customer')->first();
+        }
+        
         $user->attachRole($customerRole);
     }
 
