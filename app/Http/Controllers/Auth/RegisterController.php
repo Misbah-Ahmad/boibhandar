@@ -40,6 +40,28 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+
+    /**
+     * Override origin showRegistrationForm() method of RegistersUsers Trait
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        $data =[
+            'login_tab' => '', 
+            'login_show' => '',
+            'register_tab' => 'active',
+            'register_show' => 'show',
+        ];
+
+
+        return view('auth.login_register', $data);
+    }
+
+
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -49,9 +71,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'title' => ['required', 'string', 'regex:/^(mr|ms)$/i'],
+            'fname' => ['required', 'string', 'min:1', 'max:255'],
+            'sname' => ['required', 'string', 'min:1', 'max:255'],
+            'phone' => ['required', 'string', 'unique:users', 'regex:/^(01)[3-9]{1,1}[0-9]{8,8}$/i'],            
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
 
@@ -64,8 +89,11 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'title' => $data['title'],
+            'fname' => $data['fname'],
+            'sname' => $data['sname'],
             'email' => $data['email'],
+            'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
         ]);
     }
