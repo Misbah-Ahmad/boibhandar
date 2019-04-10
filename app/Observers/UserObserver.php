@@ -33,7 +33,7 @@ class UserObserver
 
         if(!($customerRole instanceof Role))
         {
-            Artisan::call('php artisan db:seed --class=RoleSeeder');
+            Artisan::call('db:seed --class=RoleSeeder');
             $customerRole = Role::where('name', 'customer')->first();
         }
         
