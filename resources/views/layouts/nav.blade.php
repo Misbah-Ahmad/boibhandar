@@ -17,7 +17,7 @@
             <div class="accordion mobile-menu" id="accordion-menu">
                 <!-- Home-->
                 <div class="card">
-                    <div class="card-header"><a class="mobile-menu-link active" href="index.html">Books</a><a class="collapsed" href="#home-submenu"
+                    <div class="card-header"><a class="mobile-menu-link active" href="/">Books</a><a class="collapsed" href="#home-submenu"
                             data-toggle="collapse"></a></div>
                     <div class="collapse" id="home-submenu" data-parent="#accordion-menu">
                         <div class="card-body">
@@ -82,7 +82,7 @@
 
     <!-- Navbar-->
     <header class="navbar-wrapper navbar-sticky">
-        <div class="d-table-cell align-middle pr-md-3"><a class="navbar-brand mr-1" href="index.html"><img src="/images/logo/logo.png" style="width:40px;height:40px;" alt="Boibhandar"/></a></div>
+        <div class="d-table-cell align-middle pr-md-3"><a class="navbar-brand mr-1" href="/"><img src="/images/logo/logo.png" style="width:40px;height:40px;" alt="Boibhandar"/></a></div>
         <div class="d-table-cell w-100 align-middle pl-md-3">
             <!--         <div class="navbar-top d-none d-lg-flex justify-content-between align-items-center">
           <div>
@@ -104,7 +104,7 @@
                 <!-- Main Menu-->
                 <ul class="navbar-nav d-none d-lg-block">
                     <!-- Home-->
-                    <li class="nav-item mega-dropdown-toggle active"><a class="nav-link" href="index.html">Books</a>
+                    <li class="nav-item mega-dropdown-toggle active"><a class="nav-link" href="/">Books</a>
                         <div class="dropdown-menu mega-dropdown">
                             <div class="d-flex">
                                 <div class="column">
@@ -170,7 +170,15 @@
                         <li><a href="#" data-toggle="search"><i class="fe-icon-search"></i></a></li>
                         <li><a href="#"><i class="fe-icon-shopping-cart"></i></a><span class="badge badge-danger">3</span></li>
                     </ul>
-                    <a class="btn btn-style-6 btn-primary ml-3 d-none d-xl-inline-block" href="#" target="_blank"><i class="fe-icon-user"></i>Login</a>
+
+                    @guest
+                        <a class="btn btn-style-6 btn-primary ml-3 d-none d-xl-inline-block" href="{{ route('login') }}" target="_blank"><i class="fe-icon-user"></i>Login</a>                        
+                    @else
+                        <a class="btn btn-style-6 btn-primary ml-3 d-none d-xl-inline-block" href="{{ route('dash') }}" target="_blank"><i class="fe-icon-user"></i>Account</a>
+                    @endguest
+
+
+                
                 </div>
             </div>
         </div>
