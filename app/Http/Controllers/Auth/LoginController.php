@@ -36,4 +36,27 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+
+    /**
+     * Override AuthenticatesUsers showLoginForm() method
+     * Show the application's login form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLoginForm()
+    {
+        $data = [
+            'register_tab' => '',
+            'register_show' => '',
+            'login_tab' => 'active',
+            'login_show' => 'show',
+        ];
+
+
+        return view('auth.login_register', $data);
+    }
+
+
+
 }
