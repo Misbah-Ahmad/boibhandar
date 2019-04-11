@@ -120,49 +120,82 @@
 
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label for="reg-fn">Title</label>
-                                            <input class="form-control" type="text" name="title" required id="reg-fn" placeholder="Mr or Ms">
-                                            <div class="invalid-feedback">Please enter your first name!</div>
+                                        
+                                            <label for="reg-title">Title</label>
+                                            <input class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}" type="text" value="{{ old('title') }}" name="title" required id="reg-title" placeholder="Mr or Ms">
+
+                                            @if ($errors->has('title'))
+                                                <div class="invalid-feedback"> <strong>{{ $errors->first('title') }}</strong></div>                                                
+                                            @endif
+
+
+                                        
                                         </div>
                                     </div>
 
                                     <div class="col-sm-5">
                                         <div class="form-group">
                                             <label for="reg-fn">First Name</label>
-                                            <input class="form-control" type="text" name="fname" required id="reg-fn">
-                                            <div class="invalid-feedback">Please enter your first name!</div>
+                                            <input class="form-control {{ $errors->has('fname') ? ' is-invalid' : '' }}" type="text" value="{{ old('fname') }}" name="fname" required id="reg-fn">
+
+                                            @if ($errors->has('fname'))
+                                                <div class="invalid-feedback"> <strong>{{ $errors->first('fname') }}</strong></div>                                                
+                                            @endif
+
+
                                         </div>
                                     </div>
                                     
                                     <div class="col-sm-5">
                                         <div class="form-group">
                                             <label for="reg-ln">Last Name</label>
-                                            <input class="form-control" type="text" name="sname" required id="reg-ln">
-                                            <div class="invalid-feedback">Please enter your last name!</div>
+                                        <input class="form-control {{ $errors->has('sname') ? ' is-invalid' : '' }}" value="{{ old('sname') }}" type="text" name="sname" required id="reg-ln">
+
+                                            @if ($errors->has('sname'))
+                                                <div class="invalid-feedback"> <strong>{{ $errors->first('sname') }}</strong></div>                                                
+                                            @endif
+
+
                                         </div>
+
                                     </div>
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="reg-email">E-mail Address</label>
-                                            <input class="form-control" type="email" name="email" required id="reg-email">
-                                            <div class="invalid-feedback">Please enter valid email address!</div>
+                                            <input class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" type="email" name="email" required id="reg-email">
+
+                                            @if ($errors->has('email'))
+                                                <div class="invalid-feedback"> <strong>{{ $errors->first('email') }}</strong></div>                                                
+                                            @endif
+
+                                    
                                         </div>
                                     </div>
+
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="reg-phone">Phone Number</label>
-                                            <input class="form-control" type="text" name="phone" required id="reg-phone">
-                                            <div class="invalid-feedback">Please enter your phone number!</div>
+                                            <input class="form-control {{ $errors->has('phone') ? ' is-invalid' : '' }}" value="{{ old('phone') }}" type="text" name="phone" required id="reg-phone">
+
+                                            @if ($errors->has('phone'))
+                                                <div class="invalid-feedback"> <strong>{{ $errors->first('phone') }}</strong></div>                                                
+                                            @endif
+
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="reg-password">Password</label>
-                                            <input class="form-control" type="password" name="password" required id="reg-password">
-                                            <div class="invalid-feedback">Please enter password!</div>
+                                            <input class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" name="password" required id="reg-password">
+
+                                            @if ($errors->has('password'))
+                                                <div class="invalid-feedback"> <strong>{{ $errors->first('password') }}</strong></div>                                                
+                                            @endif
+
+
                                         </div>
                                     </div>
 
