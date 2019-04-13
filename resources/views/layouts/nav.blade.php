@@ -172,9 +172,9 @@
                     </ul>
 
                     @guest
-                        <a class="btn btn-style-6 btn-primary ml-3 d-none d-xl-inline-block" href="{{ route('login') }}" target="_blank"><i class="fe-icon-user"></i>Login</a>                        
+                        <a class="btn btn-style-6 btn-primary ml-3 d-none d-xl-inline-block" href="{{ route('login') }}"><i class="fe-icon-user"></i>Login</a>                        
                     @else
-                        <a class="btn btn-style-6 btn-primary ml-3 d-none d-xl-inline-block" href="{{ route('dash') }}" target="_blank"><i class="fe-icon-user"></i>Account</a>
+                        <a class="btn btn-style-6 btn-primary ml-3 d-none d-xl-inline-block" href="{{ route('dash') }}"><i class="fe-icon-user"></i>Account</a>
                     @endguest
 
 
