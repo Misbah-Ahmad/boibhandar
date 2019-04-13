@@ -49,14 +49,26 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        $data =[
-            'login_tab' => '', 
+        $data = [
+            'login_tab' => '',
             'login_show' => '',
             'register_tab' => 'active',
             'register_show' => 'show',
         ];
 
 
+
+        if(old('form', '') == 'login') 
+        {
+            $data = [
+                'register_tab' => '',
+                'register_show' => '',
+                'login_tab' => 'active',
+                'login_show' => 'show',
+            ];
+
+        }
+ 
         return view('auth.login_register', $data);
     }
 

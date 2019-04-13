@@ -29,7 +29,7 @@
 
                         <form class="needs-validation" action="/login" method="POST">
                             @csrf
-
+                            <input type="hidden" name="form" value="login">
                             <div class="wizard-body pt-2">
 
                                 <div class="input-group form-group">
@@ -114,7 +114,7 @@
                             <form class="needs-validation" method="POST" action="/register">
 
                                 @csrf
-
+                                <input type="hidden" name="form" value="register">
                                 <div class="row">
                                     
 

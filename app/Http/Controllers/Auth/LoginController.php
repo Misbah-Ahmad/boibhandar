@@ -53,7 +53,17 @@ class LoginController extends Controller
             'login_show' => 'show',
         ];
 
+        if(old('form', '') == 'register') 
+        {
+            $data = [
+                'login_tab' => '',
+                'login_show' => '',
+                'register_tab' => 'active',
+                'register_show' => 'show',
+            ];
 
+        }
+ 
         return view('auth.login_register', $data);
     }
 
