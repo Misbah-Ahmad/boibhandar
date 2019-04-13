@@ -17,4 +17,8 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
-Route::get('/dash', 'HomeController@index')->name('dash');
+Route::group(['middleware' => 'verified'], function () {
+    Route::get('/dash', 'HomeController@index')->name('dash');    
+});
+
+
