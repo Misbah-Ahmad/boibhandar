@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Category;
 
 class AuthorsTableSeeder extends Seeder
 {
@@ -11,6 +12,13 @@ class AuthorsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\Author', 50)->create();
+        DB::table('author_category')->delete();
+
+        factory('App\Author', 50)
+                    ->create()
+                    ->each(function ($author) {
+                        $cat = Category::find(rand(Category::all()->min('id'), Category::all()->max('id')));                        
+                        $author->categories()->save($cat);
+            });
     }
 }
