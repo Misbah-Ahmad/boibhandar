@@ -50,4 +50,10 @@ class Book extends Model
         return $this->belongsToMany(Cart::class, 'cart_book', 'book_id', 'cart_id');
     }
 
+
+    public function getStarScoreAttribute()
+    {
+        return intval(ceil($this->reviews()->avg('score')));        
+    }
+
 }
