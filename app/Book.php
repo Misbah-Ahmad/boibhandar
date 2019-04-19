@@ -56,4 +56,9 @@ class Book extends Model
         return intval(ceil($this->reviews()->avg('score')));        
     }
 
+    public function getHasSaleAttribute()
+    {
+        return false;
+    }
+
 }
