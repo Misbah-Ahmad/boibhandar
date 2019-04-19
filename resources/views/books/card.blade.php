@@ -18,19 +18,19 @@
         
         </div>
 
-        <a class="product-thumb" href="{{ route('books.show') }}">
-            <img src="{{ public_path($book->thumb_link). }}" "="" alt="Product Thumbnail">
+        <a class="product-thumb" href="{{ route('books.show', $book->id) }}">
+            <img src="{{ asset($book->thumb) }}"  alt="Product Thumbnail">
         </a>
         
         <div class="product-card-body">
         
             <h5 class="product-title">
-                <a href="{{ route('books.show', $book->id) }}">{{ $book->name }}</a>
+                <a href="{{ route('books.show', $book->id) }}">{{ $book->title }}</a>
             </h5>
         
             <a class="product-meta" href="{{ route('authors.show', $book->author->id) }}">{{ $book->author->name }}</a>
         
-            <span class="product-price">{{ 'BDT ' . $book->bookDetails()->min('price') . ' to ' . $book->bookDetails()->max('price') }}</span>
+            <span class="product-price">{{ 'BDT ' . $book->bookDetails()->min('price') }}</span>
         
         </div>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Book;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('home');
     }
 
     /**
@@ -25,4 +26,14 @@ class HomeController extends Controller
     {
         return view('dash');
     }
+
+
+    public function home()
+    {
+        $books = Book::all();
+
+        return view('welcome', ['books' => $books]);
+
+    }
+
 }
