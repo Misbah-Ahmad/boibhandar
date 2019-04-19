@@ -17,7 +17,7 @@ class CreateBookDetailsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('book_id');
             $table->integer('bb_code');
-            $table->decimal('book_price', 6,2);
+            $table->decimal('price', 6,2);
             $table->decimal('buying_price', 6,2);
             $table->boolean('is_available');
             $table->timestamps();
