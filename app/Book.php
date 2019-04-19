@@ -61,4 +61,14 @@ class Book extends Model
         return false;
     }
 
+    public function getThumbAttribute()
+    {
+        return $this->thumb_link == null ? env( 'DEFAULT_BOOK_THUMB', '') : $this->thumb_link;
+    }
+
+    public function getImageAttribute()
+    {
+        return $this->image_link == null ? env('DEFAULT_BOOK_IMAGE', '') : $this->image_link;
+    }    
+
 }
