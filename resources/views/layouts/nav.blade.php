@@ -111,9 +111,13 @@
                                     <div class="widget widget-custom-menu">
                                         <ul>
                                             <li class="dropdown-header font-weight-medium text-danger border-danger text-uppercase pl-0"><i class="fe-icon-edit"></i>&nbsp;&nbsp;Authors</li>
-                                            <li><a href="#">Author Name</a></li>
-                                            <li><a href="#">Author Name</a></li>
-                                            <li><a href="#">Author Name</a></li>
+                                            
+                                            
+                                                
+                                            @foreach($authorsName as $name)
+                                            
+                                            <li><a href="#">{{$name->name}}</a></li>
+                                            @endforeach
                                             <li><a class="disabled-link" href="#">Author Name<span class="badge badge-secondary">Soon</span></a></li>
                                             <li class="dropdown-header font-weight-medium text-danger border-top-0 border-danger text-uppercase pt-4 pl-0"><i class="fe-icon-book-open"></i>&nbsp;&nbsp;Subject</li>
                                             <li><a href="#">Subject Name</a></li>
@@ -125,10 +129,13 @@
                                     <div class="widget widget-custom-menu">
                                         <ul>
                                             <li class="dropdown-header font-weight-medium text-danger border-danger text-uppercase pl-0"><i class="fe-icon-book"></i>&nbsp;&nbsp;Publishers</li>
-                                            <li><a href="#">Publisher Name</a></li>
-                                            <li><a href="#">Publisher Name</a></li>
-                                            <li><a href="#">Publisher Name</a></li>
-                                            <li><a href="#">Publisher Name</a></li>
+
+                                            @foreach($publishersName as $pname)
+                                            
+                                            <li><a href="#">{{$pname->name}}</a></li>
+
+                                            @endforeach
+                                            
                                             <li class="dropdown-header font-weight-medium text-danger border-top-0 border-danger text-uppercase pt-4 pl-0"><i class="fe-icon-book-open"></i>&nbsp;&nbsp;Best Seller</li>
                                             <li><a href="#">Best Seller Name</a></li>
                                             <li><a href="#">Best Seller Name</a></li>
