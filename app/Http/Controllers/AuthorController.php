@@ -7,7 +7,6 @@ use App\Author;
 
 class AuthorController extends Controller
 {
-   
 
     public function show(Author $author)
     {
