@@ -18,6 +18,7 @@ class BooksTableSeeder extends Seeder
                 ->each(function ($book) {
                     $cat = Category::find(rand(Category::all()->min('id'), Category::all()->max('id')));
                     $book->categories()->save($cat);
-                });
+                    $book->bookDetails()->saveMany(factory('App\BookDetail', 5)->make());
+        });
     }
 }

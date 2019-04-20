@@ -50,4 +50,25 @@ class Book extends Model
         return $this->belongsToMany(Cart::class, 'cart_book', 'book_id', 'cart_id');
     }
 
+
+    public function getStarScoreAttribute()
+    {
+        return intval(ceil($this->reviews()->avg('score')));        
+    }
+
+    public function getHasSaleAttribute()
+    {
+        return false;
+    }
+
+    public function getThumbAttribute()
+    {
+        return $this->thumb_link == null ? env( 'DEFAULT_BOOK_THUMB', '') : $this->thumb_link;
+    }
+
+    public function getImageAttribute()
+    {
+        return $this->image_link == null ? env('DEFAULT_BOOK_IMAGE', '') : $this->image_link;
+    }    
+
 }

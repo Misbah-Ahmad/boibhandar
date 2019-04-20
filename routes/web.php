@@ -11,16 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@home')->name('home');
 
 Auth::routes(['verify' => true]);
 
-Route::group(['middleware' => 'verified'], function () {
-    Route::get('/dash', 'HomeController@index')->name('dash');    
+Route::group(['middleware' => ['verified', 'auth']], function () {
+    Route::get('/dash', 'HomeController@index')->name('dash');
+    Route::post('/user/wishlist', 'WishlistController@store')->name('wishlist.store');    
 });
 
+Route::get('/books/{book}', 'BookController@show')->name('books.show');
 
 
 
+Route::get('/authors/{author}', 'AuthorController@show')->name('authors.show');
