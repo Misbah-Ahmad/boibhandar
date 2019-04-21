@@ -80,4 +80,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->wishlist()->contains($book);
     }
 
+    public function getFullNameAttribute()
+    {
+        return ucwords( strtolower($this->fname . ' ' . $this->sname) );
+    }
+
+    public function getJoiningDateAttribute()
+    {
+        return  date('F d, Y', strtotime($this->created_at));
+    }
+
 }
