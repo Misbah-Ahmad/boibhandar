@@ -19,7 +19,7 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
     Route::get('/dash', 'HomeController@index')->name('dash');
     Route::post('/user/wishlist', 'WishlistController@store')->name('wishlist.store');
 
-    Route::post('/user/{user}/profile/update', 'UserController@update')->name('user.profile.update');
+    Route::post('/user/profile/update', 'UserController@update')->name('user.profile.update');
 
     Route::post('user/profile/changePassword', 'UserController@changePassword')->name('user.profile.changePassword');
 

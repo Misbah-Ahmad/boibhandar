@@ -68,7 +68,7 @@ class UserController extends Controller
         //
     }
 
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
 
         $validator = Validator::make($request->all(), [
@@ -79,23 +79,33 @@ class UserController extends Controller
 
         ]);
 
+        if($validator->fails())
+        {
+            return back()->withErrors($validator);
+        }
+
+        $user = auth()->user();
+
+        $phone = $request->phone;
+
+        if($phone != $user->phone && User::where('phone', $phone)->count() > 0)
+        {
+            $validator->getMessageBag()->add('phone', 'New phone number is not unique!');
+            return back()->withErrors($validator); 
+        }
+
+
+
+
         $user->fname = request('fname');
-
         $user->sname = request('sname');
+        $user->phone = $phone;
 
-        $user->phone = request('phone');
-
-      //  $fname = $request->fname;
-
-       // $sname = $request->sname;
-
-       // $phone = $request->phone;
 
         $user->save();
 
-        return back();
+        return back()->with('message', 'Profile is updated successfully!');
 
-        //Rest of the codes along with the validation
 
         
 

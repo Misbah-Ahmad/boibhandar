@@ -1,5 +1,5 @@
         <div class="col-lg-8 pb-5">
-          <form class="row" method="post" action="{{ route('user.profile.update', $user) }}">
+          <form class="row" method="post" action="{{ route('user.profile.update') }}">
             
             @csrf
 
