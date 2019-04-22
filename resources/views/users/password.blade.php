@@ -15,21 +15,21 @@
             <div class="form-group">
                 <label for="account-current-password">Current Password</label>
 
-                <input class="form-control {{ $errors->has('current-password') ? ' is-invalid' : '' }}" type="password" name="current-password" id="current-password">
+                <input class="form-control {{ $errors->has('current_password') ? ' is-invalid' : '' }}" type="password" name="current_password" id="current_password" placeholder="Current Password">
 
-                @if ($errors->has('current-password'))
-                    <div class="invalid-feedback"> <strong>{{ $errors->first('current-password') }} </strong> </div>
+                @if ($errors->has('current_password'))
+                    <div class="invalid-feedback"> <strong>{{ $errors->first('current_password') }} </strong> </div>
                 @endif
             </div>
         </div>
 
         <div class="col-md-6">
             <div class="form-group">
-                <label for="account-pass">New Password</label>
-                <input class="form-control {{ $errors->has('new-password') ? ' is-invalid' : '' }}" type="password" name="new-password" id="new-password">
+                <label for="password">New Password</label>
+                <input class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" name="password" id="password" placeholder="Strong Password">
 
-                @if ($errors->has('new-password'))
-                    <div class="invalid-feedback"> <strong>{{ $errors->first('new-password') }}</strong></div>                                                
+                @if ($errors->has('password'))
+                    <div class="invalid-feedback"> <strong>{{ $errors->first('password') }}</strong></div>                                                
                 @endif
             </div>
         </div>
@@ -37,9 +37,9 @@
 
         <div class="col-md-6">
             <div class="form-group">
-                <label for="account-confirm-pass">Confirm Password</label>
+                <label for="password_confirmation">Confirm Password</label>
 
-                <input class="form-control" type="password" name="password-confirmation" id="password-confirmation">
+                <input class="form-control" type="password" name="password_confirmation" id="password_confirmation" placeholder="Re-type Password">
 
 
             </div>

@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use Hash;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -113,27 +112,41 @@ class UserController extends Controller
 
     public function changePassword(Request $request)
     {
-         // The passwords matches
-        if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
-            return redirect()->back()->with("error","Your current password does not matches with the password you provided. Please try again.");
-        }
 
-        //Current password and new password are same
-        if(strcmp($request->get('current-password'), $request->get('new-password')) == 0){
-            return redirect()->back()->with("error","New Password cannot be same as your current password. Please choose a different password.");
-        }
+        $validator = Validator::make($request->all(), [
 
-        $validator = Validator::make($request->all(),[
-            'current-password' => ['required'],
-            'new-password' => ['required','string', 'min:6', 'confirmed'],
+            'current_password' => ['required', 'string', 'min:6'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+
         ]);
 
-        //Change Password
-        $user = Auth::user();
-        $user->password = bcrypt(request('new-password'));
+        if($validator->fails()) 
+        {
+            return back()->withErrors($validator);
+        }
+
+
+        $user = auth()->user();
+        $old = $request->current_password;
+        $new = $request->password;
+
+        if (!(Hash::check($old, $user->password)))
+        {
+            $validator->getMessageBag()->add('current_password', 'Incorrect Password!');
+            return back()->withErrors($validator);
+        }
+
+        if($old == $new)
+        {
+            $validator->getMessageBag()->add('password', 'New password cannot be same as old password!');
+            return back()->withErrors($validator);
+        }
+
+
+        $user->password = Hash::make($request->password);
         $user->save();
 
-        return back();
+        return back()->with('message', 'Password is changed successfully!');
 
 
     }
