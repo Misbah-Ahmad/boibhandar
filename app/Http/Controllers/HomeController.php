@@ -22,9 +22,28 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('dash');
+        $user = auth()->user();
+
+        $section = 'settings';
+        $view = $section;
+
+        $query = $request->query('_section', 'settings');    
+        
+        $sections = ['orders', 'mybooks', 'settings', 'address', 'wishlist', 'reviews', 'password'];
+
+        if(!in_array($query, $sections))
+        {
+            $section = 'settings';
+            $view  ='settings';
+        } else {
+            $section = $view = $query;
+        }
+
+        return view('users.profile', compact([
+            'user', 'section', 'view',
+        ]));
     }
 
 
