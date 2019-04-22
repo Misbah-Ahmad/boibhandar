@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    protected $toTruncate = ['authors', 'books', 'publishers', 'categories', 'book_details'];
+    protected $toTruncate = ['authors', 'books', 'publishers', 'categories', 'book_details', 'orders', 'order_details'];
 
 
     /**
@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PublishersTableSeeder::class);                
         $this->call(AuthorsTableSeeder::class);
         $this->call(BooksTableSeeder::class);
+        $this->call(OrdersTableSeeder::class);
         //$this->call(BookDetailsTableSeeder::class);
     }
 }
