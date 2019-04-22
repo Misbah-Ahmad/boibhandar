@@ -49,7 +49,9 @@
               </a>
 
               <a class="list-group-item" id="section_reviews" href="{{ route('dash', ['_section' => 'reviews']) }}"><i class="fe-icon-edit-3 text-muted"></i>My Reviews</a>
-              
+
+              <a class="list-group-item" id="section_password" href="{{ route('dash', ['_section' => 'password']) }}"><i class="fe-icon-edit-3 text-muted"></i>Password</a>              
+
               {{-- <a class="list-group-item" id="section_gifts" href="{{ route('dash', ['_section' => 'gifts']) }}"><i class="fe-icon-package text-muted"></i>Gift Vouchers</a> --}}
             
             </nav>

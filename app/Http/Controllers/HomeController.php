@@ -31,7 +31,7 @@ class HomeController extends Controller
 
         $query = $request->query('_section', 'settings');    
         
-        $sections = ['orders', 'mybooks', 'settings', 'address', 'wishlist', 'reviews'];
+        $sections = ['orders', 'mybooks', 'settings', 'address', 'wishlist', 'reviews', 'password'];
 
         if(!in_array($query, $sections))
         {

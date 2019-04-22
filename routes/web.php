@@ -17,7 +17,10 @@ Auth::routes(['verify' => true]);
 
 Route::group(['middleware' => ['verified', 'auth']], function () {
     Route::get('/dash', 'HomeController@index')->name('dash');
-    Route::post('/user/wishlist', 'WishlistController@store')->name('wishlist.store');    
+    Route::post('/user/wishlist', 'WishlistController@store')->name('wishlist.store');
+
+    Route::post('/user/profile/update', 'UserController@update')->name('user.profile.update');
+
 });
 
 Route::get('/books/{book}', 'BookController@show')->name('books.show');
