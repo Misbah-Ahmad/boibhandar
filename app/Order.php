@@ -24,4 +24,11 @@ class Order extends Model
     {
         return $this->hasOne(Transaction::class);
     }
+
+    public function getTotalPriceAttribute()
+    {
+        $this->orderDetails()->sum('price');
+    }
+
+
 }
