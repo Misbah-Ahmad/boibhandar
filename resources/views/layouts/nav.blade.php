@@ -180,7 +180,7 @@
                             <a href="#" data-toggle="search"><i class="fe-icon-search"></i></a>
                         </li>
                         <li>
-                            <a href="#"><i class="fe-icon-shopping-cart"></i></a>
+                            <a href=" {{ route('carts.show') }} "><i class="fe-icon-shopping-cart"></i></a>
                             <span id="cartIcon" class="badge badge-danger">{{ count($cart_books) > 0 ? count($cart_books) : '' }}</span>
                         </li>
                     </ul>

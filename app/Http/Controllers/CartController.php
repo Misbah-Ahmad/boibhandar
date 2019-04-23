@@ -9,7 +9,14 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
 
+    public function show(Request $request)
+    {
+        $user = auth()->user();
+        $books = $user->cart->books;
 
+        return view('carts.cart', compact(['books']));
+
+    }
     
     public function store(Request $request)
     {
