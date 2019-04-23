@@ -9,6 +9,7 @@
     <meta name="keywords" content="boibhandar, book, online book shop, shop, hire books online, buy books online, boi, book, book shop, golper boi, uponnash">
     <meta name="author" content="Daanguli Studio">
     
+    <meta name="csrf-token" content="{{ csrf_token() }}">    
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     

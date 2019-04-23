@@ -23,6 +23,8 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
 
     Route::post('user/profile/changePassword', 'UserController@changePassword')->name('user.profile.changePassword');
 
+    Route::post('/user/cart/add', 'CartController@store');
+
 });
 
 Route::get('/books/{book}', 'BookController@show')->name('books.show');

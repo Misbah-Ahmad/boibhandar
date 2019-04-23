@@ -59,17 +59,17 @@
                     <div class="card-header"><a class="mobile-menu-link" href="#">Best Seller</a></div>
                 </div>
                 <!-- Account-->
-                <div class="card">
+                {{-- <div class="card">
                     <div class="card-header"><a class="mobile-menu-link" href="#">Pre-Order</a></div>
-                </div>
+                </div> --}}
                 <!-- Pages-->
-                <div class="card">
+{{--                 <div class="card">
                     <div class="card-header"><a class="mobile-menu-link" href="#">Send Gifts</a></div>
-                </div>
+                </div> --}}
                 <!-- Components-->
-                <div class="card">
+{{--                 <div class="card">
                     <div class="card-header"><a class="mobile-menu-link" href="#">Blog</a></div>
-                </div>
+                </div> --}}
             </div>
         </div>
         <div class="offcanvas-footer px-4 pt-3 pb-2 text-center">
@@ -165,24 +165,38 @@
                     <!-- Nav Item-->
                     <li class="nav-item"><a class="nav-link" href="#">Best Seller</a></li>
                     <!-- Nav Item-->
-                    <li class="nav-item"><a class="nav-link" href="#">Pre-Order</a></li>
+                    {{-- <li class="nav-item"><a class="nav-link" href="#">Pre-Order</a></li> --}}
                     <!-- Nav Item-->
-                    <li class="nav-item"><a class="nav-link" href="#">Send Gifts</a></li>
+                    {{-- <li class="nav-item"><a class="nav-link" href="#">Send Gifts</a></li> --}}
                     <!-- Nav Item-->
-                    <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+                    {{-- <li class="nav-item"><a class="nav-link" href="#">Blog</a></li> --}}
                 </ul>
                 <div>
                     <ul class="navbar-buttons d-inline-block align-middle mr-lg-2">
-                        <li class="d-block d-lg-none"><a href="#mobile-menu" data-toggle="offcanvas"><i class="fe-icon-menu"></i></a></li>
-                        <li><a href="#" data-toggle="search"><i class="fe-icon-search"></i></a></li>
-                        <li><a href="#"><i class="fe-icon-shopping-cart"></i></a><span class="badge badge-danger">3</span></li>
+                        <li class="d-block d-lg-none">
+                            <a href="#mobile-menu" data-toggle="offcanvas"><i class="fe-icon-menu"></i></a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="search"><i class="fe-icon-search"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fe-icon-shopping-cart"></i></a>
+                            <span id="cartIcon" class="badge badge-danger">{{ count($cart_books) > 0 ? count($cart_books) : '' }}</span>
+                        </li>
                     </ul>
 
                     @guest
-                        <a class="btn btn-style-6 btn-primary ml-3 d-none d-xl-inline-block" href="{{ route('login') }}"><i class="fe-icon-user"></i>Login</a>                        
+                        <a class="btn btn-style-6 btn-primary ml-3 d-none d-xl-inline-block" href="{{ route('login') }}"><i class="fe-icon-user"></i>Login</a>
+                        <script>window.loggedIn = false</script>
                     @else
+                        <script>window.loggedIn = true</script>
                         <a class="btn btn-style-6 btn-primary ml-3 d-none d-xl-inline-block" href="{{ route('dash') }}"><i class="fe-icon-user"></i>Account</a>
+                        <a class="btn btn-style-6 btn-primary ml-3 d-none d-xl-inline-block" onclick="event.preventDefault(); document.querySelector('#logoutForm').submit();"><i class="fe-icon-user"></i>Logout</a>
+                        <form style="display:none;" id="logoutForm" method="POST" action="{{ route('logout') }}">
+                            @csrf
+                        </form>
                     @endguest
+
 
 
                 

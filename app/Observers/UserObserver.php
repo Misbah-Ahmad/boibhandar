@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Cart;
 use App\Role;
 use App\User;
 use Illuminate\Support\Facades\Artisan;
@@ -38,6 +39,8 @@ class UserObserver
         }
         
         $user->attachRole($customerRole);
+
+        $user->cart()->save(new Cart);
     }
 
     /**
