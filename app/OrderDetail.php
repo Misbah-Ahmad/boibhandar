@@ -8,9 +8,12 @@ use App\Model;
 
 class OrderDetail extends Model
 {
-    public function bookDetails()
+
+    protected $with = ['bookDetail'];
+
+    public function bookDetail()
     {
-        return $this->belongsTo(BookDetail::class);
+        return $this->belongsTo(BookDetail::class, 'book_detail_id', 'id');
     }
 
     public function order()

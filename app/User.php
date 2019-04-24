@@ -35,6 +35,19 @@ class User extends Authenticatable implements MustVerifyEmail
         'password', 'remember_token',
     ];
 
+
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+
+
     public function orders()
     {
         return $this->hasMany(Order::class);
@@ -65,14 +78,17 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Notification::class,'user_notification')->withTimestamps();
     }
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function orderDetails()
+    {
+        return $this->hasManyThrough(
+            OrderDetail::class, //related model
+            Order::class, // through
+            'user_id', // foreign key on intermediate model  
+            'order_id' // foreign key on target/related model 
+        );
+    }
+
+
 
 
     public function hasBookInWishlist(Book $book)

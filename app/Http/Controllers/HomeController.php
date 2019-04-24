@@ -47,16 +47,29 @@ class HomeController extends Controller
             $section = $view = $query;
         }
 
-        switch($section)
-        {
-            case ('orders'):
-            
-            
-        }
+        $vars = [];
 
+        switch ($section) {
+            case 'orders':
+                $vars = $user->orders()->latest()->get();
+                break;
+
+            case 'mybooks':
+                $vars = $user->orderDetails;
+                break;
+
+            case 'wishlist':
+                $vars = $user->wishlist;
+                break;
+
+            case 'reviews':
+                $vars = $user->reviews;
+                break;
+        }
         return view('users.profile', compact([
-            'user', 'section', 'view',
+            'user', 'section', 'view', 'vars',
         ]));
+    
     }
 
 

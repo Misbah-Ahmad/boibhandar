@@ -25,6 +25,9 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
 
     Route::post('/user/cart/add', 'CartController@store');
     Route::get('/cart', 'CartController@show')->name('carts.show');
+
+    Route::get('/user/orders/{order}', 'OrderController@show')->name('orders.show');
+
 });
 
 Route::get('/books/{book}', 'BookController@show')->name('books.show');

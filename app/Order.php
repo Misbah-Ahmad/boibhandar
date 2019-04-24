@@ -27,7 +27,30 @@ class Order extends Model
 
     public function getTotalPriceAttribute()
     {
-        $this->orderDetails()->sum('price');
+        return $this->orderDetails()->sum('price');
+    }
+
+    public function getStatusBadgeAttribute()
+    {
+        switch ($this->status) {
+            case 'Approved':
+                return 'info';
+                break;
+
+            case 'Cancelled':
+                return 'danger';
+                break;
+
+            case 'Delivered':
+                return 'success';
+                break;
+
+            default:
+                return 'warning';
+                break;
+
+        }
+
     }
 
 

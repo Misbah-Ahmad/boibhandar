@@ -28,16 +28,21 @@
             </thead>
            
             <tbody>
-                @foreach($orders as $order)
+
+                @foreach($vars as $order)
                     <tr>
                         
-                            <td><a class="navi-link" href="#order-details" data-toggle="modal">{{ $order->id }}</a></td>
-                            <td>{{$order->created_at}}</td>
-                            <td><span class="badge badge-danger m-0">Canceled</span></td>
-                            <td>৳ <span>{{$order->getPriceAttribute()}}</span></td>
+                            <td><a class="navi-link" href="{{ route('orders.show', $order->id) }}" data-toggle="modal">{{ ($order->id+177) . $order->id }}</a></td>
+                            
+                            <td>{{  date('M d, Y', strtotime($order->created_at))  }}</td>
+                            
+                            <td><span class="badge badge-{{ $order->statusBadge }} m-0">{{ $order->status }}</span></td>
+
+                            <td>৳ <span>{{ $order->totalPrice }}</span></td>
                         
                     </tr>
                 @endforeach
+            
             </tbody>
            
         </table>

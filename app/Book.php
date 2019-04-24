@@ -14,6 +14,10 @@ use App\BookDetail;
 
 class Book extends Model
 {
+
+    /* Always eager load author */
+    protected $with = ['author'];
+ 
     public function author()
     {
         return $this->belongsTo(Author::class);
