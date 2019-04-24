@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Book;
+use App\OrderDetail;
+use App\Order;
 
 class HomeController extends Controller
 {
@@ -33,12 +35,23 @@ class HomeController extends Controller
         
         $sections = ['orders', 'mybooks', 'settings', 'address', 'wishlist', 'reviews', 'password'];
 
+        
+        
+
+
         if(!in_array($query, $sections))
         {
             $section = 'settings';
             $view  ='settings';
         } else {
             $section = $view = $query;
+        }
+
+        switch($section)
+        {
+            case ('orders'):
+            
+            
         }
 
         return view('users.profile', compact([

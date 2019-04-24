@@ -26,16 +26,20 @@
                     <th>Total</th>
                 </tr>
             </thead>
-            
+           
             <tbody>
-                <tr>
-                    
-                    <td><a class="navi-link" href="#order-details" data-toggle="modal">3</a></td>
-                    <td>12 April</td>
-                    <td><span class="badge badge-danger m-0">Canceled</span></td>
-                    <td>৳ <span>134</span></td>
-                </tr>
+                @foreach($orders as $order)
+                    <tr>
+                        
+                            <td><a class="navi-link" href="#order-details" data-toggle="modal">{{ $order->id }}</a></td>
+                            <td>{{$order->created_at}}</td>
+                            <td><span class="badge badge-danger m-0">Canceled</span></td>
+                            <td>৳ <span>{{$order->getPriceAttribute()}}</span></td>
+                        
+                    </tr>
+                @endforeach
             </tbody>
+           
         </table>
     </div>
 </div>
