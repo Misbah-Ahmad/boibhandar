@@ -1,6 +1,4 @@
-<div class="col-lg-3 col-md-4 col-sm-6 mb-30">
-
-    {{-- <div class="product-card mx-auto mb-5">
+    <div class="product-card mx-auto mb-5">
         
         <div class="product-head d-flex justify-content-between align-items-center">
             
@@ -24,7 +22,11 @@
         
             <a class="product-meta" href="{{ route('authors.show', $book->author->id) }}">{{ $book->author->name }}</a>
         
-            <span class="product-price">{{ 'BDT ' . $book->bookDetails()->min('price') }}</span>
+            <span class="product-price">
+
+                @include('books.price')
+
+            </span>
         
         </div>
 
@@ -56,9 +58,4 @@
 
         </div>
 
-    </div> --}}
-
-    @include('books.carousel_item', ['book' => $book])
-
-</div>
-
+    </div>

@@ -33,3 +33,7 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
 Route::get('/books/{book}', 'BookController@show')->name('books.show');
 
 Route::get('/authors/{author}', 'AuthorController@show')->name('authors.show');
+
+Route::get('/categories/{category}', function(){})->name('categories.show');
+
+Route::get('/publishers/{category}', function () { })->name('publishers.show');

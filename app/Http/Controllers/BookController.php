@@ -11,7 +11,12 @@ class BookController extends Controller
 
     public function show(Book $book)
     {
-        //return view to show the details of $book
-        return back();
+        
+        $related_books = $book->getRelatedBooks();
+
+        return view('books.show', compact([
+            'book', 'related_books'
+        ]));
+
     }
 }

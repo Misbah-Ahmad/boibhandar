@@ -20,48 +20,42 @@
 
     <!-- Page Content-->
 
-      @include('single_book')
+    @include('books.single_book')
       
     <!-- Product Details-->
-    <div class="bg-secondary pt-2" id="details">
-      <div class="container">
-        <h2 class="h4 block-title text-left">Product Specification & Summary</h2>
-        <div class="row">
-          
+      <div class="bg-secondary pt-2" id="details">
+        <div class="container">
+          <h2 class="h4 block-title text-left">Product Specification & Summary</h2>
+          <div class="row">
+            
 
-          @include('summary')
-
-
-          @include('author_details')
+            @include('books.summary')
 
 
+            @include('books.author_details')
+
+
+          </div>
         </div>
       </div>
-    </div>
 
 
 
 
     <!--Related Products-->
-    <div class="container pt-3 pb-2">
-      <!-- Related Products Carousel-->
-      <h3 class="h4 text-center pb-2">You May Also Like</h3>
-      
-      @include('related_books')
-
-    </div>
-
-
+    @if($related_books->count() > 0)
+      @include('books.book_carousel', ['carousel_headline' => 'You May Also Like'])
+    @endif
 
 
 
     <!-- Reviews-->
-    <div class="container bg-secondary" id="review-call">
+    {{-- <div class="container bg-secondary" id="review-call">
       <h2 class="h4 block-title text-left pt-4">Reviews and Ratings</h2>
       
       @include('review_rating')
 
-    </div>
+    </div> --}}
 
 
 

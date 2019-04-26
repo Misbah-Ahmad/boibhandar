@@ -8,9 +8,10 @@ use App\Model;
 use App\Author;
 use App\Review;
 use App\Category;
+use App\Discount;
 use App\Publisher;
 use App\BookDetail;
-
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Book extends Model
 {
@@ -55,6 +56,12 @@ class Book extends Model
     }
 
 
+    public function discounts()
+    {
+        return $this->morphMany(Discount::class, 'model');
+    }
+
+    
     public function getStarScoreAttribute()
     {
         return intval(ceil($this->reviews()->avg('score')));        
@@ -84,5 +91,60 @@ class Book extends Model
     {
         return $this->bookDetails()->max('price');
     }    
+
+
+
+    public function getDiscountAttribute()
+    {
+        
+        return $this->discounts()->activeAndNotExpired()->first();
+
+    }
+
+
+    public function getDiscountedPriceAttribute()
+    {
+        if($this->hasDiscount == false) 
+        {
+            return $this->price;
+        }
+
+        $discount = Discount::where('type', 'global')->activeAndNotExpired()->first();
+
+        $discountPercent = max([
+            $discount == null ? 0 : $discount->percent,
+            $this->discount == null ? 0 : $this->discount->percent,
+            $this->author->discount == null ? 0 : $this->author->discount->percent,
+            $this->publisher->discount == null ? 0 : $this->publisher->discount->percent,
+        ]);
+
+        return $this->price - ($this->price * ($discountPercent / 100.0));
+
+    }
+
+    public function getHasDiscountAttribute()
+    {
+
+        return (Discount::where('type', 'global')->activeAndNotExpired()->count() > 0
+            || $this->discount != null
+            || $this->author->hasDiscount
+            || $this->publisher->hasDiscount) ?  true : false;
+        
+    }
+
+    public function getPageCountAttribute()
+    {
+        return $this->pages == null ? 'N/A' : $this->pages;
+    }
+
+    public function getRelatedBooks()
+    {
+        $books = $this->categories()->with('books')->get()->flatMap(function($cat){ return $cat->books; });
+        if($books->count() < 1)
+        {
+            $books = $this->author->books;
+        }
+        return $books->random(min($books->count(), env( 'RELATED_BOOK_NUM')));
+    }
 
 }
