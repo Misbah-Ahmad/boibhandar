@@ -93,7 +93,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function hasBookInWishlist(Book $book)
     {
-        return $this->wishlist()->contains($book);
+        return $this->wishlist->contains($book);
     }
 
     public function getFullNameAttribute()

@@ -16,7 +16,9 @@ Route::get('/', 'HomeController@home')->name('home');
 Auth::routes(['verify' => true]);
 
 Route::group(['middleware' => ['verified', 'auth']], function () {
+
     Route::get('/dash', 'HomeController@index')->name('dash');
+    
     Route::post('/user/wishlist', 'WishlistController@store')->name('wishlist.store');
 
     Route::post('/user/profile/update', 'UserController@update')->name('user.profile.update');
@@ -24,6 +26,7 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
     Route::post('user/profile/changePassword', 'UserController@changePassword')->name('user.profile.changePassword');
 
     Route::post('/user/cart/add', 'CartController@store');
+    
     Route::get('/cart', 'CartController@show')->name('carts.show');
 
     Route::get('/user/orders/{order}', 'OrderController@show')->name('orders.show');

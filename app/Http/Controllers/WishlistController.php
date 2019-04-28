@@ -12,15 +12,31 @@ class WishlistController extends Controller
     {
         $user = auth()->user();
 
-        $book = Book::find($request->book);
-        if($book instanceof Book && $user->hasBookInWishlist($book))
-        {
-            $user->wishlist()->save($book);
 
-            return response()->json(['success' => true], 200);
+
+        $book = Book::find($request->w_book);
+
+        if ($book != null) 
+        {
+            if ($user->hasBookInWishlist($book) == false) 
+            {
+                    
+                $user->wishlist()->save($book);
+                
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Book added to wishlist',
+                ]);
+
+            } else {
+            
+                return response()->json(['success' => false, 'message' => 'Book is in wishlist already']);
+            
+            }
+
         }
 
-        return response()->json(['success' => false, 'message' => 'Something went wrong!'], 200);
+        return response()->json(['success' => false, 'message' => 'Invalid request']);
 
 
     }
