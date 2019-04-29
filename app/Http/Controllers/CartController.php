@@ -47,7 +47,7 @@ class CartController extends Controller
             
             
             } else {
-                return response()->json(['success' => false, 'message' => 'Book is in cart already020']);
+                return response()->json(['success' => false, 'message' => 'Book is in cart already']);
             }
 
 

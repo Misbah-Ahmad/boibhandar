@@ -13,56 +13,14 @@
 
 
 
-
-
-
-
-<!-- Top Categories-->
-<section class="container mobile-disable pb-3 mt-3">
-    <div class="row pt-3 pb-4">
-        <!-- Product category-->
-        <div class="col-md-4">
-            <a class="product-category-card mx-auto" href="#">
-                <div class="product-category-card-thumb">
-                    <div class="main-img">
-                        <img src="/images/components/category/sba.svg" alt="Shop Category" />
-                    </div>
-                    <div class="product-category-card-body">
-                        <h5 class="product-category-card-title">Shop By Authors</h5>
-                        <div class="product-category-card-meta">Browse your favorite authors</div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <!-- Product category-->
-        <div class="col-md-4">
-            <a class="product-category-card mx-auto" href="#">
-                <div class="product-category-card-thumb">
-                    <div class="main-img">
-                        <img src="/images/components/category/sbc.svg" alt="Shop Category" />
-                    </div>
-                    <div class="product-category-card-body">
-                        <h5 class="product-category-card-title">Shop By Categories</h5>
-                        <div class="product-category-card-meta">Browse your favorite categories</div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <!-- Product category-->
-        <div class="col-md-4">
-            <a class="product-category-card mx-auto" href="#">
-                <div class="product-category-card-thumb">
-                    <div class="main-img">
-                        <img src="/images/components/category/sbp.svg" alt="Shop Category" /></div>
-                    <div class="product-category-card-body">
-                        <h5 class="product-category-card-title">Shop By Publishers</h5>
-                        <div class="product-category-card-meta">Browse your favorite publishers</div>
-                    </div>
-                </div>
-            </a>
+<section class="container">
+    <div class="seasonal-promotion-banner">
+        <div class="row">
+            <div class="col-md-12 pt-2 pb-3">
+                <a href="#"><img src=" {{ asset('images/promo.png') }} "></a>
+            </div>
         </div>
     </div>
-    <!-- <div class="text-center"><a class="btn btn-style-5 btn-primary" href="#">See All Books</a></div> -->
 </section>
 
 

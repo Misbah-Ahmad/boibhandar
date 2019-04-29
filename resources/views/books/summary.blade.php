@@ -1,49 +1,51 @@
 <div class="col-md-6">
-    <h3 class="h6">Specifications</h3>
-      <div class="table-responsive prod-spec-table mb-4 pb-2">
-        <table class="table">
-          <tbody>
-            
-            <tr>
-              <th scope="row">Title</th>
-              <td><span class="product-name"> {{ $book->title }} </span></td>
-            </tr>
-            
-            <tr>
-              <th scope="row">Author</th>
-              <td><span class="author-profile-link"><a href=" {{ route('authors.show', $book->author->id) }} "> {{ $book->author->name }} </a></span></td>
-            </tr>
-            
-            <tr>
-              <th scope="row">Publisher</th>
-              <td><span class="publication-name"><a href=" {{ route('publishers.show', $book->publisher->id) }} "> {{ $book->publisher->name }} </a></span></td>
-            </tr>
-            
-            <tr>
-              <th scope="row">Edition</th>
-              <td><span class="product-edition"> {{ $book->edition }} </span></td>
-            </tr>
-            
-            <tr>
-              <th scope="row">ISBN</th>
-              <td><span class="product-isbn"> {{ $book->isbn }} </span></td>
-            </tr>
-
-            <tr>
-              <th scope="row">Language</th>
-              <td><span class="product-language"> {{ $book->language }} </span></td>
-            </tr>
-
-            <tr>
-              <th scope="row">Total Pages</th>
-              <td><span class="product-pages">{{ $book->pageCount }} </span></td>
-            </tr>                  
-
-          </tbody>
-
-        </table>
-
-      </div>
+    <div class="prod-spec-details">
+  <h3 class="h6 block-title">Specifications</h3>
+    <div class="table-responsive prod-spec-table">
+      <table class="table">
+        <tbody>
+    
+          <tr>
+            <th scope="row">Title</th>
+            <td><span class="product-name"> {{ $book->title }} </span></td>
+          </tr>
+    
+          <tr>
+            <th scope="row">Author</th>
+            <td><span class="author-profile-link"><a href=" {{ route('authors.show', $book->author->id) }} "> {{ $book->author->name }} </a></span></td>
+          </tr>
+    
+          <tr>
+            <th scope="row">Publisher</th>
+            <td><span class="publication-name"><a href=" {{ route('publishers.show', $book->publisher->id) }} "> {{ $book->publisher->name }} </a></span></td>
+          </tr>
+    
+          <tr>
+            <th scope="row">Edition</th>
+            <td><span class="product-edition"> {{ $book->edition }} </span></td>
+          </tr>
+    
+          <tr>
+            <th scope="row">ISBN</th>
+            <td><span class="product-isbn"> {{ $book->isbn }} </span></td>
+          </tr>
+    
+          <tr>
+            <th scope="row">Language</th>
+            <td><span class="product-language"> {{ $book->language }} </span></td>
+          </tr>
+    
+          <tr>
+            <th scope="row">Total Pages</th>
+            <td><span class="product-pages">{{ $book->pageCount }} </span></td>
+          </tr>
+    
+        </tbody>
+    
+      </table>
+    
+    </div>
+    </div>
 
 <!--             <h3 class="h6">Shipping Options:</h3>
     <ul class="list-unstyled mb-4 pb-2">

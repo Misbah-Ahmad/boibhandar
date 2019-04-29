@@ -17,7 +17,7 @@ function addToCart(id)
             success: function (response, type) {
                 if(response.success)
                 {
-                    localStorage.setItem('_bbc_book', JSON.stringify(response.data));
+                    localStorage.setItem('_bbc_bd_book_user', JSON.stringify(response.data));
                     updateCartIcon(response.data.length);
                 }
             },
@@ -29,12 +29,12 @@ function addToCart(id)
         });
 
     } else {
-        ids = JSON.parse(localStorage.getItem('_bbc_bd_book')) || [];
+        ids = JSON.parse(localStorage.getItem('_bbc_bd_book_user')) || [];
         ids.push(id);
 
         if(ids.length == (new Set(ids)).size )
         {
-            localStorage.setItem('_bbc_bd_book', JSON.stringify(ids));
+            localStorage.setItem('_bbc_bd_book_user', JSON.stringify(ids));
             updateCartIcon(ids.length);
         }
 

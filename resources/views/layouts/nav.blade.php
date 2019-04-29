@@ -17,34 +17,10 @@
             <div class="accordion mobile-menu" id="accordion-menu">
                 <!-- Home-->
                 <div class="card">
-                    <div class="card-header"><a class="mobile-menu-link active" href="/">Books</a><a class="collapsed" href="#home-submenu"
-                            data-toggle="collapse"></a></div>
-                    <div class="collapse" id="home-submenu" data-parent="#accordion-menu">
-                        <div class="card-body">
-                            <ul>
-                                <li class="dropdown-header"><i class="fe-icon-edit"></i>&nbsp;&nbsp;Authors</li>
-                                <li class="dropdown-item"><a href="#">Author Name</a></li>
-                                <li class="dropdown-item"><a href="#">Author Name</a></li>
-                                <li class="dropdown-item"><a href="#">Author Name</a></li>
-                                <li class="dropdown-header"><i class="fe-icon-shopping-book"></i>&nbsp;&nbsp;Publishers</li>
-                                <li class="dropdown-item"><a href="#">Publisher Name</a></li>
-                                <li class="dropdown-item"><a href="#">Publisher Name</a></li>
-                                <li class="dropdown-header"><i class="fe-icon-edit"></i>&nbsp;&nbsp;Others</li>
-                                <li class="dropdown-item"><a href="#">Others Name</a></li>
-                                <li class="dropdown-item"><a href="#">Others Name</a></li>
-                                <li class="dropdown-header"><i class="fe-icon-book-open"></i>&nbsp;&nbsp;Extras</li>
-                                <li class="dropdown-item"><a href="#">Extras Name</a></li>
-                                <li class="dropdown-item"><a href="#">Extras Name</a></li>
-                                <li class="dropdown-item"><a href="#">Extras Name</a></li>
-                                <li class="dropdown-header"><i class="fe-icon-dollar-book"></i>&nbsp;&nbsp;Items</li>
-                                <li class="dropdown-item"><a href="#">Items Name</a></li>
-                                <li class="dropdown-item"><a href="#">Items Name</a></li>
-                                <li class="dropdown-header"><i class="fe-icon-shopping-cart"></i>&nbsp;&nbsp;Damn</li>
-                                <li class="dropdown-item"><a href="#">Damn Name</a></li>
-                                <li class="dropdown-item"><a href="#">Damn Name</a></li>
-                            </ul>
-                        </div>
+                    <div class="card-header">
+                        <a class="mobile-menu-link active" href="/">Books</a>
                     </div>
+
                 </div>
                 <!-- Portfolio-->
                 <div class="card">
@@ -104,59 +80,8 @@
                 <!-- Main Menu-->
                 <ul class="navbar-nav d-none d-lg-block">
                     <!-- Home-->
-                    <li class="nav-item mega-dropdown-toggle active"><a class="nav-link" href="/">Books</a>
-                        <div class="dropdown-menu mega-dropdown">
-                            <div class="d-flex">
-                                <div class="column">
-                                    <div class="widget widget-custom-menu">
-                                        <ul>
-                                            <li class="dropdown-header font-weight-medium text-danger border-danger text-uppercase pl-0"><i class="fe-icon-edit"></i>&nbsp;&nbsp;Authors</li>
-                                            
-                                            
-                                                
-                                            @foreach($authorsName as $name)
-                                            
-                                            <li><a href="#">{{$name->name}}</a></li>
-                                            @endforeach
-                                            <li><a class="disabled-link" href="#">Author Name<span class="badge badge-secondary">Soon</span></a></li>
-                                            <li class="dropdown-header font-weight-medium text-danger border-top-0 border-danger text-uppercase pt-4 pl-0"><i class="fe-icon-book-open"></i>&nbsp;&nbsp;Subject</li>
-                                            <li><a href="#">Subject Name</a></li>
-                                            <li><a href="#">Subject Name</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="column">
-                                    <div class="widget widget-custom-menu">
-                                        <ul>
-                                            <li class="dropdown-header font-weight-medium text-danger border-danger text-uppercase pl-0"><i class="fe-icon-book"></i>&nbsp;&nbsp;Publishers</li>
-
-                                            @foreach($publishersName as $pname)
-                                            
-                                            <li><a href="#">{{$pname->name}}</a></li>
-
-                                            @endforeach
-                                            
-                                            <li class="dropdown-header font-weight-medium text-danger border-top-0 border-danger text-uppercase pt-4 pl-0"><i class="fe-icon-book-open"></i>&nbsp;&nbsp;Best Seller</li>
-                                            <li><a href="#">Best Seller Name</a></li>
-                                            <li><a href="#">Best Seller Name</a></li>
-                                            <li><a href="#">Best Seller Name</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="column">
-                                    <div class="widget widget-custom-menu">
-                                        <ul>
-                                            <li class="dropdown-header font-weight-medium text-danger border-danger text-uppercase pl-0"><i class="fe-icon-book-open"></i>&nbsp;&nbsp;Others</li>
-                                            <li><a href="#">Other Name</a></li>
-                                            <li><a href="#">Other Name</a></li>
-                                            <li class="dropdown-header font-weight-medium text-danger border-top-0 border-danger text-uppercase pt-4 pl-0"><i class="fe-icon-book"></i>&nbsp;&nbsp;Extras</li>
-                                            <li><a href="#">Extras Name</a></li>
-                                            <li><a href="#">Extras Name</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Books</a>
                     </li>
                     <!-- Nav Item-->
                     <li class="nav-item"><a class="nav-link" href="#">Authors</a></li>
@@ -173,16 +98,19 @@
                 </ul>
                 <div>
                     <ul class="navbar-buttons d-inline-block align-middle mr-lg-2">
-                        <li class="d-block d-lg-none">
-                            <a href="#mobile-menu" data-toggle="offcanvas"><i class="fe-icon-menu"></i></a>
-                        </li>
                         <li>
                             <a href="#" data-toggle="search"><i class="fe-icon-search"></i></a>
                         </li>
+
                         <li>
                             <a href=" {{ route('carts.show') }} "><i class="fe-icon-shopping-cart"></i></a>
                             <span id="cartIcon" class="badge badge-danger">{{ count($cart_books) > 0 ? count($cart_books) : '' }}</span>
                         </li>
+
+                        <li class="d-block d-lg-none">
+                            <a href="#mobile-menu" data-toggle="offcanvas"><i class="fe-icon-menu"></i></a>
+                        </li>
+
                     </ul>
 
                     @guest

@@ -3,7 +3,7 @@
           <!-- Account Sidebar-->
           <div class="author-card pb-3">
             <div class="author-card-cover" style="background-image: url(images/users/profile_dummy.jpg);">
-              <a class="btn btn-light btn-sm" href="#" data-toggle="tooltip" title="You currently have 290 Reward points to spend"><i class="fe-icon-award text-md"></i>&nbsp;290 points</a>
+
             </div>
             <div class="author-card-profile">
               <div class="author-card-avatar">

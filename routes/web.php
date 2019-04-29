@@ -31,6 +31,8 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
 
     Route::get('/user/orders/{order}', 'OrderController@show')->name('orders.show');
 
+    Route::get('/checkout', 'OrderController@checkout')->name('checkout');
+
 });
 
 Route::get('/books/{book}', 'BookController@show')->name('books.show');

@@ -1,20 +1,22 @@
 <div class="col-lg-8 pb-5">
-    <div class="d-flex justify-content-end pb-3">
-
+    <div class="account-orders">
+    <h3 class="h6 block-title mb-4">Orders</h3>
+{{-- <div class="d-flex justify-content-end pb-3">
+    
         <div class="form-inline">
             <label class="text-muted mr-3" for="order-sort">Sort Orders</label>
-
+    
             <select class="form-control" id="order-sort">
-                <option>All</option>
-                <option>Delivered</option>
-                <option>In Progress</option>
-                <option>Delayed</option>
-                <option>Canceled</option>
-              </select>
+                    <option>All</option>
+                    <option>Delivered</option>
+                    <option>In Progress</option>
+                    <option>Delayed</option>
+                    <option>Canceled</option>
+                  </select>
         </div>
-
-    </div>
-
+    
+    </div> --}}
+    
     <div class="table-responsive">
     
         <table class="table table-hover mb-0">
@@ -26,25 +28,28 @@
                     <th>Total</th>
                 </tr>
             </thead>
-           
+    
             <tbody>
-
+    
                 @foreach($vars as $order)
-                    <tr>
-                        
-                            <td><a class="navi-link" href="{{ route('orders.show', $order->id) }}" data-toggle="modal">{{ ($order->id+177) . $order->id }}</a></td>
-                            
-                            <td>{{  date('M d, Y', strtotime($order->created_at))  }}</td>
-                            
-                            <td><span class="badge badge-{{ $order->statusBadge }} m-0">{{ $order->status }}</span></td>
-
-                            <td>৳ <span>{{ $order->totalPrice }}</span></td>
-                        
-                    </tr>
+                <tr>
+    
+                    <td><a class="navi-link" href="{{ route('orders.show', $order->id) }}" data-toggle="modal">{{ ($order->id+177) . $order->id }}</a></td>
+    
+                    <td>{{ date('M d, Y', strtotime($order->created_at)) }}</td>
+    
+                    <td><span class="badge badge-{{ $order->statusBadge }} m-0">{{ $order->status }}</span></td>
+    
+                    <td>৳ <span>{{ $order->totalPrice }}</span></td>
+    
+                </tr>
                 @endforeach
-            
+    
             </tbody>
-           
+    
         </table>
     </div>
+
+    </div>
+
 </div>

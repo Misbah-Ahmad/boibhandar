@@ -1,5 +1,5 @@
 <!-- Page Content-->
-<div class="container mb-2">
+<div class="container mb-2 mt-5">
   <div class="row">
 
     <div class="col-md-6">
@@ -85,7 +85,6 @@
         </div>
       </div>
  
-      <div class="pt-1 mb-4"><span class="text-medium">SKU:</span> #21457832</div>
  
       <hr class="mb-2">
  

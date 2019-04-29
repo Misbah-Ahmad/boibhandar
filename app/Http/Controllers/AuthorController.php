@@ -10,7 +10,9 @@ class AuthorController extends Controller
 
     public function show(Author $author)
     {
-        //return view to show the details of author
+
+        $books = $author->books;
+
         return back();
     }
     

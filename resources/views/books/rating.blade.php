@@ -1,7 +1,8 @@
 <div class="rating-stars">
-    <i class="fe-icon-star active"></i>
-    <i class="fe-icon-star active"></i>
-    <i class="fe-icon-star active"></i>
-    <i class="fe-icon-star active"></i>
-    <i class="fe-icon-star"></i>
+    <i class="fa fa-star active"></i>
+    <i class="fa fa-star active"></i>
+    <i class="fa fa-star active"></i>
+    <i class="fa fa-star active"></i>
+    <i class="fa fa-star "></i>
+
 </div>

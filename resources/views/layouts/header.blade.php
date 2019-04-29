@@ -29,7 +29,7 @@
     <!-- <link rel="stylesheet" media="screen" href="css/theme.min.css"> -->
     <link rel="stylesheet" media="screen" href="/css/theme.css">
     <!-- Google Tag Manager-->
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!--[Add] google tag script here-->
 
