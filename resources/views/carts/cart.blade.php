@@ -13,7 +13,9 @@
         
         <div class="col-md-8">    
 
-            @each('carts.single', $books, 'book')
+            @foreach ($books as $book)
+                @include('carts.single', ['book' => $book])
+            @endforeach
 
         </div>
 
@@ -27,5 +29,6 @@
 
 @section('js')
 <script src="/js/ops/cart_button.js"></script>
+<script src="/js/ops/submit_cart.js"></script>
 
 @endsection

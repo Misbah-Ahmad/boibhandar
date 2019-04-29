@@ -14,6 +14,11 @@ class CartController extends Controller
         $user = auth()->user();
         $books = $user->cart->books;
 
+        if($books->count() < 1)
+        {
+            return back();
+        }
+
         return view('carts.cart', compact(['books']));
 
     }

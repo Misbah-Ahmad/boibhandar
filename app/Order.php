@@ -54,4 +54,18 @@ class Order extends Model
     }
 
 
+
+    public static function saveNewOrder($request, $user)
+    {
+        $order = new Order;
+        $order->delivery_date = date('Y-m-d', strtotime('+3days'));
+        $order->address = $request->address;
+        $order->district = 'Chattogram';
+        $order->name = $request->fname . ' ' . $request->sname;
+        $order->phone = $request->phone;
+        $order->reference = $request->reference;
+
+        return $user->orders()->save($order);
+    } 
+
 }

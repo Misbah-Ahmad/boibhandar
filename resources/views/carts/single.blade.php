@@ -1,5 +1,5 @@
 <div class="cart-item"><span class="remove-item"><i class="fe-icon-x"></i></span>
-    
+
     <div class="row">
     
         <div class="col-md-4">
@@ -25,22 +25,23 @@
             <div class="px-3 my-3 text-center">
                 <div class="cart-item-label">Quantity</div>
                 
-                <div class="count-input">
-                    
-                    <select class="form-control">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
-                    </select>
+              <div class="input-group">
 
-                </div>
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant{{ $loop->index }}">
+                    <i class="fa fa-minus"></i>
+                  </button>
+                </span>
+
+                <input type="text" data-id="{{ $book->id }}" name="quant{{ $loop->index }}" class="form-control input-number book-quantity-id" value="1" min="1" max="9">
+                
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant{{ $loop->index }}">
+                    <i class="fa fa-plus"></i>
+                  </button>
+                </span>
+              
+            </div>
 
             </div>
         </div>
@@ -48,8 +49,8 @@
         <div class="col-md-4">
             <div class="px-3 my-3 text-center">
         
-                <div class="cart-item-label">Subtotal</div>৳ <span class="text-xl font-weight-medium"> {{ $book->maxPrice }} </span>
-        
+            <div class="cart-item-label">Subtotal</div>৳ <span class="text-xl font-weight-medium" id="subPrice{{ $loop->index }}"> {{ $book->hasDiscount ? $book->discountedPrice : $book->price }} </span>
+                <div id="unitHidden{{$loop->index}}" style="display:none;">{{ $book->hasDiscount ? $book->discountedPrice : $book->price }}</div>
             </div>
         
         </div>

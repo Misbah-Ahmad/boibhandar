@@ -5,15 +5,16 @@ namespace App;
 use App\Order;
 use App\BookDetail;
 use App\Model;
+use App\Book;
 
 class OrderDetail extends Model
 {
 
-    protected $with = ['bookDetail'];
 
-    public function bookDetail()
+
+    public function book()
     {
-        return $this->belongsTo(BookDetail::class, 'book_detail_id', 'id');
+        return $this->belongsTo(Book::class, 'book_id', 'id');
     }
 
     public function order()

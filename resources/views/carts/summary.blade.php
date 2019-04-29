@@ -21,35 +21,38 @@
                         @endphp
 
                         @foreach ($books as $book)
+                            @php
+
+                                $price  = $book->hasDiscount ? $book->discountedPrice : $book->price;
+                                $total += $price;
+                                $count++;
+                            
+                            @endphp
+
                             <tr>
                                 <td>{{  $book->title }}</td>
-                                <td>1</td>
-                                <td>{{  $book->maxPrice }}</td>
-                            
-                                @php
-                                    $total += $book->maxPrice;
-                                    $count++;
-                                @endphp
-                            
+                                <td id="cartSumQuant{{ $loop->index }}">1</td>
+                                <td id="cartSumPrice{{ $loop->index }}">{{  $price }}</td>
+                                                        
                             </tr>                            
                         @endforeach
 
                         <tr>
                             <td class="font-weight-bold">Subtotal</td>
-                            <td class="font-weight-bold">{{ $count }}</td>
-                            <td class="font-weight-bold">{{ $total }}</td>
+                            <td class="font-weight-bold" id="cartSumSubTotalQuant">{{ $count }}</td>
+                            <td class="font-weight-bold" id="cartSumSubTotalPrice">{{ $total }}</td>
                         </tr>
 
                         <tr>
                             <td class="font-weight-bold">Shipping</td>
                             <td class="font-weight-bold"></td>
-                            <td class="font-weight-bold">20</td>
+                            <td class="font-weight-bold" id="cartSumShipping"> {{ env('SHIPPING_CHARGE') }} </td>    
                         </tr>
 
                         <tr>
                             <td class="font-weight-bold">Total</td>
                             <td class="font-weight-bold"></td>
-                            <td class="font-weight-bold">{{ $total + 20.0 }}</td>
+                            <td class="font-weight-bold" id="cartSumTotal">{{ $total + intval(env('SHIPPING_CHARGE')) }}</td>
                         </tr>
 
                     </tbody>
@@ -69,10 +72,19 @@
             <button class="btn btn-primary mb-3" type="submit">Submit</button>
           </form> -->
 
-            <div class="col-md-12 mb-3 mt-3"><a class="btn btn-primary btn-block" href="checkout-address.html"><i class="fe-icon-credit-card"></i>&nbsp;Checkout</a></div>
+            <div class="col-md-12 mb-3 mt-3">
+                <a class="btn btn-primary btn-block" id="submitCart" onclick="event.preventDefault()">
+                    <i class="fe-icon-credit-card"></i>&nbsp;Checkout
+                </a>
+            </div>
+
+
+            <form action=" {{ route('checkout') }}" method="GET" id="cartSubmitForm">
 
 
 
+
+            </form>
 
 
         </div>

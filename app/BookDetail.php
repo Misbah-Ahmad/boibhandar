@@ -17,10 +17,5 @@ class BookDetail extends Model
     }
 
 
-    public function orderDetails()
-    {
-        return $this->hasMany(OrderDetail::class, 'book_detail_id', 'id');
-    }
-
 
 }

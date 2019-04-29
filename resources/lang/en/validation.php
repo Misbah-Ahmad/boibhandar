@@ -149,6 +149,9 @@ return [
         'fname' => 'First Name',
         'sname' => 'Last Name',
         'phone' => 'Phone Number',
+        'bkash_phone' => 'BKash Phone Number',
+        'address' => 'Shipping Address',
+        'payment_method' => 'Payment Method',
     ],
 
 ];

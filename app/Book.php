@@ -45,6 +45,12 @@ class Book extends Model
         return $this->hasMany(BookDetail::class);
     }
 
+    public function orderDetails()
+    {
+        return $this->hasMany(OrderDetail::class, 'book_id', 'id');
+    }
+
+
     public function wishListOf()
     {
         return $this->belongsToMany(User::class, 'user_wishlist', 'book_id', 'user_id');

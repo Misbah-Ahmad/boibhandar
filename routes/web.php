@@ -31,7 +31,11 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
 
     Route::get('/user/orders/{order}', 'OrderController@show')->name('orders.show');
 
-    Route::get('/checkout', 'OrderController@checkout')->name('checkout');
+    Route::get('/orders/checkout', 'OrderController@checkout')->name('checkout');
+
+    Route::post('/orders/confirm', 'OrderController@confirm')->name('orders.confirm');
+
+    Route::get('/orders/confirmed', 'OrderController@confirmed')->name('orders.confirmed');
 
 });
 
