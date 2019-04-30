@@ -86,7 +86,7 @@ class OrderController extends Controller
 
         $noti = [
             'order' => json_decode($order),
-            'details' => json_decode($order->orderDetails),
+            'total' => $order->orderDetails()->sum('total_price'),
         ];
 
         //\Log::emergency(json_encode($noti));

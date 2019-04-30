@@ -88,15 +88,15 @@ class Book extends Model
         return $this->image_link == null ? env('DEFAULT_BOOK_IMAGE', '') : $this->image_link;
     }    
 
-    public function getMinPriceAttribute()
-    {
-        return $this->bookDetails()->min('price');
-    }
+    // public function getMinPriceAttribute()
+    // {
+    //     return $this->bookDetails()->min('price');
+    // }
 
-    public function getMaxPriceAttribute()
-    {
-        return $this->bookDetails()->max('price');
-    }    
+    // public function getMaxPriceAttribute()
+    // {
+    //     return $this->bookDetails()->max('price');
+    // }    
 
 
 

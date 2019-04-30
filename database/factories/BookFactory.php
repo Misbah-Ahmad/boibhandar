@@ -18,7 +18,7 @@ $factory->define(App\Book::class, function (Faker $faker) {
             $publisher = factory(App\Publisher::class)->create();
     }
 
-    
+    $price = rand(100, 400);
 
     return [
         
@@ -26,6 +26,11 @@ $factory->define(App\Book::class, function (Faker $faker) {
         'isbn' => $faker->isbn10,
         'author_id' => $author->id,
         'publisher_id' => $publisher->id,
+        'price' => $price,
+        'edition' => $faker->sentence,
+        'language' => 'bangla',
+        'pages' => rand(50, 300),
+        'buying_price' => $price - rand(15, 45), 
 
     ];
 });
