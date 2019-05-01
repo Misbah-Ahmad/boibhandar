@@ -514,7 +514,7 @@ mark,
     display: block;
     margin: 0 auto;
     border: 6px solid #ffffff;
-    box-shadow: 0 0.75rem 1.25rem 0.0625rem rgba(64, 64, 64, 0.09)
+    box-shadow: 1px 1px 2px 1px rgba(219,218,219,0.5)
 }
 
 
@@ -19964,7 +19964,6 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 .author-profile-details{
     background-color: #fff;
     padding: 15px;
-    box-shadow: 1px 1px 2px 1px rgba(219,218,219,0.5)
 }
 
 
@@ -20266,8 +20265,6 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
     background-color: #fff;
     position: relative;
     padding: 2.75rem 1rem 0;
-    -webkit-box-shadow: 1px 1px 2px 1px rgba(219,218,219,0.5);
-    box-shadow: 1px 1px 2px 1px rgba(219,218,219,0.5)
 }
 
 .product-gallery .gallery-item::before {
@@ -21103,7 +21100,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 }
 
 
-.publishers-grid a:hoer
+.publishers-grid a:hover,
 .categories-grid a:hover .figure-caption{
     color: #FF6700;
 }
@@ -21128,6 +21125,97 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 
 
 
+
+
+.shop-publishers,
+.shop-authors {
+    position: relative;
+    max-width: 100%;
+    padding-top: .75rem;
+    padding-bottom: .625rem;
+    -webkit-transition: all .35s;
+    transition: all .35s;
+    display: block
+}
+
+.shop-publishers a.shop-publishers-thumb img,
+.shop-authors a.shop-authors-thumb img {
+    display: block;
+    margin: 0 auto;
+    width: 140px;
+    height: 140px;
+    border: 1px solid #FF6700;
+    border-radius: 50%;
+    box-shadow: 1px 1px 2px 1px rgba(219,218,219,0.5)
+}
+
+.shop-publishers a,
+.shop-authors a {
+    text-decoration: none !important;
+    color: #000000;
+}
+
+.shop-publishers a.shop-publishers-thumb:hover p,
+.shop-authors a.shop-authors-thumb:hover p {
+    color: #FF6700;
+    -webkit-transition: all .35s;
+    transition: all .35s;
+}
+
+.shop-publishers a.shop-publishers-thumb:hover img,
+.shop-authors a.shop-authors-thumb:hover img {
+    -webkit-box-shadow: 0 0.75rem 1.25rem 0.0625rem rgba(64, 64, 64, 0.09);
+    box-shadow: 0 0.75rem 1.25rem 0.0625rem rgba(64, 64, 64, 0.09);
+    -webkit-transition: all .35s;
+    transition: all .35s;
+}
+
+
+.shop-publishers a .shop-publishers-title,
+.shop-authors a .shop-authors-title {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 0.75rem;
+}
+
+
+.testimonial-book-img{
+    display: table-cell;
+    width: 48px;
+    vertical-align: middle
+}
+
+.testimonial-book-img img{
+    display: block;
+    width: 48px;
+    height: 48px;
+    border-radius: none;
+}
+
+.testimonial-footer .testimonial-author a,
+.testimonial-footer .testimonial-book a{
+    margin-left: 5px;
+}
+
+.wishlist-shift .btn-sm, .btn-group-sm>.btn{
+    padding: 0 10px
+}
+
+.wishlist-shift{
+    position: relative;
+    left: 0;
+    width: 100%;
+    top: 35%;
+}
+
+
+.shop-single-review,
+.shop-single-upper,
+.shop-single-lower{
+    background-color: #fff;
+    box-shadow: 1px 1px 2px 1px rgba(219,218,219,0.5)
+}
 
 
 

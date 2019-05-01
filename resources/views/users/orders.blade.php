@@ -1,6 +1,6 @@
 <div class="col-lg-8 pb-5">
     <div class="account-orders">
-    <h3 class="h6 block-title mb-4">Orders</h3>
+    <h3 class="h6 block-title mb-4">My Orders</h3>
 {{-- <div class="d-flex justify-content-end pb-3">
     
         <div class="form-inline">
@@ -20,7 +20,7 @@
     <div class="table-responsive">
     
         <table class="table table-hover mb-0">
-            <thead>
+            <thead class="thead-dark">
                 <tr>
                     <th>Order #</th>
                     <th>Date Purchased</th>

@@ -1,5 +1,5 @@
 
-<section class="container py-6 mb-4 best-seller-home">
+<section class="container py-6 mb-4 best-seller-home mt-5 pt-3">
 
     <h2 class="h4 block-title text-left pt-3">{{ $section_headline }}</h2>
 

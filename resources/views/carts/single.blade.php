@@ -2,7 +2,7 @@
 
     <div class="row">
     
-        <div class="col-md-4">
+        <div class="col-md-5">
             <div class="px-3 my-3">
                 
                 <a class="cart-item-product" href="shop-single.html">
@@ -46,7 +46,7 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="px-3 my-3 text-center">
         
             <div class="cart-item-label">Subtotal</div>৳ <span class="text-xl font-weight-medium" id="subPrice{{ $loop->index }}"> {{ $book->hasDiscount ? $book->discountedPrice : $book->price }} </span>

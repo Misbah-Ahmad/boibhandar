@@ -46,6 +46,11 @@ function addToCart(id)
 function updateCartIcon(count)
 {
     let text = "";
+    let ids = JSON.parse(localStorage.getItem('_bbc_bd_book_user')) || [];    
+    count = ids.length;
+
+    console.log(count);
+
     if(count > 0)
     {
         text = count;
@@ -56,3 +61,4 @@ function updateCartIcon(count)
 
 }
 
+updateCartIcon(0);

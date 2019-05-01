@@ -11,17 +11,24 @@
     <!-- Product Details-->
       <div class="bg-secondary pt-2" id="details">
         <div class="container">
-          <h2 class="h4 block-title text-left">Product Specification & Summary</h2>
-          <div class="row">
-            
 
-            @include('books.summary')
+          <div class="shop-single-lower">
+
+            <h2 class="h4 block-title text-left ml-3 pt-3">Book Specification & Author Details</h2>
+            <div class="row">
+              
+
+              @include('books.summary')
 
 
-            @include('books.author_details')
+              @include('books.author_details')
+
+
+            </div>
 
 
           </div>
+
         </div>
       </div>
 
