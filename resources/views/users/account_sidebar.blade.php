@@ -38,7 +38,7 @@
 
               <a class="list-group-item" id="section_settings" href="{{ route('dash', ['_section' => 'settings']) }}"><i class="fe-icon-user text-muted"></i>Profile Settings</a>
 
-              <a class="list-group-item" id="section_address" href="{{ route('dash', ['_section' => 'address']) }}"><i class="fe-icon-map-pin text-muted"></i>Address</a>
+{{--               <a class="list-group-item" id="section_address" href="{{ route('dash', ['_section' => 'address']) }}"><i class="fe-icon-map-pin text-muted"></i>Address</a> --}}
               
               <a class="list-group-item" id="section_wishlist" href="{{ route('dash', ['_section' => 'wishlist']) }}">
                 <div class="d-flex justify-content-between align-items-center">

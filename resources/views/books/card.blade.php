@@ -1,4 +1,4 @@
-<div class="col-lg-3 col-md-4 col-sm-6 mb-30">
+<div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 col-6 mb-30">
 
     {{-- <div class="product-card mx-auto mb-5">
         

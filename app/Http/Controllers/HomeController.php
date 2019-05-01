@@ -33,7 +33,7 @@ class HomeController extends Controller
 
         $query = $request->query('_section', 'settings');    
         
-        $sections = ['orders', 'mybooks', 'settings', 'address', 'wishlist', 'reviews', 'password'];
+        $sections = ['orders', 'mybooks', 'settings', /*'address',*/ 'wishlist', 'reviews', 'password'];
 
         
         
@@ -55,7 +55,7 @@ class HomeController extends Controller
                 break;
 
             case 'mybooks':
-                $vars = $user->orderDetails;
+                $vars = $user->orderDetails()->latest()->with('book')->get();
                 break;
 
             case 'wishlist':

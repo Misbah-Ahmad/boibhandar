@@ -41,4 +41,21 @@ class WishlistController extends Controller
 
     }
 
+
+    public function delete(Request $request, Book $book)
+    {
+
+        $user = auth()->user();
+
+        if($user->wishlist->contains($book))
+        {
+            $user->wishlist()->detach($book);
+
+            return back()->with('message', 'The book is removed from your wishlist.');
+        }
+
+        return back()->with('message', 'Your wishlist does not have this book.');
+
+    }
+
 }

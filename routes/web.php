@@ -37,6 +37,8 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
 
     Route::get('/orders/confirmed', 'OrderController@confirmed')->name('orders.confirmed');
 
+    Route::post('/wishlist/{book}/delete', 'WishlistController@delete')->name('wishlist.delete');
+
 });
 
 Route::get('/books/{book}', 'BookController@show')->name('books.show');

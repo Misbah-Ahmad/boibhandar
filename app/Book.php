@@ -153,4 +153,9 @@ class Book extends Model
         return $books->random(min($books->count(), env( 'RELATED_BOOK_NUM')));
     }
 
+    public function getComputedPriceAttribute()
+    {
+        return $this->hasDiscount ? $this->discountedPrice : $this->price;
+    }
+
 }
