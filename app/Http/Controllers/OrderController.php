@@ -89,7 +89,7 @@ class OrderController extends Controller
             'total' => $order->orderDetails()->sum('total_price'),
         ];
 
-        //\Log::emergency(json_encode($noti));
+        \Log::emergency(json_encode($noti));
         
         $this->updateCart($user, []);
 
