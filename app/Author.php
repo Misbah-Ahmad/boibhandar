@@ -38,5 +38,11 @@ class Author extends Model
         return $this->discounts()->activeAndNotExpired()->first();
     }
 
+    public function getImageAttribute()
+    {
+
+        return $this->image_link == null ? env('DEFAULT_AUTHOR_IMAGE') : $this->image_link;
+
+    }
 
 }

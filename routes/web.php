@@ -41,6 +41,12 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
 
 });
 
+Route::get('/categories', 'CategoryController@index')->name('categories.index');
+
+Route::get('/authors', 'AuthorController@index')->name('authors.index');
+
+Route::get('/publishers', 'PublisherController@index')->name('publishers.index');
+
 Route::get('/books/{book}', 'BookController@show')->name('books.show');
 
 Route::get('/authors/{author}', 'AuthorController@show')->name('authors.show');

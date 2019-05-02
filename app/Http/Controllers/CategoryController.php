@@ -7,6 +7,15 @@ use App\Category;
 
 class CategoryController extends Controller
 {
+
+    public function index(Request $request)
+    {
+        $categories = Category::orderBy('name', 'asc')->paginate(12);
+
+        return view('categories.index', compact([ 'categories' ]));
+    }
+
+
     public function show(Category $category)
     {
         $books = $category->books;

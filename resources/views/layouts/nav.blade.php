@@ -84,11 +84,11 @@
                         <a class="nav-link" href="/">Books</a>
                     </li>
                     <!-- Nav Item-->
-                    <li class="nav-item"><a class="nav-link" href="#">Authors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('authors.index') }}">Authors</a></li>
                     <!-- Nav Item-->
-                    <li class="nav-item"><a class="nav-link" href="#">Publishers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('publishers.index') }}">Publishers</a></li>
                     <!-- Nav Item-->
-                    <li class="nav-item"><a class="nav-link" href="#">Best Seller</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('categories.index') }}">Categories</a></li>
                     <!-- Nav Item-->
                     {{-- <li class="nav-item"><a class="nav-link" href="#">Pre-Order</a></li> --}}
                     <!-- Nav Item-->
