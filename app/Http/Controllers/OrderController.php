@@ -89,7 +89,7 @@ class OrderController extends Controller
             'total' => $order->orderDetails()->sum('total_price'),
         ];
 
-        \Log::emergency(json_encode($noti));
+        \Log::channel('slack')->info(json_encode($noti, JSON_PRETTY_PRINT));
         
         $this->updateCart($user, []);
 

@@ -35,8 +35,8 @@ return [
 
     'channels' => [
         'stack' => [
-            'driver' => 'stack',
-            'channels' => ['single', 'slack'],
+            'driver' => 'single',
+            'channels' => ['single'],
             'ignore_exceptions' => false,
         ],
 
@@ -58,7 +58,7 @@ return [
             'url' => env('LOG_SLACK_WEBHOOK_URL'),
             'username' => 'New-Order',
             'emoji' => ':moneybag:',
-            'level' => 'critical',
+
         ],
 
         'papertrail' => [
