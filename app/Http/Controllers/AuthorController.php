@@ -19,9 +19,9 @@ class AuthorController extends Controller
     public function show(Author $author)
     {
 
-        $books = $author->books;
+        $books = $author->books()->with('authors')->get();
 
-        return back();
+        return view('authors.show', compact(['author', 'books']));
     }
     
 }
