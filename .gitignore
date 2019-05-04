@@ -3,6 +3,17 @@
 /public/storage
 /storage/*.key
 /vendor
+public/css/theme.css
+public/css/vendor.css
+public/js/ops/add_to_cart.js
+public/js/ops/add_to_cart.js.map
+public/js/ops/cart_button.js
+public/js/ops/cart_button.js.map
+public/js/ops/submit_cart.js
+public/js/ops/submit_cart.js.map
+public/js/ops/wishlist.js
+public/js/ops/wishlist.js.map
+public/mix-manifest.json
 .env
 .env.example
 .phpunit.result.cache

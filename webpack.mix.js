@@ -11,5 +11,19 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+
+mix.styles([
+   'resources/css/vendor.css',
+], 'public/css/vendor.css')
+
+   .styles([
+      'resources/css/theme.css',
+   ], 'public/css/theme.css')
+
+   .js('resources/js/ops/add_to_cart.js', 'public/js/ops')
+   .js('resources/js/ops/cart_button.js', 'public/js/ops')
+   .js('resources/js/ops/submit_cart.js', 'public/js/ops')
+   .js('resources/js/ops/wishlist.js', 'public/js/ops')
+
+   .sourceMaps()
+   .version();

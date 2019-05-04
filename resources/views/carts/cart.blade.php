@@ -28,7 +28,7 @@
 @endsection
 
 @section('js')
-<script src="/js/ops/cart_button.js"></script>
-<script src="/js/ops/submit_cart.js"></script>
+<script src="{{ mix('/js/ops/cart_button.js') }}"></script>
+<script src="{{ mix('/js/ops/submit_cart.js') }}"></script>
 
 @endsection
