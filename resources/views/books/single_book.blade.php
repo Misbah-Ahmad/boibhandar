@@ -28,7 +28,7 @@
         <div class="product-meta">
         
           <i class="fe-icon-edit-2"></i>
-          <a href=" {{ route('authors.show', $book->author->id) }} "> {{ $book->author->name }} </a>
+          {!! implode(', ', $book->anchoredAuthors()) !!}
         
         </div>
     

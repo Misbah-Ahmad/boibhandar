@@ -17,12 +17,14 @@ class Book extends Model
 {
 
     /* Always eager load author */
-    protected $with = ['author'];
+    protected $with = ['authors'];
  
-    public function author()
+    public function authors()
     {
-        return $this->belongsTo(Author::class);
+        return $this->belongsToMany(Author::class, 'author_book', 'author_id', 'book_id');
     }
+
+
 
 
     public function categories()
@@ -120,7 +122,7 @@ class Book extends Model
         $discountPercent = max([
             $discount == null ? 0 : $discount->percent,
             $this->discount == null ? 0 : $this->discount->percent,
-            $this->author->discount == null ? 0 : $this->author->discount->percent,
+            //$this->author->discount == null ? 0 : $this->author->discount->percent,
             $this->publisher->discount == null ? 0 : $this->publisher->discount->percent,
         ]);
 
@@ -133,7 +135,7 @@ class Book extends Model
 
         return (Discount::where('type', 'global')->activeAndNotExpired()->count() > 0
             || $this->discount != null
-            || $this->author->hasDiscount
+            //|| $this->author->hasDiscount
             || $this->publisher->hasDiscount) ?  true : false;
         
     }
@@ -156,6 +158,18 @@ class Book extends Model
     public function getComputedPriceAttribute()
     {
         return $this->hasDiscount ? $this->discountedPrice : $this->price;
+    }
+
+    public function anchoredAuthors()
+    {
+        $authors = [];
+
+        foreach($this->authors as $author)
+        {
+            array_push($authors, 
+                '<a class="product-meta" href="' . route('authors.show', $author->id) . '">' . $author->name . '</a>');
+        }
+        return $authors;
     }
 
 }

@@ -12,7 +12,7 @@
     
           <tr>
             <th scope="row">Author</th>
-            <td><span class="author-profile-link"><a href=" {{ route('authors.show', $book->author->id) }} "> {{ $book->author->name }} </a></span></td>
+            <td><span class="author-profile-link">{!! implode(', ', $book->anchoredAuthors()) !!}</span></td>
           </tr>
     
           <tr>

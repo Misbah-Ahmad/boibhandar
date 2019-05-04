@@ -19,8 +19,9 @@
             <h5 class="product-title">
                 <a href="{{ route('books.show', $book->id) }}">{{ $book->title }}</a>
             </h5>
-        
-            <a class="product-meta" href="{{ route('authors.show', $book->author->id) }}">{{ $book->author->name }}</a>
+
+            {!! implode(',', $book->anchoredAuthors()) !!}
+            
         
             <span class="product-price">
 
