@@ -4,12 +4,12 @@
 
             <a class="cart-item-product" href=" {{ route('books.show', $book->id) }} ">
             
-                <div class="cart-item-product-thumb"><img src=" {{ asset($book->thumb) }} " alt=" {{ $book->title }} "></div>
+                <div class="cart-item-product-thumb"><img src="{{ asset($book->thumb) }}" alt="{{ $book->title }}"></div>
             
                 <div class="cart-item-product-info">
                     <h4 class="cart-item-product-title"> {{ $book->title }} </h4>
                     
-                    <span class='text-success font-weight-medium'> {{ $book->author->name }} </span>
+                    <span class='text-success font-weight-medium'> {!! implode(', ', $book->anchoredAuthors()) !!} </span>
                     
                     <div class="text-lg text-body font-weight-medium pb-1"> 
                         @include('books.price')
