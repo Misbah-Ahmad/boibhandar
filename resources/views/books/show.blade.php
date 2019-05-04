@@ -42,14 +42,7 @@
 
 
 
-    <!-- Reviews-->
-    {{-- <div class="container bg-secondary" id="review-call">
-      <h2 class="h4 block-title text-left pt-4">Reviews and Ratings</h2>
-      
-      @include('review_rating')
-
-    </div> --}}
-
+    @include('books.review_rating')
 
 
 

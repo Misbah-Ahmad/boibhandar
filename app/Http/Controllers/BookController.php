@@ -13,9 +13,10 @@ class BookController extends Controller
     {
         
         $related_books = $book->getRelatedBooks();
+        $reviews = $book->reviews;
 
         return view('books.show', compact([
-            'book', 'related_books'
+            'book', 'related_books', 'reviews',
         ]));
 
     }

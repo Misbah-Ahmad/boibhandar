@@ -63,7 +63,7 @@ class HomeController extends Controller
                 break;
 
             case 'reviews':
-                $vars = $user->reviews;
+                $vars = $user->reviews()->latest()->with('book')->get();
                 break;
         }
         return view('users.profile', compact([

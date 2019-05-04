@@ -7,7 +7,7 @@
             </div>
             <div class="author-card-profile">
               <div class="author-card-avatar">
-                <img src="/images/users/profile_dummy.jpg" alt="Daniel Adams"/>
+                <img src="/images/users/profile_dummy.jpg" alt="{{ $user->fullName }}"/>
               </div>
               <div class="author-card-details">
                   <h5 class="author-card-name text-lg">{{ $user->fullName }}</h5>
