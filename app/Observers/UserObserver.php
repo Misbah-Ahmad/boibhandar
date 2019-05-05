@@ -40,9 +40,12 @@ class UserObserver
         
         $user->attachRole($customerRole);
 
-        $user->cart()->save(new Cart);
+        if($user->cart == null)
+        {
+            $user->cart()->save(new Cart);
+    
+        }
     }
-
     /**
      * Handle the user "updated" event.
      *

@@ -13,6 +13,8 @@ public/js/ops/submit_cart.js
 public/js/ops/submit_cart.js.map
 public/js/ops/wishlist.js
 public/js/ops/wishlist.js.map
+public/js/ops/checkout.js
+public/js/ops/checkout.js.map
 public/mix-manifest.json
 .env
 .env.example

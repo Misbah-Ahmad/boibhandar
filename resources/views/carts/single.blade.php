@@ -1,4 +1,5 @@
-<div class="cart-item"><span class="remove-item"><i class="fe-icon-x"></i></span>
+<form action="{{ route('carts.delete', $book->id) }}" method="post" id="c_rm{{ $book->id }}" style="display:none;">@csrf</form>
+<div class="cart-item"><span class="remove-item" onclick="event.preventDefault(); document.getElementById('c_rm{{ $book->id }}').submit();"><i class="fe-icon-x"></i></span>
 
     <div class="row">
     
@@ -13,7 +14,7 @@
                 
                     <div class="cart-item-product-info">
                         <h4 class="cart-item-product-title">{{ $book->title }}</h4>
-                        <span>{{ $book->author->name }}</span>
+                        <span>{!! implode(', ', $book->anchoredAuthors()) !!}</span>
                     </div>
                 
                 </a>

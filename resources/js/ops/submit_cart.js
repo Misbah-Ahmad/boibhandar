@@ -25,6 +25,9 @@ function submitCart()
 
     });
 
+    
+    bookList = { _b_g: document.querySelector('#ex-check-1').checked, _books: bookList};
+
     let bookInput = document.createElement('input');
     bookInput.type = 'hidden';
     bookInput.name = 'cart_list';
@@ -37,4 +40,4 @@ function submitCart()
 
 const submitBtn = document.getElementById('submitCart');
 
-submitBtn.addEventListener('click', submitCart);
+submitBtn.addEventListener('click', submitCart);    

@@ -3,8 +3,9 @@
 namespace App\Providers;
 
 use App\Author;
-use Illuminate\Support\ServiceProvider;
 use App\Publisher;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\ServiceProvider;
 
 class ComposerServiceProvider extends ServiceProvider
 {
@@ -25,20 +26,25 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        
 
+        view()->composer('layouts.nav', function ($view){
 
-        view()->composer('layouts.nav', function ($view) {
-            
-            $publishersName = Publisher::limit(4)->latest()->get();           
-            $authorsName = Author::limit(4)->latest()->get();
-            $cart_books = [];
+            $cookie_name = (auth()->check() ? env('AUTH_CART_COOKIE') : env('GUEST_CART_COOKIE'));
 
-            if(auth()->check())
-            {
-                $cart_books = json_decode(auth()->user()->cart->books()->pluck('book_id'));                
+            Cookie::queue(Cookie::make(env('CART_COOKIE_NAME'), $cookie_name, intval(env('CART_COOKIE_AGE')), '/'));
+
+            $cookie = json_decode(Cookie::get($cookie_name));
+
+            $cookie_count = 0;
+
+            if ($cookie != null && is_array($cookie)) {
+                $cookie_count = count($cookie);
             }
 
-            $view->with(compact(['publishersName', 'authorsName', 'cart_books']));
+
+
+            $view->with(compact(['cookie_name', 'cookie_count']));
 
         });
 

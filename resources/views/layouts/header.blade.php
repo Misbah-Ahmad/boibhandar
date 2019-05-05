@@ -36,5 +36,5 @@
 
 
     <!-- Modernizr-->
-    <script src="js/modernizr.min.js"></script>
+    <script src="/js/modernizr.min.js"></script>
 </head>

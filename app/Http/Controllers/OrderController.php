@@ -20,14 +20,17 @@ class OrderController extends Controller
     public function checkout(Request $request)
     {
 
-        $user = auth()->user();
+        $user = auth()->user(); 
+        $cartList = json_decode($request->cart_list);
 
-        $this->updateCart($user, json_decode($request->cart_list));
+
+        $this->updateCart($user, $cartList->_books);
 
         $reference = $user->orders()->count() . rand(10, 99) . $user->id;
-    
         
-        return view('orders.checkout', compact(['user', 'reference']));
+        $is_gift = intval($cartList->_b_g);
+
+        return view('orders.checkout', compact(['user', 'reference', 'is_gift']));
 
     }
 
@@ -74,11 +77,12 @@ class OrderController extends Controller
         $order->orderDetails()->saveMany($orderDetails);
 
 
-
+        $grand_total = $order->orderDetails()->sum('total_price') + env('SHIPPING_CHARGE');
+        $grand_total += ($request->_b_g ? 30 : 0);
 
         $order->transaction()->create([
 
-            'total_price' => $order->orderDetails()->sum('total_price') + env( 'SHIPPING_CHARGE'),
+            'total_price' => $grand_total,
             'pay_type' => $request->payment_method,
 
 
@@ -117,7 +121,12 @@ class OrderController extends Controller
                 $cart->books()->attach($b, ['count' => $book->quantity]);
             }
         }
-        
+
+        if(count($books) < 1)
+        {
+            Cookie::queue(Cookie::make(env('AUTH_CART_COOKIE'), "[]", intval(env('CART_COOKIE_AGE')), '/'));
+        }
+
     }
 
 }

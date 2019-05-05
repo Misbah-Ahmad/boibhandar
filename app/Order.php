@@ -64,7 +64,7 @@ class Order extends Model
         $order->name = $request->fname . ' ' . $request->sname;
         $order->phone = $request->phone;
         $order->reference = $request->reference;
-
+        $order->is_gift =$request->_b_g;
         return $user->orders()->save($order);
     } 
 

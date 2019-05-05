@@ -104,7 +104,7 @@
 
                         <li>
                             <a href=" {{ route('carts.show') }} "><i class="fe-icon-shopping-cart"></i></a>
-                            <span id="cartIcon" class="badge badge-danger">{{ count($cart_books) > 0 ? count($cart_books) : '' }}</span>
+                            <span id="cartIcon" class="badge badge-danger">{{ $cookie_count > 0 ? $cookie_count : '' }}</span>
                         </li>
 
                         <li class="d-block d-lg-none">
@@ -117,7 +117,7 @@
                         <a class="btn btn-style-6 btn-primary ml-3 d-none d-xl-inline-block" href="{{ route('login') }}"><i class="fe-icon-user"></i>Login</a>
                         <script>window.loggedIn = false</script>
                     @else
-                        <script>window.loggedIn = true</script>
+                        <script>window.loggedIn = true; document.cookie = "hi=hello";</script>
                         <a class="btn btn-style-6 btn-primary ml-3 d-none d-xl-inline-block" href="{{ route('dash') }}"><i class="fe-icon-user"></i>Account</a>
                         <a class="btn btn-style-6 btn-primary ml-3 d-none d-xl-inline-block" onclick="event.preventDefault(); document.querySelector('#logoutForm').submit();"><i class="fe-icon-user"></i>Logout</a>
                         <form style="display:none;" id="logoutForm" method="POST" action="{{ route('logout') }}">

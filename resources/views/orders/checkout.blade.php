@@ -14,6 +14,7 @@
 
                         @csrf
                         <input type="hidden" name="reference" value="{{ $reference }}">
+                        <input type="hidden" name="_b_g" value="{{ $is_gift }}">
 
                         <div class="wizard-body">
                             <h3 class="h5 block-title pb-2">Billing Address</h3>
@@ -109,16 +110,7 @@
 @endsection
 
 @section('js')
-    <script>
-        function submitCheckout()
-        {
-            if(document.querySelector('input[value=bkash]').checked == false)
-            {
-                document.querySelector('input[name=bkash_phone]').remove();
-                document.getElementById('checkoutForm').submit();
-            }
+    
+    <script src="{{ mix('/js/ops/checkout.js') }}"></script>
 
-        }
-        document.getElementById('submitButton').addEventListener('click', submitCheckout);    
-    </script>
 @endsection

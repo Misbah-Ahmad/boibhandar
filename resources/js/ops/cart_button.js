@@ -115,3 +115,19 @@ $(".input-number").keydown(function (e) {
         e.preventDefault();
     }
 });
+
+
+function _checkGift()
+{
+
+    let gift_checked = this.checked;
+
+    let current_sub_total = parseFloat(document.getElementById('cartSumSubTotalPrice').innerText);
+    let shipping = parseFloat(document.getElementById('cartSumShipping').innerText);
+    let gift = gift_checked ? 30 : 0;
+
+    document.getElementById('cartSumTotal').innerText = shipping + current_sub_total + gift;        
+
+}
+
+document.getElementById('ex-check-1').addEventListener('click', _checkGift);

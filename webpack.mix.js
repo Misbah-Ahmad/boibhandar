@@ -24,6 +24,7 @@ mix.styles([
    .js('resources/js/ops/cart_button.js', 'public/js/ops')
    .js('resources/js/ops/submit_cart.js', 'public/js/ops')
    .js('resources/js/ops/wishlist.js', 'public/js/ops')
+   .js('resources/js/ops/checkout.js', 'public/js/ops')
 
    .sourceMaps()
    .version();

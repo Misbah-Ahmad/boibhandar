@@ -1,4 +1,4 @@
-function addToWishlist(id)
+window.addToWishlist = id =>
 {
     $.ajax({
 

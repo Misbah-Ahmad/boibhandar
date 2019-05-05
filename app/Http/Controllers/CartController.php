@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Book;
 use App\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class CartController extends Controller
 {
@@ -16,7 +17,7 @@ class CartController extends Controller
 
         if($books->count() < 1)
         {
-            return back();
+            return redirect('/');
         }
 
         return view('carts.cart', compact(['books']));
@@ -25,6 +26,37 @@ class CartController extends Controller
     
     public function store(Request $request)
     {
+
+        $book = Book::find($request->c_book);
+
+        if(auth()->check() == false)
+        {
+            $books = json_decode(Cookie::get(env('GUEST_CART_COOKIE')));
+
+
+            if($books == null || !is_array($books))
+            {
+                $books = [];
+            }
+
+            if($book instanceof Book)
+            {
+                array_push($books, $book->id);
+            }
+
+            Cookie::queue(Cookie::make(env('GUEST_CART_COOKIE'), json_encode($books), 518400, '/'));
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Book added to cart',
+                'data' => ['count' => count($books)],
+            ]);
+
+
+            
+        }
+
+
         $user = auth()->user();
         $cart = $user->cart;
 
@@ -33,7 +65,7 @@ class CartController extends Controller
             $cart = $user->cart()->save(new Cart);
         }
 
-        $book = Book::find($request->c_book);
+
         
         if($book != null)
         {
@@ -42,11 +74,13 @@ class CartController extends Controller
                 $cart->books()->save($book);
                 
                 $books = $cart->books()->pluck('book_id');
-            
+
+                Cookie::queue(Cookie::make(env('AUTH_CART_COOKIE'), json_encode($books) , 518400, '/'));
+
                 return response()->json([
                         'success' => true,
                         'message' => 'Book added to cart',
-                        'data' => json_decode($books),
+                        'data' => ['count' => count($books)],
                         ]);
             
             
@@ -62,4 +96,36 @@ class CartController extends Controller
 
     }
 
+
+
+    public function delete(Request $request, Book $book)
+    {
+
+        $cookie_name = auth()->check() ? env('AUTH_CART_COOKIE') : env('GUESTA_CART_COOKIE');
+
+        $cookie = json_decode(Cookie::get($cookie_name));
+
+        if($cookie != null && is_array($cookie) && count($cookie) > 0)
+        {
+            $diff = array_values(array_diff($cookie, [$book->id]));
+            Cookie::queue(Cookie::make($cookie_name, json_encode($diff), intval(env('CART_COOKIE_AGE')), '/'));            
+
+            if(auth()->check())
+            {
+                $cart = auth()->user()->cart;
+                $cart->books()->detach($book->id);
+
+            }
+
+            return back()->with('message', 'Book is deleted from cart.');        
+
+
+        } else {
+            return back()->with('message', 'Your do not have this book in your cart.');        
+
+        }
+
+
+
+    }
 }
