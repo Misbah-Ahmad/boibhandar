@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Validator;
 use App\Book;
 use App\Order;
-use Illuminate\Http\Request;
 use App\OrderDetail;
 use App\Transaction;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
 {
@@ -93,7 +94,10 @@ class OrderController extends Controller
             'total' => $order->orderDetails()->sum('total_price'),
         ];
 
-        \Log::channel('slack')->info(json_encode($noti, JSON_PRETTY_PRINT));
+        if(env('APP_ENV') == 'production')
+        {
+            \Log::channel('slack')->info(json_encode($noti, JSON_PRETTY_PRINT));
+        }   
         
         $this->updateCart($user, []);
 

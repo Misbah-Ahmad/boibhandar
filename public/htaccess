@@ -19,6 +19,7 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
 AuthType Basic
 AuthName "boibhandar/test/public"
 AuthUserFile "/home/boibxpgq/.htpasswds/boibhandar/test/public/.htpasswd"
