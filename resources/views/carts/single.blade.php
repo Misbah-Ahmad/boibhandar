@@ -6,7 +6,7 @@
         <div class="col-md-5">
             <div class="px-3 my-3">
                 
-                <a class="cart-item-product" href="shop-single.html">
+                <a class="cart-item-product" href="{{ route('books.show', $book->id) }}">
                 
                     <div class="cart-item-product-thumb">
                         <img src="{{ $book->image }}" alt="Product">
@@ -14,9 +14,10 @@
                 
                     <div class="cart-item-product-info">
                         <h4 class="cart-item-product-title">{{ $book->title }}</h4>
-                        <span>{!! implode(', ', $book->anchoredAuthors()) !!}</span>
+                        <span> {!! implode('<br>', $book->authorList()) !!} </span>
+
                     </div>
-                
+                    
                 </a>
 
             </div>

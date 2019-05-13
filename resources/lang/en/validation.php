@@ -152,6 +152,12 @@ return [
         'bkash_phone' => 'BKash Phone Number',
         'address' => 'Shipping Address',
         'payment_method' => 'Payment Method',
+        'c_name' => 'Name',
+        'org_name' => 'Organization Name',
+        'org_address' => 'Address of the organization',
+        'c_message' => 'Message',
+        'c_file' => 'File'
     ],
+
 
 ];

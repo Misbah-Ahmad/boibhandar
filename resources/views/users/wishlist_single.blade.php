@@ -9,7 +9,7 @@
                 <div class="cart-item-product-info">
                     <h4 class="cart-item-product-title"> {{ $book->title }} </h4>
                     
-                    <span class='text-success font-weight-medium'> {!! implode(', ', $book->anchoredAuthors()) !!} </span>
+                    <span> {!! implode('<br>', $book->authorList()) !!}</span>
                     
                     <div class="text-lg text-body font-weight-medium pb-1"> 
                         @include('books.price')

@@ -133,4 +133,43 @@ class OrderController extends Controller
 
     }
 
+    public function corporateShow()
+    {
+        return view('corporates.create');
+    }
+
+    public function saveQuoteRequest(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'c_name' => ['required', 'string', 'min:3', 'max:30'],
+            'org_name' => ['required', 'string', 'min:3', 'max:60'],
+            'phone' => ['required', 'string', 'unique:users', 'regex:/^(01)[3-9]{1,1}[0-9]{8,8}$/i'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'org_address' => ['required', 'string', 'min:10', 'max:60'],
+            'c_message' => ['required', 'string', 'min:15', 'max:100'],
+            'c_file' => ['file', 'mimes:doc,docx,xls,xlsx', 'max:20240'],
+        ]);
+
+        if ($validator->fails()) 
+        {
+            return back()->withErrors($validator);
+        }
+
+        $noti = [
+            'contact_person' => $request->c_name,
+            'organization' => $request->org_name,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'address' => $request->org_address,
+            'message' => $request->c_message, 
+        ];
+
+        \Log::channel('slack_quote')->info(json_encode($noti, JSON_PRETTY_PRINT));
+
+        return back()->with('message', 'We\'ve got your request, our corporate sales team will be in touch with you shortly.');
+
+
+    }
+
+
 }

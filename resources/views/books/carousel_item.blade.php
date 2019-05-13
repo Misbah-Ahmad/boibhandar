@@ -20,7 +20,7 @@
                 <a href="{{ route('books.show', $book->id) }}">{{ $book->title }}</a>
             </h5>
 
-            {!! implode(',', $book->anchoredAuthors()) !!}
+            {!! implode('<br>', $book->authorList()) !!}
             
         
             <span class="product-price">

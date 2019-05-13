@@ -59,9 +59,6 @@
 
               </div>
 
-
-              <div class="pt-3"><a class="btn btn-success btn-block" href="#" data-toggle="modal"
-                  data-target="#leaveReview">Leave a Review</a></div>
             </div>
 
           </div>
@@ -73,9 +70,15 @@
 
         <div class="col-md-8 pb-5 mb-3">
 
+
+          @include('books.review_form')
+
+          <hr class="mb-3 mt-3">          
+
+
           <div class="d-flex flex-wrap justify-content-between pb-2">
-            <h3 class="h4 block-title">Latest Reviews</h3><a class="btn btn-primary btn-sm" href="#">View All
-              Reviews</a>
+              <h3 class="h5 block-title mt-3">Latest Reviews</h3>
+
           </div>
 
           

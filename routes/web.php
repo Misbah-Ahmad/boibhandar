@@ -38,6 +38,9 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
 
     Route::post('/wishlist/{book}/delete', 'WishlistController@delete')->name('wishlist.delete');
 
+    Route::get('/corporates', 'OrderController@corporateShow')->name('corporates.create');
+    Route::post('/corporates/request', 'OrderController@saveQuoteRequest')->name('corporates.store');
+
 });
 
 Route::get('/categories', 'CategoryController@index')->name('categories.index');

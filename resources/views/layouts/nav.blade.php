@@ -89,12 +89,7 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('publishers.index') }}">Publishers</a></li>
                     <!-- Nav Item-->
                     <li class="nav-item"><a class="nav-link" href="{{ route('categories.index') }}">Categories</a></li>
-                    <!-- Nav Item-->
-                    {{-- <li class="nav-item"><a class="nav-link" href="#">Pre-Order</a></li> --}}
-                    <!-- Nav Item-->
-                    {{-- <li class="nav-item"><a class="nav-link" href="#">Send Gifts</a></li> --}}
-                    <!-- Nav Item-->
-                    {{-- <li class="nav-item"><a class="nav-link" href="#">Blog</a></li> --}}
+                    <li class="nav-item"><a class="nav-link" href="{{ route('corporates.create') }}">Corporate Order</a></li>
                 </ul>
                 <div>
                     <ul class="navbar-buttons d-inline-block align-middle mr-lg-2">
@@ -117,9 +112,12 @@
                         <a class="btn btn-style-6 btn-primary ml-3 d-none d-xl-inline-block" href="{{ route('login') }}"><i class="fe-icon-user"></i>Login</a>
                         <script>window.loggedIn = false</script>
                     @else
-                        <script>window.loggedIn = true; document.cookie = "hi=hello";</script>
-                        <a class="btn btn-style-6 btn-primary ml-3 d-none d-xl-inline-block" href="{{ route('dash') }}"><i class="fe-icon-user"></i>Account</a>
+                        <script>window.loggedIn = true;</script>
+                        <a class="btn btn-style-6 btn-primary ml-3 d-none d-xl-inline-block" href="{{ route('dash') }}">
+                        <i class="fe-icon-user"></i>Account</a>
+
                         <a class="btn btn-style-6 btn-primary ml-3 d-none d-xl-inline-block" onclick="event.preventDefault(); document.querySelector('#logoutForm').submit();"><i class="fe-icon-user"></i>Logout</a>
+
                         <form style="display:none;" id="logoutForm" method="POST" action="{{ route('logout') }}">
                             @csrf
                         </form>

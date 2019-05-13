@@ -61,6 +61,14 @@ return [
 
         ],
 
+        'slack_quote' => [
+            'driver' => 'slack',
+            'url' => env( 'CORPORATE_QUOTE_CHANNEL_HOOK'),
+            'username' => 'corporate_quote',
+            'emoji' => ':books:',
+
+        ],
+
         'papertrail' => [
             'driver' => 'monolog',
             'level' => 'debug',

@@ -167,7 +167,17 @@ class Book extends Model
         foreach($this->authors as $author)
         {
             array_push($authors, 
-                '<a class="product-meta" href="' . route('authors.show', $author->id) . '">' . $author->name . '</a>');
+                '<a class="product-meta-author" href="' . route('authors.show', $author->id) . '">' . $author->name . '</a>');
+        }
+        return $authors;
+    }
+    public function authorList()
+    {
+        $authors = [];
+
+        foreach($this->authors as $author)
+        {
+            array_push($authors, $author->name);
         }
         return $authors;
     }
