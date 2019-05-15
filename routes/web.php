@@ -41,6 +41,12 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
     Route::get('/corporates', 'OrderController@corporateShow')->name('corporates.create');
     Route::post('/corporates/request', 'OrderController@saveQuoteRequest')->name('corporates.store');
 
+
+    Route::group(['prefix' => '/admin', 'middleware' => ['role:admin']], function () {
+        Route::get('/dash', 'AdminController@welcome')->name('admins.welcome');
+    });
+
+
 });
 
 Route::get('/categories', 'CategoryController@index')->name('categories.index');
