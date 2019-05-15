@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="review-call">
   <div class="shop-single-review mt-4 mb-4">
     <h2 class="h4 block-title text-left pt-3 ml-3">Reviews and Ratings</h2>
     <div class="col-md-12">
@@ -13,47 +13,47 @@
 
                 <div class="d-inline align-baseline text-sm text-warning mr-2">
 
-                  @include('books.rating', ['score' => $book->score])
+                  @include('books.rating', ['score' => $book->starScore])
 
                 </div>
 
               </div>
               
               <div class="pt-3">
-                
-                  <span class="progress-label">5 stars <span class='text-muted'>- 38</span></span>                
+                  @php($review_count = $book->reviews()->count())
+                  <span class="progress-label">5 stars <span class='text-muted'>-  {{ $book->getStarCount(5.0) }}</span></span>                
                   <div class="progress progress-style-3 mb-3">
                     
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 75%;" aria-valuenow="75"
-                      aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 75%;" aria-valuenow="{{ $book->getStarCount(5.0) }}"
+                      aria-valuemin="0" aria-valuemax="{{ $review_count }}"> 
                     </div>
                   </div>
                                     
-                  <span class="progress-label">4 stars <span class='text-muted'>- 10</span></span>
+                  <span class="progress-label">4 stars <span class='text-muted'>- {{ $book->getStarCount(4.0) }}</span></span>
                   <div class="progress progress-style-3 mb-3">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 20%;;" aria-valuenow="20"
-                      aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 20%;;" aria-valuenow="{{ $book->getStarCount(4.0) }}"
+                      aria-valuemin="0" aria-valuemax="{{ $review_count }}">
                     </div>
                   </div>
                     
-                  <span class="progress-label">3 stars <span class='text-muted'>- 3</span></span>                
+                  <span class="progress-label">3 stars <span class='text-muted'>- {{ $book->getStarCount(3.0) }}</span></span>                
                   <div class="progress progress-style-3 mb-3">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 7%;" aria-valuenow="7"
-                      aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 7%;" aria-valuenow="{{ $book->getStarCount(3.0) }}"
+                      aria-valuemin="0" aria-valuemax="{{ $review_count }}">
                     </div>
                   </div>
                   
-                  <span class="progress-label">2 stars <span class='text-muted'>- 1</span></span>
+                  <span class="progress-label">2 stars <span class='text-muted'>- {{ $book->getStarCount(2.0) }}</span></span>
                   <div class="progress progress-style-3 mb-3">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 3%;" aria-valuenow="3"
-                      aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 3%;" aria-valuenow="{{ $book->getStarCount(2.0) }}"
+                      aria-valuemin="0" aria-valuemax="{{ $review_count }}">
                     </div>
                   </div>
                   
-                  <span class="progress-label">1 star <span class='text-muted'>- 0</span></span>
+                  <span class="progress-label">1 star <span class='text-muted'>- {{ $book->getStarCount(1.0) }}</span></span>
                   <div class="progress progress-style-3 mb-3">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 0;" aria-valuenow="0"
-                      aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 0;" aria-valuenow="{{ $book->getStarCount(1.0) }}"
+                      aria-valuemin="0" aria-valuemax="{{ $review_count }}">
                     </div>
                   </div>
 
@@ -70,10 +70,13 @@
 
         <div class="col-md-8 pb-5 mb-3">
 
+          @if (auth()->check())
+            
+            @include('books.review_form')
 
-          @include('books.review_form')
+            <hr class="mb-3 mt-3">          
 
-          <hr class="mb-3 mt-3">          
+          @endif
 
 
           <div class="d-flex flex-wrap justify-content-between pb-2">

@@ -1,8 +1,11 @@
 <div class="rating-stars">
-    <i class="fa fa-star active"></i>
-    <i class="fa fa-star active"></i>
-    <i class="fa fa-star active"></i>
-    <i class="fa fa-star active"></i>
-    <i class="fa fa-star "></i>
+    @php
+        $score = intval(ceil($score))
+    @endphp
+    @for ($i = 1; $i <= 5; $i++, $score--)
+
+        <i class="fa fa-star {{ $score > 0 ? ' active' : '' }}"></i>
+
+    @endfor
 
 </div>

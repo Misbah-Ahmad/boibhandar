@@ -6,7 +6,7 @@
                 <span class="badge badge-danger">Sale</span>
             @endif
 
-            @include('books.rating')
+            @include('books.rating', ['score' => $book->starScore])
 
         </div>
 

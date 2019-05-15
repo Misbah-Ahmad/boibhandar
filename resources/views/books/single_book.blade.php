@@ -55,13 +55,13 @@
         </p>
         
         <div class="product-details-rating-stars rating-stars">
-          <i class="fe-icon-star active"></i>
-          <i class="fe-icon-star active"></i>
-          <i class="fe-icon-star active"></i>
-          <i class="fe-icon-star active"></i>
-          <i class="fe-icon-star"></i>
+          @php($score = ceil($book->starScore))
+          @for($i = 1; $i <= 5; $i++, $score--)
+            <i class="fa fa-star {{ $score > 0 ? ' active' : '' }}"></i>
+          @endfor
+
           <a href="#review-call"><span class="review-counter"> {{ $book->reviews()->count() }} </span><span>
-              Reviews</span></a>
+              Review(s)</span></a>
         </div>
         
         

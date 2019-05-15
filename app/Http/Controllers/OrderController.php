@@ -50,7 +50,7 @@ class OrderController extends Controller
 
         if ($validator->fails()) 
         {
-            return back()->withErrors($validator);
+            return back()->withErrors($validator)->withInput();
         }
 
         $user = auth()->user();
@@ -143,7 +143,7 @@ class OrderController extends Controller
         $validator = Validator::make($request->all(), [
             'c_name' => ['required', 'string', 'min:3', 'max:30'],
             'org_name' => ['required', 'string', 'min:3', 'max:60'],
-            'phone' => ['required', 'string', 'unique:users', 'regex:/^(01)[3-9]{1,1}[0-9]{8,8}$/i'],
+            'phone' => ['required', 'string', 'regex:/^(01)[3-9]{1,1}[0-9]{8,8}$/i'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'org_address' => ['required', 'string', 'min:10', 'max:60'],
             'c_message' => ['required', 'string', 'min:15', 'max:100'],
@@ -152,7 +152,7 @@ class OrderController extends Controller
 
         if ($validator->fails()) 
         {
-            return back()->withErrors($validator);
+            return back()->withErrors($validator)->withInput();
         }
 
         $noti = [

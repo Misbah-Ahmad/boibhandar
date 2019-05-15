@@ -156,7 +156,9 @@ return [
         'org_name' => 'Organization Name',
         'org_address' => 'Address of the organization',
         'c_message' => 'Message',
-        'c_file' => 'File'
+        'c_file' => 'File',
+        'rating_title' => 'title of review',
+        'rating_body' => 'description of review',
     ],
 
 

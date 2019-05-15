@@ -182,4 +182,10 @@ class Book extends Model
         return $authors;
     }
 
+
+    public function getStarCount($star_num)
+    {
+        return $this->reviews()->where('score', $star_num)->count();
+    }
+
 }
