@@ -1,5 +1,5 @@
-<div class="container" id="review-call">
-  <div class="shop-single-review mt-4 mb-4">
+<div class="container">
+  <div class="shop-single-review mt-4 mb-4" id="review-call">
     <h2 class="h4 block-title text-left pt-3 ml-3">Reviews and Ratings</h2>
     <div class="col-md-12">
       <div class="row pt-3">
@@ -73,16 +73,18 @@
           @if (auth()->check())
             
             @include('books.review_form')
-
-            <hr class="mb-3 mt-3">          
+          
 
           @endif
 
+          @if ($reviews->count() > 0)
+            <div class="d-flex flex-wrap justify-content-between pb-2">
+                <h3 class="h5 block-title mt-3">Latest Reviews</h3>
 
-          <div class="d-flex flex-wrap justify-content-between pb-2">
-              <h3 class="h5 block-title mt-3">Latest Reviews</h3>
+            </div>
+              
+          @endif
 
-          </div>
 
           
 

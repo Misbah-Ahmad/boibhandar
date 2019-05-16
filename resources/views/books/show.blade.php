@@ -36,13 +36,13 @@
 
 
     <!--Related Products-->
-    @if($related_books->count() > 0)
-      @include('books.book_carousel', ['carousel_headline' => 'You May Also Like'])
-    @endif
-
-
 
     @include('books.review_rating')
+
+
+    @if($related_books->count() > 1)
+      @include('books.book_carousel', ['carousel_headline' => 'You May Also Like'])
+    @endif
 
 
 

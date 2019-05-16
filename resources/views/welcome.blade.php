@@ -41,7 +41,7 @@
     <h2 class="h4 block-title text-left pt-3">Top Authors</h2>
     <div class="row">
         <!-- Product-->
-        <div class="col-lg-2 col-md-3 col-sm-4">
+        <div class="col-lg-2 col-md-3 col-sm-4 col-4">
             <div class="top-authors-card mx-auto">
                 <a class="top-authors-thumb" href="#">
               <img src="/images/author/01.jpg"" alt=""/>
@@ -50,7 +50,7 @@
             </div>
         </div>
         <!-- Product-->
-        <div class="col-lg-2 col-md-3 col-sm-4">
+        <div class="col-lg-2 col-md-3 col-sm-4 col-4">
             <div class="top-authors-card mx-auto">
                 <a class="top-authors-thumb" href="#">
               <img src="/images/author/02.jpg" alt=""/>
@@ -59,7 +59,7 @@
             </div>
         </div>
         <!-- Product-->
-        <div class="col-lg-2 col-md-3 col-sm-4">
+        <div class="col-lg-2 col-md-3 col-sm-4 col-4">
             <div class="top-authors-card mx-auto">
                 <a class="top-authors-thumb" href="#">
               <img src="/images/author/03.jpg" alt=""/>
@@ -68,7 +68,7 @@
             </div>
         </div>
         <!-- Product-->
-        <div class="col-lg-2 col-md-3 col-sm-4">
+        <div class="col-lg-2 col-md-3 col-sm-4 col-4">
             <div class="top-authors-card mx-auto">
                 <a class="top-authors-thumb" href="#">
               <img src="/images/author/01.jpg" alt="Product Thumbnail"/>
@@ -77,7 +77,7 @@
             </div>
         </div>
         <!-- Product-->
-        <div class="col-lg-2 col-md-3 col-sm-4">
+        <div class="col-lg-2 col-md-3 col-sm-4 col-4">
             <div class="top-authors-card mx-auto">
                 <a class="top-authors-thumb" href="#">
               <img src="/images/author/03.jpg" alt="Product Thumbnail"/>
@@ -86,7 +86,7 @@
             </div>
         </div>
         <!-- Product-->
-        <div class="col-lg-2 col-md-3 col-sm-4">
+        <div class="col-lg-2 col-md-3 col-sm-4 col-4">
             <div class="top-authors-card mx-auto">
                 <a class="top-authors-thumb" href="#">
               <img src="/images/author/02.jpg" alt="Product Thumbnail"/>
