@@ -50,6 +50,12 @@
                         </tr>
 
                         <tr>
+                            <td class="font-weight-bold">Gift Wrap</td>
+                            <td class="font-weight-bold"></td>
+                            <td class="font-weight-bold" id="cartSumGiftWrap" data-charge="{{ env('GIFT_WRAP_CHARGE') }}"> 0 </td>    
+                        </tr>
+
+                        <tr>
                             <td class="font-weight-bold">Total</td>
                             <td class="font-weight-bold"></td>
                             <td class="font-weight-bold" id="cartSumTotal">{{ $total + intval(env('SHIPPING_CHARGE')) }}</td>
@@ -61,7 +67,7 @@
 
                 <div class="custom-control custom-checkbox">
                     <input class="custom-control-input" type="checkbox" id="ex-check-1">
-                    <label class="custom-control-label" for="ex-check-1">Gift Wrap for Tk. 30</label>
+                    <label class="custom-control-label" for="ex-check-1">Gift Wrap for Tk. {{ env('GIFT_WRAP_CHARGE') }} </label>
                 </div>
             </div>
 

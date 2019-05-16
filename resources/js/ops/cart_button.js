@@ -121,10 +121,13 @@ function _checkGift()
 {
 
     let gift_checked = this.checked;
+    let element = document.getElementById('cartSumGiftWrap');
 
     let current_sub_total = parseFloat(document.getElementById('cartSumSubTotalPrice').innerText);
     let shipping = parseFloat(document.getElementById('cartSumShipping').innerText);
-    let gift = gift_checked ? 30 : 0;
+    let gift = gift_checked ? parseInt(element.dataset.charge) : 0;
+
+    element.innerText = gift;
 
     document.getElementById('cartSumTotal').innerText = shipping + current_sub_total + gift;        
 
