@@ -45,6 +45,19 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
 
     Route::group(['prefix' => '/admin', 'middleware' => ['role:admin']], function () {
         Route::get('/dash', 'AdminController@welcome')->name('admins.welcome');
+        
+        Route::get('/uploads', 'AdminController@uploads')->name('uploads.create');
+        Route::post('/uploads/book', 'AdminController@saveBookFile')->name('uploads.book');
+        Route::post('/uploads/{upload}/process', 'AdminController@processFile')->name('uploads.process');
+        Route::post('/uploads/{upload}/delete', 'AdminController@deleteFile')->name('uploads.delete');
+
+        Route::post('/uploads/author', 'AdminController@saveAuthorFile')->name('uploads.author');
+
+        Route::post('/uploads/publisher', 'AdminController@savePublisherFile')->name('uploads.publisher');
+
+        Route::post('/uploads/category', 'AdminController@saveCategoryFile')->name('uploads.category');
+
+
     });
 
 

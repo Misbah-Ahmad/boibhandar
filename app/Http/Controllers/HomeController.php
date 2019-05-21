@@ -74,7 +74,7 @@ class HomeController extends Controller
 
     public function home()
     {
-        $books = Book::all();
+        $books = Book::all()->random(50);
 
         return view('welcome', ['books' => $books]);
 

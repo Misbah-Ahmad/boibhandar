@@ -8,11 +8,13 @@ use App\Order;
 use App\Review;
 use App\Notification;
 
+use App\UploadedFile;
 use Illuminate\Notifications\Notifiable;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
+
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-use Zizaco\Entrust\Traits\EntrustUserTrait;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable, EntrustUserTrait;
@@ -76,6 +78,12 @@ class User extends Authenticatable implements MustVerifyEmail
     public function notifications()
     {
         return $this->belongsToMany(Notification::class,'user_notification')->withTimestamps();
+    }
+
+
+    public function uploadedFiles()
+    {
+        return $this->hasMany(UploadedFile::class);
     }
 
     public function orderDetails()

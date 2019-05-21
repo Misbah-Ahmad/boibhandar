@@ -17,10 +17,10 @@ class CreatePromoCodesTable extends Migration
             $table->bigIncrements('id');
             $table->string('code');
             $table->date('expires_on');
-            $table->decimal('discount_amount', 6,2);
+            $table->decimal('discount_amount', 10,2);
             $table->string('type');
             $table->boolean('used');
-            $table->decimal('discounted_amount', 6, 2);
+            $table->decimal('discounted_amount', 10, 2);
 
             $table->timestamps();
         });

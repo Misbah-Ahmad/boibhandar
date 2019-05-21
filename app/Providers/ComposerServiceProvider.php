@@ -48,5 +48,11 @@ class ComposerServiceProvider extends ServiceProvider
 
         });
 
+
+        view()->composer('admin_layouts.nav_and_sidebar', function ($view) {
+            $admin = auth()->user();
+            $view->with(compact(['admin']));            
+        });
+
     }
 }

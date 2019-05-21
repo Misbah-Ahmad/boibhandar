@@ -18,6 +18,16 @@ class Author extends Model
         return $this->belongsToMany(Book::class, 'author_book', 'book_id', 'author_id');
     }
 
+    public function translatedBooks()
+    {
+        return $this->belongsToMany(Book::class, 'book_translator', 'book_id', 'translator_id');
+    }
+
+    public function editedBooks()
+    {
+        return $this->belongsToMany(Book::class, 'book_editor', 'book_id', 'editor_id');
+    }
+
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'author_category');

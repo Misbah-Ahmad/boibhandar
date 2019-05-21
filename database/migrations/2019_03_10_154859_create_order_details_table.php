@@ -18,11 +18,11 @@ class CreateOrderDetailsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('order_id');
             $table->integer('return_reqeust_id')->nullable()->default(null);
-            $table->decimal('price', 6,2);
-            $table->decimal('buying_price', 6,2);
+            $table->decimal('price', 10,2);
+            $table->decimal('buying_price', 10,2);
             $table->date('return_date')->nullable();
             $table->integer('return_percentage')->default(0);
-            $table->decimal('return_amount', 6,2)->default(0);
+            $table->decimal('return_amount', 10,2)->default(0);
             $table->timestamps();
         });
     }

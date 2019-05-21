@@ -14,7 +14,7 @@ class UpdateBooksAddBuyingPriceIsAvailable extends Migration
     public function up()
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->decimal('buying_price', 6, 3)->default(0.0);
+            $table->decimal('buying_price', 10, 2)->default(0.0);
             $table->boolean('is_available')->default(true);
             $table->boolean('pre_order')->default(false);
         });

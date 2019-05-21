@@ -11,7 +11,7 @@
         </div>
 
         <a class="product-thumb" href="{{ route('books.show', $book->id) }}">
-            <img src="{{ asset($book->thumb) }}"  alt="Product Thumbnail">
+            <img src="{{ asset($book->image) }}"  alt="Product Thumbnail">
         </a>
         
         <div class="product-card-body">

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateBookAddPrice extends Migration
+class UpdateAuthorsAddEnName extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class UpdateBookAddPrice extends Migration
      */
     public function up()
     {
-        Schema::table('books', function (Blueprint $table) {
-
-            $table->decimal('price', 10, 2);
-
+        Schema::table('authors', function (Blueprint $table) {
+            $table->string('en_name')->nullable();
         });
     }
 
@@ -27,8 +25,8 @@ class UpdateBookAddPrice extends Migration
      */
     public function down()
     {
-        Schema::table('books', function (Blueprint $table) {
-            $table->dropColumn('price');
+        Schema::table('authors', function (Blueprint $table) {
+            $table->dropColumn('en_name');
         });
     }
 }

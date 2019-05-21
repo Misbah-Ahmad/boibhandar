@@ -56,9 +56,11 @@
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="active treeview menu-open">
-                        <a href="#">
-                            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                        </a>
+
+                        <ul class="treeview-menu">
+                            <li class="active"><a href="/admin/dash"><i class="fa fa-circle-o"></i>Dashboard</a></li>
+                            <li class="active"><a href="{{ route('uploads.create') }}"><i class="fa fa-circle-o"></i>Uploads</a></li>
+                        </ul>
                     </li>
                 </ul>
 

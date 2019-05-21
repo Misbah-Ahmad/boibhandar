@@ -16,7 +16,7 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('order_id');
-            $table->decimal('total_price', 10,2);
+            $table->decimal('total_price', 15,2);
             $table->string('pay_type')->default('cod');
             $table->timestamps();
         });
