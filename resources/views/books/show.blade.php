@@ -14,7 +14,7 @@
 
           <div class="shop-single-lower">
 
-            <h2 class="h4 block-title text-left ml-3 pt-3">Book Specification & Author Details</h2>
+            <h2 class="h4 block-title text-left ml-3 pt-3">Book & Author Details</h2>
             <div class="row">
               
 

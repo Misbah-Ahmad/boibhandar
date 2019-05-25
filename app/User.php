@@ -114,4 +114,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return  date('F d, Y', strtotime($this->created_at));
     }
 
+
+    public function scopeToday($query)
+    {
+        return $query->whereDate('created_at', date('Y-m-d')); 
+    }
+
 }

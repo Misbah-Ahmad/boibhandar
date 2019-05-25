@@ -46,17 +46,32 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
     Route::group(['prefix' => '/admin', 'middleware' => ['role:admin']], function () {
         Route::get('/dash', 'AdminController@welcome')->name('admins.welcome');
         
-        Route::get('/uploads', 'AdminController@uploads')->name('uploads.create');
-        Route::post('/uploads/book', 'AdminController@saveBookFile')->name('uploads.book');
-        Route::post('/uploads/{upload}/process', 'AdminController@processFile')->name('uploads.process');
-        Route::post('/uploads/{upload}/delete', 'AdminController@deleteFile')->name('uploads.delete');
+        Route::get('/dash/users', 'AdminController@users')->name('admins.users');
+        Route::get('/dash/users/{user}', 'AdminController@userProfile')->name('admins.user_profile');        
+        Route::get('/dash/orders', 'AdminController@orders')->name('admins.orders');
 
-        Route::post('/uploads/author', 'AdminController@saveAuthorFile')->name('uploads.author');
+        Route::post('/dash/orders/{order}/change_status', 'AdminController@changeOrderStatus')->name('admins.orders.change_status');
 
-        Route::post('/uploads/publisher', 'AdminController@savePublisherFile')->name('uploads.publisher');
 
-        Route::post('/uploads/category', 'AdminController@saveCategoryFile')->name('uploads.category');
 
+        Route::group(['middleware' => ['role:super-admin']], function () {
+
+            Route::post('/users/{user}/attachrole', 'AdminController@attachRole')->name('admins.attach.role');
+            Route::post('/users/{user}/detachrole', 'AdminController@detachRole')->name('admins.detach.role');
+
+
+            Route::get('/uploads', 'AdminController@uploads')->name('uploads.create');
+            Route::post('/uploads/book', 'AdminController@saveBookFile')->name('uploads.book');
+            Route::post('/uploads/{upload}/process', 'AdminController@processFile')->name('uploads.process');
+            Route::post('/uploads/{upload}/delete', 'AdminController@deleteFile')->name('uploads.delete');
+
+            Route::post('/uploads/author', 'AdminController@saveAuthorFile')->name('uploads.author');
+
+            Route::post('/uploads/publisher', 'AdminController@savePublisherFile')->name('uploads.publisher');
+
+            Route::post('/uploads/category', 'AdminController@saveCategoryFile')->name('uploads.category');
+
+        });
 
     });
 

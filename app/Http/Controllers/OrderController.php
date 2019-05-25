@@ -79,7 +79,7 @@ class OrderController extends Controller
 
 
         $grand_total = $order->orderDetails()->sum('total_price') + env('SHIPPING_CHARGE');
-        $grand_total += ($request->_b_g ? 30 : 0);
+        $grand_total += ($request->_b_g ? env('GIFT_WRAP_CHARGE') : 0);
 
         $order->transaction()->create([
 

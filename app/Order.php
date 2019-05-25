@@ -54,6 +54,12 @@ class Order extends Model
     }
 
 
+    public function scopeToday($query)
+    {
+        return $query->whereDate('created_at', date('Y-m-d'));
+    }
+
+
 
     public static function saveNewOrder($request, $user)
     {
@@ -67,5 +73,25 @@ class Order extends Model
         $order->is_gift =$request->_b_g;
         return $user->orders()->save($order);
     } 
+
+    public function getOrderActionAttribute()
+    {
+        switch ($this->status) {
+            case 'Approved':
+            case 'Pending':
+                return 'Cancel';
+                    break;
+
+            case 'Cancelled':
+            case 'Delivered':
+                return 'N/A';
+                break;
+
+            default:
+                return 'N/A';
+                break;
+        }
+    }
+
 
 }

@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
+use App\User;
+use App\Order;
 use App\UploadedFile;
 use Illuminate\Http\Request;
 use App\Traits\StoresBooksFromExcel;
-use App\Traits\StoresAuthorsFromExcel;
-use App\Traits\StoresPublishersFromExcel;
-use App\Traits\StoresCategoriesFromExcel;
 use Illuminate\Support\Facades\Hash;
+use App\Traits\StoresAuthorsFromExcel;
 use Illuminate\Support\Facades\Storage;
+use App\Traits\StoresCategoriesFromExcel;
+use App\Traits\StoresPublishersFromExcel;
 
 class AdminController extends Controller
 {
@@ -20,11 +23,155 @@ class AdminController extends Controller
     {
         //$admin = auth()->user();
 
-        return view('admins.dash');
-        // , compact([
-        //     'admin',
-        // ]));
+        
+        $users =  [
+                'today' => User::today()->count(),
+                'total' => User::count(),
+            ];
+
+        $orders =  [
+                'today' => Order::whereDate('created_at', date('Y-m-d'))->count(),
+                'total' => Order::count(),
+        ];
+
+
+            return view('admins.dash', compact([
+                                        'users',
+                                        'orders'
+                                    ]));
     }
+
+
+
+    public function users(Request $request)
+    {
+
+        $segment = $request->query('_segment', 'total');
+    
+        switch ($segment) {
+            case 'today':
+                $users = User::today()->latest()->get();
+                break;
+            
+            default:
+                $users = User::latest()->get();
+                break;
+        }
+
+        return view('admins.users', compact([
+            'users',
+        ]));
+
+
+    }
+
+    public function orders(Request $request)
+    {
+        $segment = $request->query('_segment', 'total');
+
+        switch ($segment) {
+            case 'today':
+                $orders = Order::today()->latest()->get();
+                break;
+
+            default:
+                $orders = Order::latest()->get();
+                break;
+        }
+
+        return view('admins.orders', compact([
+            'orders',
+        ]));
+    }
+
+
+    public function changeOrderStatus(Request $request, Order $order)
+    {
+        return back();
+    }
+
+
+    public function userProfile(User $user)
+    {
+        $orders = $user->orders()->latest()->get();
+        $roles = Role::all();
+        return view('admins.user_profile', compact(['user', 'orders', 'roles']));
+
+    }
+
+
+
+    public function attachRole(Request $request, User $user)
+    {
+
+        $loggedInUser = auth()->user();
+
+        session()->flash('tab', 'operations');
+
+        if ($loggedInUser->hasRole('super-admin') == false) {
+            return back()->with('message', 'Unauthorized');
+        }
+
+        $adminPassword = $loggedInUser->password;
+        $typedPassword = $request->password;
+
+
+        if (Hash::check($typedPassword, $adminPassword) == false) {
+            return back()->with('message', 'Password mismatch!');
+        }
+
+        $roleId = $request->role_id;
+
+        $role = Role::find($roleId);
+
+        if ($user->hasRole($role->name)) {
+
+            return back()->with('message', 'Already assigned!');
+        }
+
+
+        $user->attachRole($role);
+
+        return back()->with('message', 'Assigned New Role.');
+    }
+
+
+
+
+    public function detachRole(Request $request, User $user)
+    {
+
+        $loggedInUser = auth()->user();
+
+        session()->flash('tab', 'operations');
+
+        if ($loggedInUser->hasRole('super-admin') == false) {
+            return back()->with('message', 'Unauthorized');
+        }
+
+        $adminPassword = $loggedInUser->password;
+        $typedPassword = $request->password;
+
+
+        if (Hash::check($typedPassword, $adminPassword) == false) {
+            return back()->with('message', 'Password mismatch!');
+        }
+
+        $roleId = $request->role_id;
+
+        $role = Role::find($roleId);
+
+        if ($user->hasRole($role->name) == false) {
+            return back()->with('message', 'User does not have this role!');
+        }
+
+
+        $user->detachRole($role);
+
+        return back()->with('message', 'Detached Role.');
+    }
+
+
 
 
 
