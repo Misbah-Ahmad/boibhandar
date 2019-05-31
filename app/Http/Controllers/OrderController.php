@@ -14,7 +14,11 @@ class OrderController extends Controller
     
     public function show(Order $order)
     {
-        return back();
+        $total = $order->orderDetails->sum('total_price');
+        $gift = $order->is_gift ? $order->gift_wrap_charge : 0;
+        $headline = 'Order Details';
+
+        return view('orders.details', compact(['order', 'total', 'gift', 'headline']));
     }
 
 
