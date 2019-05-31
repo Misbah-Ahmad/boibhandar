@@ -34,6 +34,17 @@ class RoleSeeder extends Seeder
             $role->description = 'As your wish';
             $role->save();
         }
+
+        $role = Role::where('name', 'super-admin')->first();
+
+        if (!($role instanceof Role)) 
+        {
+            $role = new Role;
+            $role->name = 'admin';
+            $role->display_name = 'Super Admin';
+            $role->description = 'As your wish';
+            $role->save();
+        }
         
     }
 }

@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             DB::table($table)->truncate();
         }
 
+        $this->call(RoleSeeder::class);
+        
         //$this->call(UsersTableSeeder::class);
 
 /*         
