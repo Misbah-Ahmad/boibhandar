@@ -96,9 +96,34 @@ class AdminController extends Controller
 
 
 
-    public function changeOrderStatus(Request $request, Order $order)
+    public function changeOrderStatus(Request $request)
     {
-        return back();
+        $status_array = ['Cancelled', 'Approved', 'Pending', 'Delivered'];
+
+        $message = 'Ops! Something went wrong.';
+
+        if($request->filled('_id') && $request->filled('_status'))
+        {
+            $status = trim(ucwords($request->_status));
+            $order = $request->_id;
+            $order = Order::find($order);
+
+            if($order instanceof Order && in_array($status, $status_array) && $order->status != $status)
+            {
+                $order->status = $status;
+                
+                if($order->save())
+                {
+                    $message = 'Order status was changed to ' . $status . ' successfully!';                    
+                }
+                
+
+            }
+
+        }
+
+        return back()->with('message', $message);
+
     }
 
 

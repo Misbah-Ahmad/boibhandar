@@ -52,6 +52,8 @@
                                     aria-label="CSS grade: activate to sort column ascending">Ordered On</th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                     aria-label="CSS grade: activate to sort column ascending">Total</th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                    aria-label="CSS grade: activate to sort column ascending">Action</th>
 
                             </tr>
                         </thead>
@@ -62,16 +64,33 @@
                             <tr role="row" class=" {{ $loop->iteration&1 ? 'odd' : 'even'}} ">
                                 <td> {{ $loop->iteration }}</td>
                                 <td> <a href="{{ route('admins.orders.show', $order->id) }}">{{ 'BOID' . $order->id }}</a></td>
-                                <td class=""> <a href="{{ route('admins.user_profile', $order->user->id) }}"> {{ $order->user->fullName }} </a> </td>
+                                <td class=""> <a href="{{ route ('admins.user_profile', $order->user->id) }}"> {{ $order->user->fullName }} </a> </td>
                                 <td class="sorting_1"> {{ $order->name }} </td>
                                 <td> {{ $order->phone }} </td>
                                 <td> {{ $order->is_gift ? 'Yes' : 'No' }} </td>
                                 <td> {{ $order->transaction->pay_type }} </td>
-                                <td> <span class="label label-{{ $order->statusBadge }} "> {{ ucwords($order->status) }}
-                                    </span> </td>
+                                <td> <span class="label label-{{ $order->statusBadge }}">{{ ucwords($order->status) }}</span></td>
                                 <td> {{ $order->reference }} </td>
                                 <td> {{ date('M d, Y', strtotime($order->created_at)) }} </td>
                                 <td> {{ $order->transaction->total_price }} </td>
+                                <td> 
+                                    @php($status = strtolower($order->status))
+                                    @if($status == 'pending')
+                                        
+                                        <span><button onclick="change_order_status({{ $order->id }}, 'Approved')" class="btn btn-sm btn-primary">Approve</button></span> <span><button onclick="change_order_status({{ $order->id }}, 'Cancelled')" class="btn btn-sm btn-danger">Cancel</button></span>
+                                        
+                                    @elseif($status == 'cancelled')
+                                    
+                                        <span><button onclick="change_order_status({{ $order->id }}, 'Pending')" class="btn btn-sm btn-primary">Pending</button></span>
+                                    
+                                    @elseif($status == 'approved')
+                                    
+                                        <span><button onclick="change_order_status({{ $order->id }}, 'Delivered')" class="btn btn-sm btn-success">Delivered</button></span> <span><button onclick="change_order_status({{ $order->id }}, 'Cancelled')" class="btn btn-sm btn-danger">Cancel</button></span>
+                                    
+                                    @else
+                                        <span>N/A</span>
+                                    @endif
+                                </td>                                
                             </tr>
 
                             @endforeach
