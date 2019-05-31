@@ -33,27 +33,118 @@
                     <table style="width: 100%; line-height: inherit; text-align: left;">
                         <tr>
                             <td class="title" style="padding: 5px; vertical-align: top;">
-                                <img src="\images\logo.svg" style="width:100%; max-width:180px;">
+                                <img src="\images\logo.svg" style="width:100%; max-width:180px; cursor:pointer;" onclick="window.location='/'">
+                                <ul style="list-style: none; padding-left:0;">
+                                	<li><span style="background-color: #e5e5e5; padding: 5px 10px 5px 10px; border-radius: 4px;"><strong>Invoice #: {{ 'BOID' . $order->id }} </strong></span></li>
+                                	<li style="margin-top: 7px;"><strong> Ordered on: </strong><span> {{ date('M d, Y', strtotime($order->created_at)) }} </span></li>
+                                    <li><strong>User:</strong><span> {{ $order->user->fullName }} </span></li>
+                                    <li><strong>Recipient:</strong><span> {{ $order->name }} </span></li>
+                                    <li><strong>Phone:</strong><span> {{ $order->phone }} </span></li>
+                                    <li><strong>Address:</strong><span> {{ $order->address . ' ' . $order->district }} </span></li>                                    
+                                	<li><strong>Payment method:</strong><span> {{ strtoupper($order->transaction->pay_type) }} </span></li>
+                                </ul>
                             </td>
 
 
                             <td style="padding: 5px; vertical-align: top; text-align: right;">
-                                <ul style="list-style: none;">
-                                	<li><span style="background-color: #e5e5e5; padding: 5px 5px 5px 40px; border-radius: 4px;"><strong>Invoice #: {{ 'BOID' . $order->id }} </strong></span></li>
-                                	<li>Created: <span> {{ date('M d, Y', strtotime($order->created_at)) }} </span></li>
-                                    <li>User: <span> {{ $order->user->fullName }} </span></li>
-                                    <li>Recipient: <span> {{ $order->name }} </span></li>
-                                    <li>Phone: <span> {{ $order->phone }} </span></li>
-                                    <li>Address: <span> {{ $order->address . ' ' . $order->district }} </span></li>                                    
-                                	<li>Payment method: <span> {{ strtoupper($order->transaction->pay_type) }} </span></li>
-                                </ul>
+
                             </td>
                         </tr>
                     </table>
                 </td>
             </tr>
             
-            <tr class="information">
+
+            
+            <tr class="heading" style="color: #ffffff;">
+                <td style="padding: 5px; padding-left: 10px; vertical-align: top; background: rgb(58, 58, 58); font-weight: bold; border-top-left-radius: 4px; border-bottom-left-radius: 4px;">
+                    Item
+                </td>
+
+                <td style="padding: 5px; vertical-align: top; background: rgb(58, 58, 58); font-weight: bold; text-align: center;">
+                	Quantity
+                </td>
+                
+                <td style="padding: 5px; padding-right: 10px; vertical-align: top; background: rgb(58, 58, 58); font-weight: bold; text-align: right; border-top-right-radius: 4px; border-bottom-right-radius: 4px;">
+                    Price
+                </td>
+            </tr>
+            
+            @foreach ($order->orderDetails as $detail)
+
+                <tr>
+                    <td style="padding: 5px; padding-left: 10px;">
+                        {{ $detail->book->title }}
+                    </td>
+
+                    <td style="padding: 5px; text-align: center;">
+                        {{ $detail->quantity }}
+                    </td>
+                    
+                    <td style="padding: 5px; text-align: right; padding-right: 10px;">
+                        {{ $detail->total_price }}
+                    </td>
+                </tr>
+            
+            @endforeach            
+
+            <tr class="total">
+                <td style="padding: 5px;"></td>
+                <td style="padding: 5px;"></td>
+
+                <td style="padding: 5px; text-align: right; border-top: 2px solid #eee; padding-right: 10px;">
+                   Subtotal: {{ $total }}
+                </td>
+            </tr>
+
+            <tr>
+                <td style="padding: 5px;"></td>
+                <td style="padding: 5px;"></td>
+                
+                <td style="padding: 5px; text-align: right; padding-right: 10px;">
+                   Gift Wrap: {{ $gift }}
+                </td>
+                
+            </tr>
+
+
+            <tr>
+                <td style="padding: 5px;"></td>
+                <td style="padding: 5px;"></td>
+
+                <td style="padding: 5px; text-align: right; padding-right: 10px;">
+                   Shipping: {{ $order->shippping_charge }}
+                </td>
+            </tr>
+
+
+            <tr class="total"   >
+                <td style="padding: 5px;"></td>
+                <td style="padding: 5px;"></td>
+
+                <td style="padding: 5px; text-align: right; background-color: #e7e7e7; border-radius: 4px; font-weight: bold; padding-right: 10px;">
+                   Total: {{ $total + $gift + $order->shippping_charge }}
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="3" style="padding-top: 30px">
+                    <hr>
+                </td>
+            </tr>
+            
+
+            <tr>
+                <td colspan="3" style="text-align:center; padding-top:10px;">
+                    <span> www.boibhandar.com |</span> 
+                    <span> support@boibhandar.com |</span> 
+                    <span> <img src="\images\fb.png" style="width: 12px"><img src="\images\insta.png"
+                                        style="width: 12px; padding-left: 5px; padding-right: 5px;">/ boibhandar</span>
+                </td>
+            </tr>
+
+
+            {{-- <tr class="information">
                 <td colspan="3" style="padding: 5px; vertical-align: top;">
                     <table style="width: 100%; line-height: inherit; text-align: left;">
                         <tr>
@@ -66,87 +157,17 @@
                             </td>
                             
                             <td style="padding: 5px; vertical-align: top; padding-bottom: 40px; text-align: right;">
-                             <ul style="list-style: none;">
+
                                 	<li>www.boibhandar.com</li>
                                 	<li>support@boibhandar.com</li>
                                 	<li><img src="\images\fb.png" style="width: 12px"><img src="\images\insta.png" style="width: 12px; padding-left: 5px; padding-right: 5px;">/ boibhandar</li>
-                                </ul>
+
                             </td>
                         </tr>
                     </table>
                 </td>
-            </tr>
-            
-            <tr class="heading" style="color: #ffffff;">
-                <td style="padding: 5px; vertical-align: top; background: rgb(58, 58, 58); font-weight: bold; border-top-left-radius: 4px; border-bottom-left-radius: 4px;">
-                    Item
-                </td>
+            </tr> --}}
 
-                <td style="padding: 5px; vertical-align: top; background: rgb(58, 58, 58); font-weight: bold; text-align: center;">
-                	Quantity
-                </td>
-                
-                <td style="padding: 5px; vertical-align: top; background: rgb(58, 58, 58); font-weight: bold; text-align: right; border-top-right-radius: 4px; border-bottom-right-radius: 4px;">
-                    Price
-                </td>
-            </tr>
-            
-            @foreach ($order->orderDetails as $detail)
-
-                <tr>
-                    <td style="padding: 5px;">
-                        {{ $detail->book->title }}
-                    </td>
-
-                    <td style="padding: 5px; text-align: center;">
-                        {{ $detail->quantity }}
-                    </td>
-                    
-                    <td style="padding: 5px; text-align: right;">
-                        {{ $detail->total_price }}
-                    </td>
-                </tr>
-            
-            @endforeach            
-
-            <tr class="total">
-                <td style="padding: 5px;"></td>
-                <td style="padding: 5px;"></td>
-
-                <td style="padding: 5px; text-align: right; border-top: 2px solid #eee;">
-                   Subtotal: {{ $total }}
-                </td>
-            </tr>
-
-            <tr>
-                <td style="padding: 5px;"></td>
-                <td style="padding: 5px;"></td>
-                
-                <td style="padding: 5px; text-align: right;">
-                   Gift Wrap: {{ $gift }}
-                </td>
-                
-            </tr>
-
-
-            <tr>
-                <td style="padding: 5px;"></td>
-                <td style="padding: 5px;"></td>
-
-                <td style="padding: 5px; text-align: right;">
-                   Shipping: {{ $order->shippping_charge }}
-                </td>
-            </tr>
-
-
-            <tr class="total">
-                <td style="padding: 5px;"></td>
-                <td style="padding: 5px;"></td>
-
-                <td style="padding: 5px; text-align: right; background-color: #e7e7e7; border-radius: 4px; font-weight: bold;">
-                   Total: {{ $total + $gift + $order->shippping_charge }}
-                </td>
-            </tr>
 
         </table>
 
