@@ -58,7 +58,7 @@
 
     <!-- Navbar-->
     <header class="navbar-wrapper navbar-sticky">
-        <div class="d-table-cell align-middle pr-md-3"><a class="navbar-brand mr-1" href="/"><img src="/images/logo/logo1.png" style="width:110px;height:60px;" alt="Boibhandar"/></a></div>
+        <div class="d-table-cell align-middle pr-md-3"><a class="navbar-brand mr-1" href="/"><img src="/images/logo.svg" style="width:110px;height:60px;" alt="Boibhandar"/></a></div>
         <div class="d-table-cell w-100 align-middle pl-md-3">
             <!--         <div class="navbar-top d-none d-lg-flex justify-content-between align-items-center">
           <div>
