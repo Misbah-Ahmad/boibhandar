@@ -113,7 +113,7 @@
                 <td style="padding: 5px;"></td>
 
                 <td style="padding: 5px; text-align: right; padding-right: 10px;">
-                   Shipping: {{ $order->shippping_charge }}
+                   Shipping: {{ $order->shipping_charge }}
                 </td>
             </tr>
 
@@ -123,7 +123,7 @@
                 <td style="padding: 5px;"></td>
 
                 <td style="padding: 5px; text-align: right; background-color: #e7e7e7; border-radius: 4px; font-weight: bold; padding-right: 10px;">
-                   Total: {{ $total + $gift + $order->shippping_charge }}
+                   Total: {{ $total + $gift + $order->shipping_charge }}
                 </td>
             </tr>
 
