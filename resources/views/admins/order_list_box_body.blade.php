@@ -61,7 +61,7 @@
 
                             <tr role="row" class=" {{ $loop->iteration&1 ? 'odd' : 'even'}} ">
                                 <td> {{ $loop->iteration }}</td>
-                                <td> <a href="#">{{ 'BOID' . $order->id }}</a></td>
+                                <td> <a href="{{ route('admins.orders.show', $order->id) }}">{{ 'BOID' . $order->id }}</a></td>
                                 <td class=""> <a href="{{ route('admins.user_profile', $order->user->id) }}"> {{ $order->user->fullName }} </a> </td>
                                 <td class="sorting_1"> {{ $order->name }} </td>
                                 <td> {{ $order->phone }} </td>

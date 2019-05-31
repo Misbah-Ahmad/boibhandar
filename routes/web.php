@@ -49,6 +49,7 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
         Route::get('/dash/users', 'AdminController@users')->name('admins.users');
         Route::get('/dash/users/{user}', 'AdminController@userProfile')->name('admins.user_profile');        
         Route::get('/dash/orders', 'AdminController@orders')->name('admins.orders');
+        Route::get('/dash/orders/{order}', 'AdminController@showOrder')->name('admins.orders.show');
 
         Route::post('/dash/orders/{order}/change_status', 'AdminController@changeOrderStatus')->name('admins.orders.change_status');
 

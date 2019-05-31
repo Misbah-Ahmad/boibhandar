@@ -19,11 +19,11 @@
         color: #555;">
 
         <div style="min-height: 40px;
-            border: 2px solid #ff6700;
+            border: 2px solid #000;
             color: #000;
             text-align: center;
             border-radius: 4px;">
-            <h2 style="padding: 10px; letter-spacing: 2px;">{{ $headline }} </h2>
+            <h2 style="letter-spacing: 2px;">Invoice</h2>
         </div>
 
 
@@ -33,7 +33,7 @@
                 <td colspan="3" style="padding: 5px; vertical-align: top;">
                     <table style="width: 100%; line-height: inherit; text-align: left;">
                         <tr>
-                            <td class="title" style="padding: 5px; vertical-align: top;">
+                            <td class="title" style="padding: 5px; vertical-align: top; font-size: 14px;">
                                 <img src="\images\logo.svg" style="width:100%; max-width:180px; cursor:pointer;" onclick="window.location='/'">
                                 <ul style="list-style: none; padding-left:0;">
                                     <li><span
@@ -62,28 +62,28 @@
 
 
 
-            <tr class="heading" style="color: #ffffff;">
+            <tr class="heading" style="color: #000; font-size:14px; border: 1px solid #000;">
                 <td
-                    style="padding: 5px; padding-left: 10px; vertical-align: top; background: rgb(58, 58, 58); font-weight: bold; border-top-left-radius: 4px; border-bottom-left-radius: 4px;">
+                    style="border: 1px solid #000; padding: 5px; padding-left: 10px; vertical-align: top;  font-weight: bold; border-top-left-radius: 4px; border-bottom-left-radius: 4px;">
                     Item
                 </td>
 
                 <td
-                    style="padding: 5px; vertical-align: top; background: rgb(58, 58, 58); font-weight: bold; text-align: center;">
+                    style="border: 1px solid #000; padding: 5px; vertical-align: top;  font-weight: bold; text-align: center;">
                     Quantity
                 </td>
 
                 <td
-                    style="padding: 5px; padding-right: 10px; vertical-align: top; background: rgb(58, 58, 58); font-weight: bold; text-align: right; border-top-right-radius: 4px; border-bottom-right-radius: 4px;">
+                    style="border:1px solid #000; padding: 5px; padding-right: 10px; vertical-align: top;  font-weight: bold; text-align: right; border-top-right-radius: 4px; border-bottom-right-radius: 4px;">
                     Price
                 </td>
             </tr>
 
             @foreach ($order->orderDetails as $detail)
-
-            <tr>
-                <td style="padding: 5px; padding-left: 10px; font-size: 10px;">
-                    {{ $detail->book->title }}
+            @php($authors = $detail->book->authorList() )
+            <tr style="font-size:12px;">
+                <td style="padding: 5px; padding-left: 10px;">
+                    {!! '<strong>' . $detail->book->title . '</strong> (' . implode(', ', $authors) . ')' !!}
                 </td>
 
                 <td style="padding: 5px; text-align: center;">
@@ -97,7 +97,7 @@
 
             @endforeach
 
-            <tr class="total">
+            <tr class="total" style="font-size:12px;">
                 <td style="padding: 5px;"></td>
                 <td style="padding: 5px;"></td>
 
@@ -106,23 +106,24 @@
                 </td>
             </tr>
 
-            <tr>
+            @if($order->is_gift)
+                <tr style="font-size:12px;">
+                    <td style="padding: 5px;"></td>
+                    <td style="padding: 5px;"></td>
+
+                    <td style="padding: 5px; text-align: right; padding-right: 10px;">
+                        Gift Wrap: {{ $gift }}
+                    </td>
+
+                </tr>
+            @endif
+
+            <tr style="font-size:12px;">
                 <td style="padding: 5px;"></td>
                 <td style="padding: 5px;"></td>
 
                 <td style="padding: 5px; text-align: right; padding-right: 10px;">
-                    Gift Wrap: {{ $gift }}
-                </td>
-
-            </tr>
-
-
-            <tr>
-                <td style="padding: 5px;"></td>
-                <td style="padding: 5px;"></td>
-
-                <td style="padding: 5px; text-align: right; padding-right: 10px;">
-                    Shipping: {{ $order->shippping_charge }}
+                    Shipping: {{ $order->shipping_charge }}
                 </td>
             </tr>
 
@@ -133,19 +134,19 @@
 
                 <td
                     style="padding: 5px; text-align: right; background-color: #e7e7e7; border-radius: 4px; font-weight: bold; padding-right: 10px;">
-                    Total: {{ $total + $gift + $order->shippping_charge }}
+                    Total: {{ $total + $gift + $order->shipping_charge }}
                 </td>
             </tr>
 
             <tr>
-                <td colspan="3" style="padding-top: 30px">
+                <td colspan="3" style="padding-top: 20px">
                     <hr>
                 </td>
             </tr>
 
 
             <tr>
-                <td colspan="3" style="text-align:center; padding-top:10px;">
+                <td colspan="3" style="text-align:center; margin-top: 0px;">
                     <span> www.boibhandar.com |</span>
                     <span> support@boibhandar.com |</span>
                     <span> <img src="\images\fb.png" style="width: 12px"><img src="\images\insta.png"
@@ -181,8 +182,8 @@
 
         </table>
 
-        <div style="min-height: 40px; text-align: center;">
-            <h4 style="padding: 20px; letter-spacing: 1px;">Thank you for shopping with us :)</h4>
+        <div style="text-align: center;">
+            <h4 style="margin-top:8px; margin-bottom:0px; letter-spacing: 1px;">Thank you for shopping with us :)</h4>
         </div>
 
     </div>

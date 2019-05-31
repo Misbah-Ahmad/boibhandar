@@ -84,6 +84,17 @@ class AdminController extends Controller
         ]));
     }
 
+    public function showOrder(Order $order)
+    {
+
+        $total = $order->orderDetails->sum('total_price');
+        $gift = $order->is_gift ? $order->gift_wrap_charge : 0;
+        $headline = 'Order Details';
+
+        return view('admins.order_details', compact(['order', 'total', 'gift', 'headline']));
+    }
+
+
 
     public function changeOrderStatus(Request $request, Order $order)
     {
