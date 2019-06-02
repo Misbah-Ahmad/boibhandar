@@ -25,7 +25,7 @@
             <div class="container mb-3">
                 <div class="login-tab-custom">
                     <div class="col-md-12 wizard">
-                        <h3 class="text-center h5 pt-3 pb-2">Login to Your Account</h3>
+                        <h3 class="text-center h4 pt-3 pb-2">Login to Your Account</h3>
 
                         <form class="needs-validation" action="/login" method="POST">
                             @csrf
@@ -204,6 +204,12 @@
                                             <label for="reg-password-confirm">Confirm Password</label>
                                             <input class="form-control" type="password" name="password_confirmation" required id="reg-password-confirm">
                                             <div class="invalid-feedback">Passwords do not match!</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            @captcha('en')
                                         </div>
                                     </div>
 
