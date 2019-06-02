@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Cart;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Queue\InteractsWithQueue;
@@ -31,6 +32,11 @@ class LoginListener
 
         $cart = $user->cart;
         
+        if($cart == null)
+        {
+            $cart = $user->cart()->save(new Cart);
+        }
+
         $books = $cart->books->pluck('id')->toArray();
 
         if (count($books) < 1) {
