@@ -20009,7 +20009,15 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
     -webkit-transition: all .35s;
     transition: all .35s;
     /* box-shadow: 1px 1px 2px 1px rgba(219,218,219,0.5); */
-    border: 1px solid #FF6700
+    border: 1px solid #FF6700;
+    min-height: 380px;
+
+}
+
+.bg-custom{
+    background: linear-gradient(45deg, #6d1386 0%, #3a2099 100%) !important;
+    color: #fff;
+    background-color: #151617;
 }
 
 .product-card .product-head {
@@ -21286,4 +21294,8 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 
 .product-details h2.h3 {
     font-size: 1.5rem !important;
+}
+
+.author-profile{
+    padding: 15px;
 }

@@ -10,7 +10,7 @@
 <div class="shop-page-title d-flex" aria-label="Page title"
     style="background-image: url(img/components/others/03.jpg);">
     <div class="container text-left align-self-center">
-        <h3 class="shop-page-title-inner block-title pt-3">Publisher</h3>
+        <h3 class="shop-page-title-inner block-title pt-3">Publishers</h3>
     </div>
 </div>
 

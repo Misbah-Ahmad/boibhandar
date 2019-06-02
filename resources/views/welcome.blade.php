@@ -4,7 +4,7 @@
 
 
 <section class="featured-posts-slider d-lg-flex">
-    <div class="owl-carousel dots-inside home-img-carousel" data-owl-carousel='{ "nav": false, "dots": true, "loop": true, "mouseDrag": true, "touchDrag": true, "pullDrag": false, "autoplay": true, "autoplayTimeout": 4000 }'>
+    <div class="owl-carousel dots-inside home-img-carousel fadeOut owl-theme">
         <a class="post-preview-img" href="#"><img class="lazy" data-src="/images/components/carousel/04.jpg" alt="Carousel Image"/></a>
         <a class="post-preview-img" href="#"><img class="lazy" data-src="/images/components/carousel/05.jpg" alt="Carousel Image"/></a>
         <a class="post-preview-img" href="#"><img class="lazy" data-src="/images/components/carousel/06.jpg" alt="Carousel Image"/></a>

@@ -1,5 +1,5 @@
 <!-- Footer-->
-<footer class="bg-dark pt-5">
+<footer class="bg-custom pt-5">
     <!-- First Row-->
     <div class="container pt-2">
         <div class="row">
@@ -58,7 +58,7 @@
         </div>
     </div>
     <!-- Second Row-->
-    <div class="pt-5" style="background-color: #30363d;">
+    <div class="pt-5">
         <div class="container">
             <div class="row">
                 <!--Boibhandar-->

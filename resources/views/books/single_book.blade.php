@@ -72,9 +72,7 @@
         
           <div class="col-sm-8">
             <div class="pt-4 hidden-sm-up"></div>
-            <button class="btn btn-primary btn-block m-0" onclick="addToCart({{ $book->id }})" data-toast
-              data-toast-type="success" data-toast-position="topRight" data-toast-icon="fe-icon-check-circle"
-              data-toast-title="Product" data-toast-message="successfuly added to cart!"><i class="fe-icon-shopping-cart"></i>
+            <button class="btn btn-primary btn-block m-0" onclick="addToCart({{ $book->id }})"><i class="fe-icon-shopping-cart"></i>
               Add to Cart</button>
         
           </div>

@@ -8,3 +8,26 @@
         elements_selector: ".lazy"
     });
 </script>
+
+<script>
+    $(document).ready(function($) {
+              $('.fadeOut').owlCarousel({
+                items: 1,
+                animateOut: 'fadeOut',
+                animateIn: 'fadeIn',
+                loop: true,
+                margin: 10,
+                items: 1,
+                margin: 30,
+                stagePadding: 30,
+                smartSpeed: 450,
+                autoplay: true,
+                pullDrag: false,
+                autoplayTimeout: 4000,
+                touchDrag: true,
+                mouseDrag: true,
+                dots: true,
+                nav: false
+              });
+            });
+</script>

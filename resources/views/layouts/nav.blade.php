@@ -8,9 +8,17 @@
     <div class="offcanvas-container is-triggered offcanvas-container-reverse" id="mobile-menu"><span class="offcanvas-close"><i class="fe-icon-x"></i></span>
         <div class="px-4 pb-4">
             <h6>Menu</h6>
-            <div class="d-flex justify-content-between pt-2">
-                <a class="btn btn-primary btn-sm btn-block" href="#"><i class="fe-icon-user"></i>&nbsp;Login</a>
-            </div>
+            @guest
+                <div class="d-flex justify-content-between pt-2">
+                    <a class="btn btn-primary btn-sm btn-block" href="\login"><i class="fe-icon-lock"></i>&nbsp;Login</a>
+                    <script>window.loggedIn = false;</script>
+                </div>
+            @else
+                <div class="d-flex justify-content-between pt-2">
+                    <a class="btn btn-primary btn-sm btn-block" href="{{ route('dash') }}"><i class="fe-icon-user"></i>&nbsp;Account</a>
+                    <script>window.loggedIn = true;</script>
+                </div>            
+            @endguest
         </div>
         <div class="offcanvas-scrollable-area border-top" style="height:calc(100% - 235px); top: 144px;">
             <!-- Mobile Menu-->
@@ -24,16 +32,24 @@
                 </div>
                 <!-- Portfolio-->
                 <div class="card">
-                    <div class="card-header"><a class="mobile-menu-link" href="#">Authors</a></div>
+                    <div class="card-header"><a class="mobile-menu-link" href="/authors">Authors</a></div>
                 </div>
                 <!-- Blog-->
                 <div class="card">
-                    <div class="card-header"><a class="mobile-menu-link" href="#">Publishers</a></div>
+                    <div class="card-header"><a class="mobile-menu-link" href="/publishers">Publishers</a></div>
                 </div>
-                <!-- Shop-->
                 <div class="card">
-                    <div class="card-header"><a class="mobile-menu-link" href="#">Best Seller</a></div>
+                    <div class="card-header"><a class="mobile-menu-link" href="/categories">Categories</a></div>
                 </div>
+                <div class="card">
+                    <div class="card-header"><a class="mobile-menu-link" href="{{ route('corporates.create') }}">Corporate Order</a></div>
+                </div>
+
+
+                <!-- Shop-->
+                {{-- <div class="card">
+                    <div class="card-header"><a class="mobile-menu-link" href="#">Best Seller</a></div>
+                </div> --}}
                 <!-- Account-->
                 {{-- <div class="card">
                     <div class="card-header"><a class="mobile-menu-link" href="#">Pre-Order</a></div>
@@ -48,12 +64,14 @@
                 </div> --}}
             </div>
         </div>
-        <div class="offcanvas-footer px-4 pt-3 pb-2 text-center">
+
+        {{-- <div class="offcanvas-footer px-4 pt-3 pb-2 text-center">
             <a class="social-btn sb-style-3 sb-twitter" href="#"><i class="socicon-twitter"></i></a>
             <a class="social-btn sb-style-3 sb-facebook" href="#"><i class="socicon-facebook"></i></a>
             <a class="social-btn sb-style-3 sb-pinterest" href="#"><i class="socicon-pinterest"></i></a>
             <a class="social-btn sb-style-3 sb-instagram" href="#"><i class="socicon-instagram"></i></a>
-        </div>
+        </div> --}}
+    
     </div>
 
     <!-- Navbar-->
@@ -74,9 +92,9 @@
         </div> -->
             <div class="navbar justify-content-end justify-content-lg-between">
                 <!-- Search-->
-                <form class="search-box" method="get">
+                {{-- <form class="search-box" method="get">
                     <input type="text" id="site-search" placeholder="Type A or C to see suggestions"><span class="search-close"><i class="fe-icon-x"></i></span>
-                </form>
+                </form> --}}
                 <!-- Main Menu-->
                 <ul class="navbar-nav d-none d-lg-block">
                     <!-- Home-->
@@ -93,9 +111,9 @@
                 </ul>
                 <div>
                     <ul class="navbar-buttons d-inline-block align-middle mr-lg-2">
-                        <li>
+                        {{-- <li>
                             <a href="#" data-toggle="search"><i class="fe-icon-search"></i></a>
-                        </li>
+                        </li> --}}
 
                         <li>
                             <a href=" {{ route('carts.show') }} "><i class="fe-icon-shopping-cart"></i></a>
@@ -109,7 +127,7 @@
                     </ul>
 
                     @guest
-                        <a class="btn btn-style-6 btn-primary ml-3 d-none d-xl-inline-block" href="{{ route('login') }}"><i class="fe-icon-user"></i>Login</a>
+                        <a class="btn btn-style-6 btn-primary ml-3 d-none d-xl-inline-block" href="{{ route('login') }}"><i class="fe-icon-lock"></i>Login</a>
                         <script>window.loggedIn = false</script>
                     @else
                         <script>window.loggedIn = true;</script>

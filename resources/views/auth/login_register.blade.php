@@ -108,7 +108,7 @@
                 <div class="login-tab-custom">
                     <div class="col-md-12 wizard">
                         <div class="wizard-body pt-2">
-                            <h3 class="h4 pb-1">Don't Have An Account? Register</h3>
+                            <h3 class="h4 pt-3 pb-2">Don't Have An Account? Register</h3>
                             <p>Registration takes less than a minute but gives you full control over your orders.</p>
 
                             <form class="needs-validation" method="POST" action="/register">
