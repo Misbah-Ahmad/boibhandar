@@ -5,9 +5,9 @@
 
 <section class="featured-posts-slider d-lg-flex">
     <div class="owl-carousel dots-inside home-img-carousel" data-owl-carousel='{ "nav": false, "dots": true, "loop": true, "mouseDrag": true, "touchDrag": true, "pullDrag": false, "autoplay": true, "autoplayTimeout": 4000 }'>
-        <a class="post-preview-img" href="#"><img src="/images/components/carousel/04.jpg" alt="Carousel Image"/></a>
-        <a class="post-preview-img" href="#"><img src="/images/components/carousel/05.jpg" alt="Carousel Image"/></a>
-        <a class="post-preview-img" href="#"><img src="/images/components/carousel/06.jpg" alt="Carousel Image"/></a>
+        <a class="post-preview-img" href="#"><img class="lazy" data-src="/images/components/carousel/04.jpg" alt="Carousel Image"/></a>
+        <a class="post-preview-img" href="#"><img class="lazy" data-src="/images/components/carousel/05.jpg" alt="Carousel Image"/></a>
+        <a class="post-preview-img" href="#"><img class="lazy" data-src="/images/components/carousel/06.jpg" alt="Carousel Image"/></a>
     </div>
 </section>
 
@@ -17,7 +17,7 @@
     <div class="seasonal-promotion-banner">
         <div class="row">
             <div class="col-md-12 pt-2 pb-3">
-                <a href="#"><img src=" {{ asset('images/promo.png') }} "></a>
+                <a href="#"><img class="lazy" data-src=" {{ asset('images/promo.png') }} "></a>
             </div>
         </div>
     </div>
