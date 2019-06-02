@@ -1,4 +1,14 @@
 <head>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141177100-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', env('GTAG_UID'));
+    </script>
+
     <meta charset="utf-8">
     <title>Boibhandar | Buy and Hire Books Online
     </title>
