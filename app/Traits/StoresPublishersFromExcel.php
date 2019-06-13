@@ -21,7 +21,7 @@ trait StoresPublishersFromExcel
 
     public function processAndStorePublisherFile($rows)
     {
-
+        \DB::table('publishers')->delete();
         $failed = [];
 
         foreach ($rows as  $row)

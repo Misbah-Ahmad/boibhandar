@@ -282,7 +282,7 @@ class AdminController extends Controller
             
             if(UploadedFile::ofBooks()->where('path', 'uploads/' . $request->file('author_file')->getClientOriginalName())->count() > 0)
             {
-                return back()->with('book_uploaded', 'File name already exists');                
+                return back()->with('author_uploaded', 'File name already exists');                
             }
 
             $path = Storage::putFileAs(
@@ -299,7 +299,7 @@ class AdminController extends Controller
 
             if($upload instanceof UploadedFile)
             {
-                return back()->with('author_uploaded', 'Book File Uploaded!');
+                return back()->with('author_uploaded', 'Author File Uploaded!');
             } else {
                 return back()->with('author_uploaded', 'Could not upload the file!');                
             }

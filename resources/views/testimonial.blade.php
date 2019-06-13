@@ -10,7 +10,7 @@
                     magna aliqua. Utenim ad minim veniam, quis nostrud.</p>
                 <footer class="testimonial-footer">
                     <div class="testimonial-avatar">
-                        <img src="/images/author/01.jpg" alt="Testimonial Author Avatar" />
+                        <img src="/images/testimonials/01.jpg" alt="Testimonial Author Avatar" />
                     </div>
                     <div class="d-table-cell align-middle pl-2">
                         <div class="blockquote-footer">
@@ -27,7 +27,7 @@
                     magna aliqua. Utenim ad minim veniam, quis nostrud.</p>
                 <footer class="testimonial-footer">
                     <div class="testimonial-avatar">
-                        <img src="/images/author/01.jpg" alt="Testimonial Author Avatar" />
+                        <img src="/images/testimonials/01.jpg" alt="Testimonial Author Avatar" />
                     </div>
                     <div class="d-table-cell align-middle pl-2">
                         <div class="blockquote-footer">
@@ -44,7 +44,7 @@
                     magna aliqua. Utenim ad minim veniam, quis nostrud.</p>
                 <footer class="testimonial-footer">
                     <div class="testimonial-avatar">
-                        <img src="/images/author/01.jpg" alt="Testimonial Author Avatar" />
+                        <img src="/images/testimonials/01.jpg" alt="Testimonial Author Avatar" />
                     </div>
                     <div class="d-table-cell align-middle pl-2">
                         <div class="blockquote-footer">
@@ -61,7 +61,7 @@
                     magna aliqua. Utenim ad minim veniam, quis nostrud.</p>
                 <footer class="testimonial-footer">
                     <div class="testimonial-avatar">
-                        <img src="/images/author/01.jpg" alt="Testimonial Author Avatar" />
+                        <img src="/images/testimonials/01.jpg" alt="Testimonial Author Avatar" />
                     </div>
                     <div class="d-table-cell align-middle pl-2">
                         <div class="blockquote-footer">
@@ -78,7 +78,7 @@
                     magna aliqua. Utenim ad minim veniam, quis nostrud.</p>
                 <footer class="testimonial-footer">
                     <div class="testimonial-avatar">
-                        <img src="/images/author/01.jpg" alt="Testimonial Author Avatar" />
+                        <img src="/images/testimonials/01.jpg" alt="Testimonial Author Avatar" />
                     </div>
                     <div class="d-table-cell align-middle pl-2">
                         <div class="blockquote-footer">

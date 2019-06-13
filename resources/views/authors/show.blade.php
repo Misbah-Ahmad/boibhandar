@@ -15,7 +15,7 @@
                         <div class="author-card">
     
                             <div class="author-profile">
-                                <div class="author-avatar"><img src="/images/author/01.jpg" alt="Blog Author" />
+                            <div class="author-avatar"><img src="/images/author/{{ $author->image_link }}" alt="Blog Author" />
                                 </div>
 
                                 <div class="author-details">

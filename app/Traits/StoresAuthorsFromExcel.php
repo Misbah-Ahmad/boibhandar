@@ -23,7 +23,7 @@ trait StoresAuthorsFromExcel
     {
 
         $failed = [];
-
+        \DB::table('authors')->delete();
         foreach ($rows as  $row)
         {
             
@@ -33,7 +33,7 @@ trait StoresAuthorsFromExcel
             $author->name = $row['writer_name'];
             $author->tag_line = '';
             $author->short_bio = '';
-            
+            $author->image_link = $row['image_name'];
 
             if($author->save() == false)
             {

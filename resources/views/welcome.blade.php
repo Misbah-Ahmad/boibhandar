@@ -44,7 +44,7 @@
         <div class="col-lg-2 col-md-3 col-sm-4 col-4">
             <div class="top-authors-card mx-auto">
                 <a class="top-authors-thumb" href="#">
-              <img src="/images/author/01.jpg"" alt=""/>
+              <img src="/images/testimonials/01.jpg"" alt=""/>
               <p class="top-authors-title">Ayman Sadik</p>
             </a>
             </div>
@@ -53,7 +53,7 @@
         <div class="col-lg-2 col-md-3 col-sm-4 col-4">
             <div class="top-authors-card mx-auto">
                 <a class="top-authors-thumb" href="#">
-              <img src="/images/author/02.jpg" alt=""/>
+              <img src="/images/testimonials/02.jpg" alt=""/>
               <p class="top-authors-title">মুহম্মদ জাফর ইকবাল</p>
             </a>
             </div>
@@ -62,7 +62,7 @@
         <div class="col-lg-2 col-md-3 col-sm-4 col-4">
             <div class="top-authors-card mx-auto">
                 <a class="top-authors-thumb" href="#">
-              <img src="/images/author/03.jpg" alt=""/>
+              <img src="/images/testimonials/03.jpg" alt=""/>
               <p class="top-authors-title">Humayan Ahmed</p>
             </a>
             </div>
@@ -71,7 +71,7 @@
         <div class="col-lg-2 col-md-3 col-sm-4 col-4">
             <div class="top-authors-card mx-auto">
                 <a class="top-authors-thumb" href="#">
-              <img src="/images/author/01.jpg" alt="Product Thumbnail"/>
+              <img src="/images/testimonials/01.jpg" alt="Product Thumbnail"/>
               <p class="top-authors-title">Ayman Sadik</p>
             </a>
             </div>
@@ -80,7 +80,7 @@
         <div class="col-lg-2 col-md-3 col-sm-4 col-4">
             <div class="top-authors-card mx-auto">
                 <a class="top-authors-thumb" href="#">
-              <img src="/images/author/03.jpg" alt="Product Thumbnail"/>
+              <img src="/images/testimonials/03.jpg" alt="Product Thumbnail"/>
               <p class="top-authors-title">Ayman Sadik</p>
             </a>
             </div>
@@ -89,7 +89,7 @@
         <div class="col-lg-2 col-md-3 col-sm-4 col-4">
             <div class="top-authors-card mx-auto">
                 <a class="top-authors-thumb" href="#">
-              <img src="/images/author/02.jpg" alt="Product Thumbnail"/>
+              <img src="/images/testimonials/02.jpg" alt="Product Thumbnail"/>
               <p class="top-authors-title">Ayman Sadik</p>
             </a>
             </div>
