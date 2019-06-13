@@ -6,13 +6,15 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', env('GTAG_UID'));
+        gtag('config', 'UA-141177100-1');
     </script>
 
     <meta charset="utf-8">
     <title>Boibhandar | Buy and Hire Books Online
     </title>
 
+
+    @yield('og-meta')
 
     <!-- SEO Meta Tags-->
     <meta name="description" content="Boibhandar - Online Book Shop In Bangladesh">
@@ -24,10 +26,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Favicon and Touch Icons-->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/webmanifest.json">
     <link rel="mask-icon" color="#343b43" href="safari-pinned-tab.svg">
     <meta name="msapplication-TileColor" content="#603cba">
     <meta name="theme-color" content="#ffffff">

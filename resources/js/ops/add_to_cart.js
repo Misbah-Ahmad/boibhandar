@@ -37,6 +37,6 @@ window.updateCartIcon = count =>
     {
         text = count;
     }
-    document.querySelector('header > div > div.navbar >div > ul.navbar-buttons > li >span#cartIcon').innerText = text;
+    document.querySelector('span#cartIcon').innerText = text;
 
 }

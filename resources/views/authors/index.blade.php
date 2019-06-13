@@ -4,12 +4,15 @@
 @section('content')
 
     <!-- Page Title-->
-    <div class="shop-page-title d-flex" aria-label="Page title"
-        style="background-image: url(images/components/others/03.jpg);">
-        <div class="container text-left align-self-center">
-            <h3 class="shop-page-title-inner block-title pt-3">Authors</h3>
+    <section class="shop-page-title-bg">
+        <div class="shop-page-title d-flex" aria-label="Page title"
+            style="background-image: url(/images/bg/bg-11.png);">
+            <div class="container text-left align-self-center">
+                <h3 class="shop-page-title-inner block-title pt-3">Authors</h3>
+            </div>
         </div>
-    </div>
+
+    </section>
 
 
 

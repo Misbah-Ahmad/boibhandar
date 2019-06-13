@@ -109,42 +109,55 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('categories.index') }}">Categories</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('corporates.create') }}">Corporate Order</a></li>
                 </ul>
-                <div>
-                    <ul class="navbar-buttons d-inline-block align-middle mr-lg-2">
-                        {{-- <li>
-                            <a href="#" data-toggle="search"><i class="fe-icon-search"></i></a>
-                        </li> --}}
 
-                        <li>
-                            <a href=" {{ route('carts.show') }} "><i class="fe-icon-shopping-cart"></i></a>
-                            <span id="cartIcon" class="badge badge-danger">{{ $cookie_count > 0 ? $cookie_count : '' }}</span>
-                        </li>
 
-                        <li class="d-block d-lg-none">
-                            <a href="#mobile-menu" data-toggle="offcanvas"><i class="fe-icon-menu"></i></a>
-                        </li>
 
-                    </ul>
+                <ul class="navbar-buttons d-inline-block align-middle">
+                    {{-- <li class="nav-icon-custom">
+                        <a href="#" data-toggle="search"><i class="fe-icon-search"></i></a>
+                    </li> --}}
+                    
+                    <li class="nav-icon-custom">
+                        <a href=" {{ route('carts.show') }} "><i class="fe-icon-shopping-cart"></i></a>
+                        <span id="cartIcon" class="badge badge-danger">{{ $cookie_count > 0 ? $cookie_count : '' }}</span>
+                    </li>
+
+                    <li class="d-block d-lg-none nav-icon-custom">
+                        <a href="#mobile-menu" data-toggle="offcanvas"><i class="fe-icon-menu"></i></a>
+                    </li>
 
                     @guest
-                        <a class="btn btn-style-6 btn-primary ml-3 d-none d-xl-inline-block" href="{{ route('login') }}"><i class="fe-icon-lock"></i>Login</a>
-                        <script>window.loggedIn = false</script>
+
+                        <li class="nav-icon-custom">
+                            <a class="" href="{{ route('login') }}"><i class="fe-icon-lock"></i> Login</a>
+                            <script>window.loggedIn = false</script>                                
+                        </li>
+
                     @else
                         <script>window.loggedIn = true;</script>
-                        <a class="btn btn-style-6 btn-primary ml-3 d-none d-xl-inline-block" href="{{ route('dash') }}">
-                        <i class="fe-icon-user"></i>Account</a>
+                        <li class="nav-icon-custom nav-profile dropdown">
+                            <a class="nav-icon dropdown-toggle" href="#" data-toggle="dropdown">
+                                <img src="/images/users/profile_dummy.jpg" class="avatar rounded-circle" alt="" />
 
-                        <a class="btn btn-style-6 btn-primary ml-3 d-none d-xl-inline-block" onclick="event.preventDefault(); document.querySelector('#logoutForm').submit();"><i class="fe-icon-user"></i>Logout</a>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="{{ route('dash') }}"><i class="fe-icon-user"></i>Profile</a>
+                                <a class="dropdown-item" onclick="event.preventDefault(); document.querySelector('#logoutForm').submit();" style="cursor:pointer;"><i class="fe-icon-log-out"></i>Logout</a>
 
-                        <form style="display:none;" id="logoutForm" method="POST" action="{{ route('logout') }}">
-                            @csrf
-                        </form>
+                                <form style="display:none;" id="logoutForm" method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                </form>
+
+
+                            </div>
+                        </li>
+                        
                     @endguest
 
 
 
-                
-                </div>
+                </ul>
+
             </div>
         </div>
     </header>

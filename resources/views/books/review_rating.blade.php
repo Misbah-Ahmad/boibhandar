@@ -19,7 +19,7 @@
 
               </div>
               
-              <div class="pt-3">
+              {{-- <div class="pt-3">
                   @php($review_count = $book->reviews()->count())
                   <span class="progress-label">5 stars <span class='text-muted'>-  {{ $book->getStarCount(5.0) }}</span></span>                
                   <div class="progress progress-style-3 mb-3">
@@ -57,7 +57,66 @@
                     </div>
                   </div>
 
+              </div> --}}
+
+
+              <div class="rating-histogram pt-3">
+                
+                
+                <div class="rating-bar-container five" data-id="5">
+                  <span class="progress-label">5 stars - <span class="bar-number text-muted"></span></span>
+                  <div class="progress progress-style-3 mb-3">
+                    <div class="bar" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+
+                <div class="rating-bar-container four" data-id="4">
+                  <span class="progress-label">4 stars - <span class="bar-number text-muted"></span></span>
+                  <div class="progress progress-style-3 mb-3">
+                    <div class="bar" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                
+                <div class="rating-bar-container three" data-id="3">
+                  <span class="progress-label">3 stars - <span class="bar-number text-muted"></span></span>
+                  <div class="progress progress-style-3 mb-3">
+                    <div class="bar" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                
+                <div class="rating-bar-container two" data-id="2">
+                  <span class="progress-label">2 stars - <span class="bar-number text-muted"></span></span>
+                  <div class="progress progress-style-3 mb-3">
+                    <div class="bar" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                
+                <div class="rating-bar-container one" data-id="1">
+                  <span class="progress-label">1 stars - <span class="bar-number text-muted"></span></span>
+                  <div class="progress progress-style-3 mb-3">
+                    <div class="bar" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              
               </div>
+
+
+
+
+
+              <div class="hidden">
+                <form>
+                  <input type="text" class="reviews_1star" value="{{ $book->getStarCount(1.0) }}">
+                  <input type="text" class="reviews_2star" value="{{ $book->getStarCount(2.0) }}">
+                  <input type="text" class="reviews_3star" value="{{ $book->getStarCount(3.0) }}">
+                  <input type="text" class="reviews_4star" value="{{ $book->getStarCount(4.0) }}">
+                  <input type="text" class="reviews_5star" value="{{ $book->getStarCount(5.0) }}">
+                </form>
+              </div>
+
+
+
+
 
             </div>
 

@@ -11,16 +11,16 @@
         </div>
 
         <a class="product-thumb" href="{{ route('books.show', $book->id) }}">
-            <img class="lazy" data-src="{{ asset($book->image) }}"  alt="Product Thumbnail">
+            <img class="lazy" data-src="{{ asset($book->image) }}"  alt="{{ $book->title }}" title=" {{ $book->title }} "> 
         </a>
         
         <div class="product-card-body" style="font-size:12px;">
         
             <h5 class="product-title" style="font-size:14px;">
-                <a href="{{ route('books.show', $book->id) }}">{{ $book->title }}</a>
+                <a href="{{ route('books.show', $book->id) }}">{{ $book->shortTitle  }}</a>
             </h5>
 
-            {!! implode('<br>', $book->authorList()) !!}
+            {!! implode(', ', $book->authorList()) !!}
             
         
             <span class="product-price">

@@ -9,6 +9,17 @@
     });
 </script>
 
+<script type="text/javascript">
+  var today = new Date();
+  var year = today.getFullYear();
+
+  var el = document.getElementById('year');
+
+  el.innerHTML = year;
+</script>
+
+
+
 <script>
     $(document).ready(function($) {
               $('.fadeOut').owlCarousel({

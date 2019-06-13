@@ -90,8 +90,10 @@
           </div>
         
           <div class="mt-2 mb-2"><span class="text-muted d-inline-block align-middle mb-2">Share:&nbsp;&nbsp;</span>
-        
-            <div class="d-inline-block">
+
+              <div class="fb-share-button" data-href="{{ 'https://test.boibhandar.com/' . request()->path() }}" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+
+            <div class="d-inline-block">              
               <a class="social-btn sb-style-3 sb-facebook my-1" href="#" data-toggle="tooltip" data-placement="top"
                 title="Facebook"><i class="socicon-facebook"></i>
               </a>

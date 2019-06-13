@@ -1,5 +1,20 @@
 @extends('layouts.master')
 
+@section('og-meta')
+    
+    <meta property="og:url" content="{{ 'https://test.boibhandar.com/' . request()->path() }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{ $book->title }}" />
+    <meta property="og:description" content="Buy books online in Chittagong" />
+    <meta property="og:image" content="{{ asset($book->image) }}" />
+
+
+@endsection
+<script>
+      const title = "{!! $book->title !!}";
+          document.title = title;
+</script>
+
 @section('content')
     
 
@@ -45,5 +60,43 @@
     @endif
 
 
+
+@endsection
+
+@section('js')
+    
+<script>
+
+$(function() {
+  var stars = [];
+  var sum = 0;
+  var width = [];
+
+  for ( var i = 1; i < 6; i++ ) {
+    stars.push(parseInt($('.reviews_'+i+'star').val()));
+  }     
+
+  for ( var i = 0; i < stars.length; i++ ) {
+    sum += stars[i];       
+  }     
+
+  for ( var i = 0; i < stars.length; i++ ) {
+    w = ((stars[i]) / sum * 100).toFixed(0);
+    width.push(w);
+    $('.rating-bar-container[data-id='+(i+1)+'] .bar').css('width', w+'%' ); 
+  }
+
+  if (sum > 0) {
+    for ( var i = 0; i < stars.length; i++ ) {
+      $('.rating-bar-container[data-id='+(i+1)+'] .bar-number').html(width[i]+'%'); 
+    }
+  } else{
+    $(".rating-bar-container .bar-number").html('0%')
+  }
+});
+
+
+
+</script>
 
 @endsection

@@ -196,4 +196,16 @@ class Book extends Model
         return $this->reviews()->where('score', $star_num)->count();
     }
 
+    public function getWordsOfTitleAttribute()
+    {
+        return explode(' ', $this->title);
+    }
+
+    public function getShortTitleAttribute()
+    {
+        $arr = $this->wordsOfTitle;
+        return count($arr) < 4 ? implode(' ', $arr) : (implode(' ', array_slice($arr, 0, 3)) . '...');
+
+    }
+
 }

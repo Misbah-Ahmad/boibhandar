@@ -25,7 +25,7 @@
                     </div>
                     <hr>
                     <h4 class="h5 text-center pb-2 pt-4">Corporate Sales: <i class="fe-icon-phone text-muted"></i>
-                        <a class="navi-link ml-1" href="tel:+8801777777777">+880 177 77 777 77</a>
+                        <a class="navi-link ml-1" href="tel:+8801307883288">+880 1307 88 32 88</a>
                     </h4>
                 </div>
             </div>
@@ -33,7 +33,54 @@
     </div>
     
     
+    <div class="container corporate-order mb-2 mt-4">
+      <div class="row">
+      <div class="col-md-12">
+        <div class="wizard p-4">
+          <h2 class="text-capitalize h4 block-title text-center">Why Us?</h2>
+          <div class="row pt-4">
+
+            <div class="col-lg-4 col-md-4 col-sm-4">
+              <div class="icon-box text-center">
+                <div class="icon-box-icon">
+                  <i class="fe-icon-book"></i>
+                </div>
+                <h3 class="icon-box-title">Huge Collection</h3>
+                <p class="icon-box-text">Definitely Boibhandar has a vast collection of books and magazines. We can ensure that our collection of books will fulfill your any type of reading thirst. So, don't get late to arrange your bookshelf with the huge collection of our books.</p>
+              </div>
+            </div>
+
+
+            <div class="col-lg-4 col-md-4 col-sm-4">
+              <div class="icon-box text-center">
+                <div class="icon-box-icon">
+                  <i class="fe-icon-percent"></i>
+                </div>
+                <h3 class="icon-box-title">Handsome Discount</h3>
+                <p class="icon-box-text">Reading thirst should fit in your budget and Boibhandar offers discounts by considering it. For corporate orders, we discount more than the ordinary clients. You may try getting a quote for your desired books.</p>
+              </div>
+            </div>
+
+
+            <div class="col-lg-4 col-md-4 col-sm-4">
+              <div class="icon-box text-center">
+                <div class="icon-box-icon">
+                  <i class="fe-icon-truck"></i>
+                </div>
+                <h3 class="icon-box-title">At Your Doorstep</h3>
+                <p class="icon-box-text">Boibhandar team will reach to you with your orders without any hassle. Such delivery will save both of your time and money. So, sit back and order from boibhandar now.</p>
+              </div>
+            </div>
+
+
+        </div>
+      </div>
+      </div>
+    </div>
+    </div>
+
     
+
     
     <!-- Contact Form-->
     <section class="container mt-4 pb-3">
