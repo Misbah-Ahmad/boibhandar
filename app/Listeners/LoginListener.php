@@ -37,7 +37,7 @@ class LoginListener
             $cart = $user->cart()->save(new Cart);
         }
 
-        $auth_books = $cart->books->pluck('id')->toArray();
+        $auth_books = $cart->books()->pluck('id')->toArray();
 
         $guest_books = json_decode(Cookie::get(env('GUEST_CART_COOKIE')));
 
@@ -49,12 +49,10 @@ class LoginListener
 
         if (count($diff_books) > 0) {
             $cart->books()->attach($diff_books);
-            $auth_books = $cart->books->pluck('id')->toArray();
+            $auth_books = $cart->books()->pluck('id')->toArray();
         }
 
-
-        Cookie::queue(Cookie::make(env('AUTH_CART_COOKIE'), json_encode($auth_books), intval(env('CART_COOKIE_AGE')), '/'));        
-    
+        Cookie::queue(Cookie::make(env('AUTH_CART_COOKIE'), json_encode($auth_books), intval(env('CART_COOKIE_AGE')), '/'));
     
     }
 }

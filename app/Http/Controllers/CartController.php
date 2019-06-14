@@ -73,9 +73,9 @@ class CartController extends Controller
             {
                 $cart->books()->save($book);
                 
-                $books = $cart->books()->pluck('book_id');
+                $books = $cart->books()->pluck('id');
 
-                Cookie::queue(Cookie::make(env('AUTH_CART_COOKIE'), json_encode($books) , 518400, '/'));
+                Cookie::queue(Cookie::make(env('AUTH_CART_COOKIE'), json_encode($books), intval(env('CART_COOKIE_AGE')), '/'));
 
                 return response()->json([
                         'success' => true,
@@ -104,9 +104,14 @@ class CartController extends Controller
         $cookie_name = auth()->check() ? env('AUTH_CART_COOKIE') : env('GUESTA_CART_COOKIE');
 
         $cookie = json_decode(Cookie::get($cookie_name));
+        $cart = auth()->user()->cart;
 
-        if($cookie != null && is_array($cookie) && count($cookie) > 0)
+        if($cart->hasBook($book))
         {
+            if(!is_array($cookie))
+            {
+                $cookie = [];
+            }
             $diff = array_values(array_diff($cookie, [$book->id]));
             Cookie::queue(Cookie::make($cookie_name, json_encode($diff), intval(env('CART_COOKIE_AGE')), '/'));            
 
