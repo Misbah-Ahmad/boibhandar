@@ -14,10 +14,13 @@
                     <script>window.loggedIn = false;</script>
                 </div>
             @else
-                <div class="d-flex justify-content-between pt-2">
-                    <a class="btn btn-primary btn-sm btn-block" href="{{ route('dash') }}"><i class="fe-icon-user"></i>&nbsp;Account</a>
                     <script>window.loggedIn = true;</script>
-                </div>            
+                
+                <div class="d-flex justify-content-between pt-2">
+                <a class="btn btn-primary btn-sm" href="{{ route('dash') }}"><i class="fe-icon-user"></i>&nbsp;Account</a>
+                <a class="btn btn-primary btn-sm" onclick="event.preventDefault(); document.querySelector('#logoutForm').submit();"><i class="fe-icon-log-out"></i>&nbsp;Logout</a>
+                </div>                
+                
             @endguest
         </div>
         <div class="offcanvas-scrollable-area border-top" style="height:calc(100% - 235px); top: 144px;">
