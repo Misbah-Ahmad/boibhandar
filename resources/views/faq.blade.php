@@ -103,20 +103,27 @@
                     <div class="card-header">
                         <h6>
                             <a class="collapsed" href="#collapseSix" data-toggle="collapse">
-                                <i class="fe-icon-file-text text-muted"></i>What are the product refund conditions?
+                                <i class="fe-icon-file-text text-muted"></i>What are the product return conditions?
                             </a>
                         </h6>
                     </div>
                     <div class="collapse" id="collapseSix" data-parent="#accordion2">
                         <div class="card-body">
-                            <div class="opacity-75">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-                                terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-                                brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
-                                aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil
-                                anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                                proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                                farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them
-                                accusamus dolores eos qui ratione voluptatem.</div>
+                            <div class="opacity-75">
+
+                                <ul style="">
+                                    <li>Books must be returned in good condition and free of damages like:</li>
+                                    <ul>
+                                        <li>Any water/liquid damage</li>
+                                        <li>Missing/torn cover(s)</li>
+                                        <li>Destroyed text on page(s)</li>
+                                    </ul>
+                                    <li>No highlighting, Writing or other markings in the book.</li>
+                                    <li>Gifted books are not returnable.</li>
+                                    <li>Books below BDT100 are not returnable.</li>
+                                </ul>
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -148,7 +155,7 @@
                     <div class="collapse" id="collapseEight" data-parent="#accordion2">
                         <div class="card-body">
                             <div class="opacity-75">Nope, we don't accept torn books. For more you should follow our <a
-                                    href="#">Hiring Policy</a></div>
+                                href="/return-policy">Rent Policy</a></div>
                         </div>
                     </div>
                 </div>

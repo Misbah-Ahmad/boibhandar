@@ -10,7 +10,7 @@
     </script>
 
     <meta charset="utf-8">
-    <title>Boibhandar | Buy and Hire Books Online
+    <title>Boibhandar | Buy and Rent Books Online
     </title>
 
 
@@ -18,7 +18,7 @@
 
     <!-- SEO Meta Tags-->
     <meta name="description" content="Boibhandar - Online Book Shop In Bangladesh">
-    <meta name="keywords" content="boibhandar, book, online book shop, shop, hire books online, buy books online, boi, book, book shop, golper boi, uponnash">
+    <meta name="keywords" content="boibhandar, book, online book shop, shop, hire books online, rent books online, buy books online, boi, book, book shop, golper boi, uponnash">
     <meta name="author" content="Daanguli Studio">
     
     <meta name="csrf-token" content="{{ csrf_token() }}">    

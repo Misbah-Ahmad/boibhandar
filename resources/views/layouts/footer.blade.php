@@ -45,8 +45,7 @@
                         <ul>
                             <li><a href="{{ route('terms') }}">Terms and Conditions</a></li>
                             <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
-                            <li><a href="#">Book Rent Policy</a></li>
-                            <li><a href="#">Return Criteria</a></li>
+                            <li><a href="{{ route('return_policy') }}">Rent & Return Policy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -102,16 +101,16 @@
                                     href="https://twitter.com/boibhandar/" target="_blank">
                                     <i class="socicon-twitter"></i>
                                 </a>
-                                <a class="social-btn sb-style-5 sb-youtube sb-light-skin" href="#">
+                                {{-- <a class="social-btn sb-style-5 sb-youtube sb-light-skin" href="#">
                                     <i class="socicon-youtube"></i>
-                                </a>
+                                </a> --}}
                                 <a class="social-btn sb-style-5 sb-instagram sb-light-skin"
                                     href="https://instagram.com/boibhandar/" target="_blank">
                                     <i class="socicon-instagram"></i>
                                 </a>
-                                <a class="social-btn sb-style-5 sb-linkedin sb-light-skin" href="#">
+                                {{-- <a class="social-btn sb-style-5 sb-linkedin sb-light-skin" href="#">
                                     <i class="socicon-linkedin"></i>
-                                </a>
+                                </a> --}}
                             </div>
                         </div>
                     </div>

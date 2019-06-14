@@ -5,15 +5,15 @@
 
 <section class="featured-posts-slider d-lg-flex">
     <div class="owl-carousel dots-inside home-img-carousel fadeOut owl-theme">
-        <a class="post-preview-img" href="#"><img class="lazy" data-src="/images/components/carousel/04.jpg" alt="Carousel Image"/></a>
-        <a class="post-preview-img" href="#"><img class="lazy" data-src="/images/components/carousel/05.jpg" alt="Carousel Image"/></a>
-        <a class="post-preview-img" href="#"><img class="lazy" data-src="/images/components/carousel/06.jpg" alt="Carousel Image"/></a>
+        <a class="post-preview-img" href="#"><img src="/images/banner/banner1.png" alt="Boibhandar Banner"/></a>
+        <a class="post-preview-img" href="#"><img src="/images/banner/banner2.png" alt="Boibhander Banner"/></a>
+        {{-- <a class="post-preview-img" href="#"><img class="lazy" data-src="/images/components/carousel/06.jpg" alt="Carousel Image"/></a> --}}
     </div>
 </section>
 
 
 
-<section class="container">
+{{-- <section class="container">
     <div class="seasonal-promotion-banner">
         <div class="row">
             <div class="col-md-12 pt-2 pb-3">
@@ -21,7 +21,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 
 <!-- Best Seller Products-->
@@ -40,74 +40,26 @@
 <section class="container py-6 mb-4 top-authors">
     <h2 class="h4 block-title text-left pt-3">Top Authors</h2>
     <div class="row">
-        <!-- Product-->
-        <div class="col-lg-2 col-md-3 col-sm-4 col-4">
-            <div class="top-authors-card mx-auto">
-                <a class="top-authors-thumb" href="#">
-              <img src="/images/testimonials/01.jpg"" alt=""/>
-              <p class="top-authors-title">Ayman Sadik</p>
-            </a>
+
+        @foreach ($showcase_authors as $author)
+
+            <div class="col-lg-2 col-md-3 col-sm-4 col-4">
+                <div class="top-authors-card mx-auto">
+                    <a class="top-authors-thumb" href=" {{ route('authors.show', $author->id) }} ">
+                <img src="/images/author/{{ $author->image_link }}" alt=""/>
+                <p class="top-authors-title"> {{ $author->name }} </p>
+                </a>
+                </div>
             </div>
-        </div>
-        <!-- Product-->
-        <div class="col-lg-2 col-md-3 col-sm-4 col-4">
-            <div class="top-authors-card mx-auto">
-                <a class="top-authors-thumb" href="#">
-              <img src="/images/testimonials/02.jpg" alt=""/>
-              <p class="top-authors-title">মুহম্মদ জাফর ইকবাল</p>
-            </a>
-            </div>
-        </div>
-        <!-- Product-->
-        <div class="col-lg-2 col-md-3 col-sm-4 col-4">
-            <div class="top-authors-card mx-auto">
-                <a class="top-authors-thumb" href="#">
-              <img src="/images/testimonials/03.jpg" alt=""/>
-              <p class="top-authors-title">Humayan Ahmed</p>
-            </a>
-            </div>
-        </div>
-        <!-- Product-->
-        <div class="col-lg-2 col-md-3 col-sm-4 col-4">
-            <div class="top-authors-card mx-auto">
-                <a class="top-authors-thumb" href="#">
-              <img src="/images/testimonials/01.jpg" alt="Product Thumbnail"/>
-              <p class="top-authors-title">Ayman Sadik</p>
-            </a>
-            </div>
-        </div>
-        <!-- Product-->
-        <div class="col-lg-2 col-md-3 col-sm-4 col-4">
-            <div class="top-authors-card mx-auto">
-                <a class="top-authors-thumb" href="#">
-              <img src="/images/testimonials/03.jpg" alt="Product Thumbnail"/>
-              <p class="top-authors-title">Ayman Sadik</p>
-            </a>
-            </div>
-        </div>
-        <!-- Product-->
-        <div class="col-lg-2 col-md-3 col-sm-4 col-4">
-            <div class="top-authors-card mx-auto">
-                <a class="top-authors-thumb" href="#">
-              <img src="/images/testimonials/02.jpg" alt="Product Thumbnail"/>
-              <p class="top-authors-title">Ayman Sadik</p>
-            </a>
-            </div>
-        </div>
+        
+
+        @endforeach
 
     </div>
-    <div class="text-center pt-7"><a class="btn btn-primary" href="#">See More</a></div>
+    <div class="text-center pt-7"><a class="btn btn-primary" href="/authors">See More</a></div>
 </section>
 
 
-
-
-
-
-
-
-<!-- Testimonials-->
-@include('testimonial')
 
 
 
@@ -115,7 +67,7 @@
 
 @include('services')                                    
 
-<!-- Large Modal -->
+{{-- <!-- Large Modal -->
 <div class="modal fade" id="modalLarge" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -160,13 +112,13 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 <section class="book-req container bg-secondary pt-4 pb-2">
     <div class="book-req-trigger">
         <p class="">Didn't find what you are looking for?
             <span>
-            <button class="btn btn-style-5 btn-primary book-req-trigger-btn mr-3 mb-3" type="button" data-toggle="modal" data-target="#modalLarge"><i class="fe-icon-edit mr-1"></i> Let Us Know</button>
+            <a href=" {{ route('contact') }} " class="btn btn-style-5 btn-primary book-req-trigger-btn mr-3 mb-3"><i class="fe-icon-edit mr-1"></i> Let Us Know</a>
           </span>
         </p>
         <!-- Buttons to Trigger Modals -->

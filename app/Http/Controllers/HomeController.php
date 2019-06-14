@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
-
+use App\Author;
 
 class HomeController extends Controller
 {
@@ -76,7 +76,8 @@ class HomeController extends Controller
     {
         $books = Book::all()->random(50);
 
-        return view('welcome', ['books' => $books]);
+        $showcase_authors = Author::has('books', '>', 15)->limit(6)->get();
+        return view('welcome', compact(['books', 'showcase_authors']));
 
     }
 
@@ -108,6 +109,11 @@ class HomeController extends Controller
     public function terms()
     {
         return view('terms');
+    }
+
+    public function returnPolicy()
+    {
+        return view('return_policy');
     }
 
 }

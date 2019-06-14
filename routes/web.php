@@ -104,3 +104,4 @@ Route::get('/contact', 'HomeController@contact')->name('contact');
 Route::get('/privacy-policy', 'HomeController@privacy')->name('privacy');
 Route::get('/shopping-guideline', 'HomeController@guideline')->name('guideline');
 Route::get('/terms-conditions', 'HomeController@terms')->name('terms');
+Route::get( '/return-policy', 'HomeController@returnPolicy')->name( 'return_policy');
