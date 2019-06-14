@@ -6,11 +6,11 @@
     <ul class="nav nav-tabs nav-tabs-style-4" role="tablist">
 
         <li class="nav-item">
-            <a class="nav-link {{ $login_tab }}" href="#logIn" data-toggle="tab" role="tab"><i class="fe-icon-user"></i>&nbsp;Login</a>
+            <a class="nav-link {{ $login_tab }}" href="#logIn" data-toggle="tab" role="tab" id="loginTabBtn"><i class="fe-icon-user"></i>&nbsp;Login</a>
         </li>
     
         <li class="nav-item">
-            <a class="nav-link {{ $register_tab }}" href="#registerIn" data-toggle="tab" role="tab"><i class="fe-icon-edit"></i>&nbsp;Register</a>
+            <a class="nav-link {{ $register_tab }}" href="#registerIn" data-toggle="tab" role="tab" id="registerTabBtn"><i class="fe-icon-edit"></i>&nbsp;Register</a>
         </li>
     
     </ul>
@@ -91,8 +91,44 @@
 
                                 <hr class="mt-3">
 
-                                <p class="text-center h5 pt-3">Don’t have an account? <a href="#registerIn" data-toggle="tab" role="tab"> Register Now!</a></p>
+                                <p class="text-center h5 pt-3">Don’t have an account? <a href="#" onclick="toggleTabColor();"> Register Now!</a></p>
+                                <script>
+                                    function toggleTabColor()
+                                    {
+                                        var registerBtn = document.getElementById('registerTabBtn');
+                                        var loginBtn = document.getElementById('loginTabBtn');
+                                        var registerTab = document.getElementById('registerIn');
+                                        var loginTab = document.getElementById('logIn');
 
+                                        if(loginBtn.classList.contains('active'))
+                                        {
+                                            loginBtn.classList.remove('active');
+                                            loginBtn.classList.remove('show');
+                                            registerBtn.classList.add('active');
+                                            registerBtn.classList.add('show');
+                                            
+                                            loginTab.classList.remove('active');
+                                            loginTab.classList.remove('show');
+                                            registerTab.classList.add('active');
+                                            registerTab.classList.add('show');
+                                            
+                                        } else {
+                                            loginBtn.classList.add('active');
+                                            loginBtn.classList.add('show');
+                                            registerBtn.classList.remove('active');
+                                            registerBtn.classList.remove('show');
+                                            
+                                            loginTab.classList.add('active');
+                                            loginTab.classList.add('show');
+                                            registerTab.classList.remove('active');
+                                            registerTab.classList.remove('show');
+
+                                        }
+                                        
+                                        
+
+                                    }
+                                </script>
                             </div>
                         </form>
                     </div>
@@ -222,14 +258,7 @@
                             </form>
 
                             <hr class="mt-3">
-{{--                             
-                            <h3 class="text-center h5 pt-3 pb-2">Or, Signup Using Social Accounts</h3>
-
-                            <div class="d-sm-flex justify-content-between pb-2">
-                                <a class="btn btn-secondary btn-lg btn-block my-2 mr-3" href="#"><img src="img/social/fb.svg">&nbsp;SignUp</a>
-                                <a class="btn btn-secondary btn-lg btn-block my-2 mr-3" href="#"><img src="img/social/tt.svg">&nbsp;SignUp</a>
-                            </div>
- --}}                            
+                       
                         </div>
                     </div>
                 </div>
