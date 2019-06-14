@@ -22,8 +22,8 @@
                         <h4 class="widget-title">About us</h4>
                         <ul>
                             <li><a href="{{ route('about') }}">About Boibhandar</a></li>
-                            <li><a href="{{ route('about') }}">Contacts</a></li>
-                            <li><a href="#">Testimonials</a></li>
+                            <li><a href="{{ route('contact') }}">Contact Us</a></li>
+                            {{-- <li><a href="#">Testimonials</a></li> --}}
                         </ul>
                     </div>
                 </div>
@@ -32,8 +32,8 @@
                     <div class="widget widget-categories widget-light-skin">
                         <h4 class="widget-title">Support</h4>
                         <ul>
-                            <li><a href="{{ route('guideline') }}">Guidelines</a></li>
-                            <li><a href="{{ route('faq') }}">FAQ</a></li>
+                            {{-- <li><a href="{{ route('guideline') }}">Guidelines</a></li> --}}
+                            <li><a href="{{ route('faq') }}">F.A.Q</a></li>
                             <li><a href="{{ route('corporates.create') }}">Corporate Order</a></li>
                         </ul>
                     </div>
