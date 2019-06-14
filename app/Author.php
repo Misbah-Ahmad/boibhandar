@@ -15,17 +15,17 @@ class Author extends Model
 
     public function books()
     {
-        return $this->belongsToMany(Book::class, 'author_book', 'book_id', 'author_id');
+        return $this->belongsToMany(Book::class, 'author_book', 'author_id', 'book_id');
     }
 
     public function translatedBooks()
     {
-        return $this->belongsToMany(Book::class, 'book_translator', 'book_id', 'translator_id');
+        return $this->belongsToMany(Book::class, 'book_translator', 'translator_id', 'book_id');
     }
 
     public function editedBooks()
     {
-        return $this->belongsToMany(Book::class, 'book_editor', 'book_id', 'editor_id');
+        return $this->belongsToMany(Book::class, 'book_editor', 'editor_id', 'book_id');
     }
 
     public function categories()
