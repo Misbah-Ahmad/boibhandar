@@ -2797,7 +2797,7 @@ fieldset:disabled a.btn {
 }
 
 .btn-primary {
-    color: #fff;
+    color: #fff !important;
     background-color: #FF6700;
     border-color: #FF6700;
     box-shadow: 1px 1px 2px 1px rgba(219, 218, 219, 0.5)
@@ -15393,16 +15393,6 @@ a.alert {
     transform: translateX(3px)
 }
 
-.icon-box:hover {
-    background-color: #fff;
-    -webkit-box-shadow: 0 0.75rem 1.25rem 0.0625rem rgba(64, 64, 64, 0.09);
-    box-shadow: 0 0.75rem 1.25rem 0.0625rem rgba(64, 64, 64, 0.09)
-}
-
-.icon-box:hover .icon-box-icon {
-    background-color: #FF6700;
-    color: #fff
-}
 
 .icon-box.icon-box-horizontal {
     width: 100%;
@@ -21471,4 +21461,39 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 .icon-box .icon-box-icon {
     background-color: #FF6700;
     color: #fff
+}
+
+.navbar-buttons>li>a>i.fe-icon-shopping-cart, .navbar-buttons>li>a>i.fe-icon-menu{
+    line-height: 44px;
+    font-size: 18px;
+}
+
+
+.navbar-buttons li:nth-child(1) {
+    border-right: 1px solid #333;
+}
+
+
+@media (max-width: 767.98px) {
+
+
+    .navbar-buttons>li:nth-child(3){
+        display: none !important;
+    }
+
+    .navbar-buttons>li{
+        max-width: 44px;
+    }
+
+    .navbar-buttons>li.nav-icon-custom>a{
+        max-width: 44px;
+        font-size: 16px;
+    }
+
+
+    .navbar-buttons>li.nav-icon-custom:nth-child(1)>a{
+        border-right: 1px solid #333;
+    }
+
+
 }
