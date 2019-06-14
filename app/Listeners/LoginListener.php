@@ -37,21 +37,23 @@ class LoginListener
             $cart = $user->cart()->save(new Cart);
         }
 
-        $books = $cart->books->pluck('id')->toArray();
+        $auth_books = $cart->books->pluck('id')->toArray();
 
-        if (count($books) < 1) {
-            $books = json_decode(Cookie::get(env('GUEST_CART_COOKIE')));
+        $guest_books = json_decode(Cookie::get(env('GUEST_CART_COOKIE')));
 
-            if ($books == null || !is_array($books) || count($books) < 1) {
-                $books = [];
-            }
-
-            if (count($books) > 0) {
-                $cart->books()->attach($books);
-            }
+        if ($guest_books == null || !is_array($guest_books) || count($guest_books) < 1) {
+            $guest_books = [];
         }
 
-        Cookie::queue(Cookie::make(env('AUTH_CART_COOKIE'), json_encode($books), intval(env('CART_COOKIE_AGE')), '/'));        
+        $diff_books = array_values(array_diff($guest_books, $auth_books));
+
+        if (count($diff_books) > 0) {
+            $cart->books()->attach($diff_books);
+            $auth_books = $cart->books->pluck('id')->toArray();
+        }
+
+
+        Cookie::queue(Cookie::make(env('AUTH_CART_COOKIE'), json_encode($auth_books), intval(env('CART_COOKIE_AGE')), '/'));        
     
     
     }
