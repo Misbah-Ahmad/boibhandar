@@ -6,7 +6,7 @@
             <h6 class="review-title text-lg mb-0"> {{ $review->title }} </h6>            
             <span class="d-none d-sm-inline mx-3 text-muted opacity-50">|</span>
 
-            @include('books.rating')
+            @include('books.rating', ['score' => $review->score])
     
         </div>
 
@@ -19,7 +19,7 @@
 
             <div class="pl-2">
                 <div class="testimonial-book">Book: <a href="{{ route('books.show', $review->book->id) }}"> {{ $review->book->title }} </a></div>
-                <div class="testimonial-author">Author:<a href="{{ route('authors.show', $review->book->author->id) }}"> {{ $review->book->author->name }} </a></div>
+                <div class="testimonial-author">Author: {{ implode(', ', $review->book->authorList()) }} </a></div>
             </div>
 
         </footer>
