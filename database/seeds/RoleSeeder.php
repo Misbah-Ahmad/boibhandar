@@ -40,7 +40,7 @@ class RoleSeeder extends Seeder
         if (!($role instanceof Role)) 
         {
             $role = new Role;
-            $role->name = 'admin';
+            $role->name = 'super-admin';
             $role->display_name = 'Super Admin';
             $role->description = 'As your wish';
             $role->save();

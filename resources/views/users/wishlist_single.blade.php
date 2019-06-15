@@ -4,7 +4,7 @@
 
             <a class="cart-item-product" href=" {{ route('books.show', $book->id) }} ">
             
-                <div class="cart-item-product-thumb"><img src="{{ asset($book->thumb) }}" alt="{{ $book->title }}"></div>
+                <div class="cart-item-product-thumb"><img src="{{ asset($book->image) }}" alt="{{ $book->title }}"></div>
             
                 <div class="cart-item-product-info">
                     <h4 class="cart-item-product-title"> {{ $book->title }} </h4>

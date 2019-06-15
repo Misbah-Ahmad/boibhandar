@@ -61,7 +61,6 @@
                                     <label class="text-muted" for="checkout-pickup">Area</label>
                                     <select class="form-control" id="checkout-pickup" name="checkout_pickup" required>
                                         <option hidden>Choose An Area</option>
-                                        <option></option>
                                         <option value="GEC Circle">GEC</option>
                                         <option value="New Market">New Market</option>
                                         <option value="Muradpur">Muradpur</option>

@@ -7,7 +7,7 @@ use App\Author;
 use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
-
+use Illuminate\Support\Facades\Validator;
 class HomeController extends Controller
 {
     /**
@@ -124,6 +124,37 @@ class HomeController extends Controller
     public function returnPolicy()
     {
         return view('return_policy');
+    }
+
+
+    public function storeContact(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'g-recaptcha-response' => 'required|captcha',            
+            'name' => ['required', 'string', 'min:3', 'max:30'],
+            'phone' => ['required', 'string', 'regex:/^(01)[3-9]{1,1}[0-9]{8,8}$/i'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'message' => ['required', 'string', 'min:15', 'max:100'],
+            'subject' => ['required', 'string', 'min:5', 'max:50'],
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $noti = [
+            'type' => 'Contact Us',
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'message' => $request->message,
+            'subject' => $request->subject,
+        ];
+
+        \Log::channel('slack_quote')->info(json_encode($noti, JSON_PRETTY_PRINT));
+
+        return back()->with('message', 'We\'ve got your message, our customer support team will be in touch with you shortly.');        
+
     }
 
 }

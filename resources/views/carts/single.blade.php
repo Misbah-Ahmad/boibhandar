@@ -51,8 +51,8 @@
         <div class="col-md-3">
             <div class="px-3 my-3 text-center">
         
-            <div class="cart-item-label">Subtotal</div>৳ <span class="text-xl font-weight-medium" id="subPrice{{ $loop->index }}"> {{ $book->hasDiscount ? $book->discountedPrice : $book->price }} </span>
-                <div id="unitHidden{{$loop->index}}" style="display:none;">{{ $book->hasDiscount ? $book->discountedPrice : $book->price }}</div>
+            <div class="cart-item-label">Subtotal</div>৳ <span class="text-xl font-weight-medium" id="subPrice{{ $loop->index }}"> {{ $book->hasDiscount ? intval($book->discountedPrice) : intval($book->price) }} </span>
+                <div id="unitHidden{{$loop->index}}" style="display:none;">{{ $book->hasDiscount ? intval($book->discountedPrice) : intval($book->price) }}</div>
             </div>
         
         </div>

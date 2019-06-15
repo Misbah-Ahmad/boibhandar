@@ -20,7 +20,15 @@
                 <a href="{{ route('books.show', $book->id) }}">{{ $book->shortTitle  }}</a>
             </h5>
 
-            {!! implode(', ', $book->authorList()) !!}
+            @php
+             $authorsTwo = $book->authorList();
+             if(is_array($authorsTwo) && count($authorsTwo) > 2)
+             {
+                 $authorsTwo = [$authorsTwo[0], $authorsTwo[1]];
+             }   
+            @endphp
+
+            {!! implode(', ', $authorsTwo) !!}
             
         
             <span class="product-price">

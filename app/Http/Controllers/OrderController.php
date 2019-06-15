@@ -26,6 +26,10 @@ class OrderController extends Controller
     {
 
         $user = auth()->user(); 
+        if($user->hasPendingOrder)
+        {
+            return back();
+        }
         $cartList = json_decode($request->cart_list);
 
 
@@ -59,6 +63,12 @@ class OrderController extends Controller
 
         $user = auth()->user();
 
+        $user = auth()->user();
+        if ($user->hasPendingOrder) 
+        {
+            return back()->withInput();
+        }
+
         $books = $user->cart->books()->without('author')->get();
 
         $orderDetails = [];
@@ -70,10 +80,10 @@ class OrderController extends Controller
         {
             $orderDetail = new OrderDetail;
             $orderDetail->book_id = $book->id;
-            $orderDetail->price = $book->hasDiscount ? $book->discountedPrice : $book->price;
+            $orderDetail->price = $book->hasDiscount ? intval($book->discountedPrice) : intval($book->price);
             $orderDetail->buying_price = $book->buying_price;
             $orderDetail->quantity = $book->counter->count;
-            $orderDetail->total_price = $book->counter->count * $orderDetail->price;
+            $orderDetail->total_price = $book->counter->count * intval($orderDetail->price);
 
             array_push($orderDetails, $orderDetail);
 
@@ -82,8 +92,8 @@ class OrderController extends Controller
         $order->orderDetails()->saveMany($orderDetails);
 
 
-        $grand_total = $order->orderDetails()->sum('total_price') + env('SHIPPING_CHARGE');
-        $grand_total += ($request->_b_g ? env('GIFT_WRAP_CHARGE') : 0);
+        $grand_total = $order->orderDetails()->sum('total_price') + intval(env('SHIPPING_CHARGE'));
+        $grand_total += ($request->_b_g ? intval(env('GIFT_WRAP_CHARGE')) : 0);
 
         $order->transaction()->create([
 
@@ -145,20 +155,21 @@ class OrderController extends Controller
     public function saveQuoteRequest(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'g-recaptcha-response' => 'required|captcha',            
             'c_name' => ['required', 'string', 'min:3', 'max:30'],
             'org_name' => ['required', 'string', 'min:3', 'max:60'],
             'phone' => ['required', 'string', 'regex:/^(01)[3-9]{1,1}[0-9]{8,8}$/i'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'org_address' => ['required', 'string', 'min:10', 'max:60'],
-            'c_message' => ['required', 'string', 'min:15', 'max:100'],
-            'c_file' => ['file', 'mimes:doc,docx,xls,xlsx', 'max:20240'],
+            'org_address' => ['required', 'string', 'min:5', 'max:60'],
+            'c_message' => ['required', 'string', 'min:8', 'max:150'],
+            'c_file' => ['required', 'file', 'mimes:doc,docx,xls,xlsx', 'max:20240'],
         ]);
 
         if ($validator->fails()) 
         {
             return back()->withErrors($validator)->withInput();
         }
-
+        $file = $request->file('c_file');
         $noti = [
             'contact_person' => $request->c_name,
             'organization' => $request->org_name,
@@ -166,10 +177,11 @@ class OrderController extends Controller
             'email' => $request->email,
             'address' => $request->org_address,
             'message' => $request->c_message, 
+            'file_name' => $request->c_name . '_' . strtotime('now'),
         ];
 
         \Log::channel('slack_quote')->info(json_encode($noti, JSON_PRETTY_PRINT));
-
+        \Storage::put( $request->c_name . '_' . strtotime('now'), $file);
         return back()->with('message', 'We\'ve got your request, our corporate sales team will be in touch with you shortly.');
 
 

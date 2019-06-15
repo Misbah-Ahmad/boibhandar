@@ -17,13 +17,13 @@
                     <tbody>
                         
                         @php
-                            $total = 0.0; $count = 0;
+                            $total = 0; $count = 0;
                         @endphp
 
                         @foreach ($books as $book)
                             @php
 
-                                $price  = $book->hasDiscount ? $book->discountedPrice : $book->price;
+                                $price  = intval($book->hasDiscount ? $book->discountedPrice : $book->price);
                                 $total += $price;
                                 $count++;
                             
@@ -82,6 +82,10 @@
                 <a class="btn btn-primary btn-block" id="submitCart" onclick="event.preventDefault()">
                     <i class="fe-icon-credit-card"></i>&nbsp;Checkout
                 </a>
+                @if (auth()->user()->hasPendingOrder)
+                    <p style="color:#ff0000;" >You've pending order(s) in your order list. Please, confirm them to order new books!</p>
+                @endif
+
             </div>
 
 

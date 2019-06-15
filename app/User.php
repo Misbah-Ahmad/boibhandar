@@ -120,4 +120,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $query->whereDate('created_at', date('Y-m-d')); 
     }
 
+
+    public function getHasPendingOrderAttribute()
+    {
+        return $this->orders()->where('status', 'Pending')->count() > 0;
+    }
+
 }

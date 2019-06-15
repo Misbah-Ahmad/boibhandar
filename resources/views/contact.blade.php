@@ -34,13 +34,21 @@
             <div class="wizard-body pt-3">
                 <h2 class="h4 text-center block-title">Drop us a line</h2>
                 <p class="text-muted text-center">We will get back to you as soon as possible</p>
-                <form class="needs-validation" novalidate>
+                @if(session()->has('message'))
+                
+                    <div class="alert alert-info" role="alert">
+                        {{ session()->get('message') }}
+                    </div>
+                    
+                @endif
+                <form class="needs-validation" method="POST" action="{{ route('contacts.store') }}" novalidate>
+                    @csrf
                     <div class="row pt-3">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="contact-name">Your Name <span
                                         class='text-danger font-weight-medium'>*</span></label>
-                                <input class="form-control" type="text" id="contact-name" placeholder="John Doe" required>
+                                <input class="form-control" type="text" id="contact-name" name="name" placeholder="John Doe" required>
                                 <div class="invalid-feedback">Please enter your name!</div>
                             </div>
                         </div>
@@ -48,7 +56,7 @@
                             <div class="form-group">
                                 <label for="contact-email">Your Email <span
                                         class='text-danger font-weight-medium'>*</span></label>
-                                <input class="form-control" type="email" id="contact-email" placeholder="johndoe@email.com"
+                                <input class="form-control" type="email" id="contact-email" name="email" placeholder="johndoe@email.com"
                                     required>
                                 <div class="invalid-feedback">Please provide a valid email address!</div>
                             </div>
@@ -59,7 +67,7 @@
                             <div class="form-group">
                                 <label for="contact-phone">Phone <span
                                         class='text-danger font-weight-medium'>*</span></label>
-                                <input class="form-control" type="number" id="contact-phone" placeholder="01777777777"
+                                <input class="form-control" type="number" id="contact-phone" name="phone" placeholder="01777777777"
                                     required>
                                 <div class="invalid-feedback">Please provide a valid phone number!</div>
                             </div>
@@ -67,16 +75,19 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="contact-subject">Subject</label>
-                                <input class="form-control" type="text" id="contact-subject"
+                                <input class="form-control" type="text" name="subject" id="contact-subject"
                                     placeholder="Provide short title of you request">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="contact-message">Message <span class='text-danger font-weight-medium'>*</span></label>
-                        <textarea class="form-control" rows="7" id="contact-message"
+                        <textarea class="form-control" rows="7" name="message" id="contact-message"
                             placeholder="Let us know more what's on your mind..." required></textarea>
                         <div class="invalid-feedback">Please write a message!</div>
+                    </div>
+                    <div class="form-group">
+                        @captcha('en')
                     </div>
                     <div class="text-center">
                         <button class="btn btn-primary" type="submit">Send Message</button>
