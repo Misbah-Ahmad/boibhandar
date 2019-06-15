@@ -31,4 +31,9 @@ class Publisher extends Model
         return $this->discounts()->activeAndNotExpired()->first();
     }
  
+    public function getHasDiscountAttribute()
+    {
+        return $this->discount != null;        
+    }
+
 }
