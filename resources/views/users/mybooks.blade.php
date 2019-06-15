@@ -24,7 +24,7 @@
                                         <tr>
                                             <th scope="row"> {{ $loop->iteration }} </th>
                                             <td> {{ $orderDetail->book->title }} </td>
-                                            <td> {{ $orderDetail->book->author->name }} </td>
+                                            <td> {{ implode(', ', $orderDetail->authorList()) }} </td>
                                             <td> {{ date('M d, Y', strtotime($orderDetail->created_at)) }} </td>
                                             <td> {{ $orderDetail->price }} </td>
                                         </tr>
