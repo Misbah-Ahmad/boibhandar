@@ -21497,3 +21497,36 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 
 
 }
+
+.widget-title-middle {
+    display: block;
+    position: relative;
+    margin-bottom: 1.5rem;
+    padding-bottom: .5rem;
+    border-bottom: 1px solid #e7e7e7;
+    color: #404040;
+    font-size: .875rem;
+    font-weight: bold;
+    letter-spacing: .03em;
+    text-transform: uppercase
+}
+
+.widget-title-middle::after {
+    display: block;
+    position: absolute;
+    bottom: -.1875rem;
+    left: 46%;
+    width: 5.625rem;
+    height: .1875rem;
+    content: ''
+}
+
+@media (max-width: 767.98px) {
+    .widget-title-middle::after {
+        left: 40%;
+    }
+
+    .owl-carousel.dots-inside .owl-dots{
+        display: none;
+    }
+}

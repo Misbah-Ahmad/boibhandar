@@ -89,12 +89,12 @@
               data-toast-message="added to your wishlist!"><i class="fe-icon-heart"></i>&nbsp;Wishlist</button>
           </div>
         
-          <div class="mt-2 mb-2"><span class="text-muted d-inline-block align-middle mb-2">Share:&nbsp;&nbsp;</span>
+          <div class="mt-2 mb-2"><span class="text-muted d-inline-block align-middle mb-2">&nbsp;&nbsp;</span>
 
-              <div class="fb-share-button" data-href="{{ 'https://test.boibhandar.com/' . request()->path() }}" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+              <div class="fb-share-button" data-href="{{ env('APP_URL') . '/' . request()->path() }}" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
 
-            <div class="d-inline-block">              
-              <a class="social-btn sb-style-3 sb-facebook my-1" href="#" data-toggle="tooltip" data-placement="top"
+            {{-- <div class="d-inline-block">              
+              <a class="social-btn sb-style-3 sb-facebook my-1" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" data-toggle="tooltip" data-placement="top"
                 title="Facebook"><i class="socicon-facebook"></i>
               </a>
               <a class="social-btn sb-style-3 sb-twitter my-1" href="#" data-toggle="tooltip" data-placement="top"
@@ -106,7 +106,7 @@
               <a class="social-btn sb-style-3 sb-google-plus my-1 mr-0" href="#" data-toggle="tooltip" data-placement="top"
                 title="Google +"><i class="socicon-googleplus"></i>
               </a>
-            </div>
+            </div> --}}
         
           </div>
         

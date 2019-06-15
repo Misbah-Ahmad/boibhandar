@@ -68,14 +68,10 @@
                     </div> --}}
     
                     <!-- Contacts-->
-                    <div class="col-lg-6 col-md-6 col-sm-6">
+                    {{-- <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="widget widget-contacts widget-light-skin mb-4">
                             <h4 class="widget-title">We're Here</h4>
                             <ul>
-                                <!--                   <li>
-                        <i class="fe-icon-map-pin"></i><span>Find us</span>
-                        <a href="#">WASA Circle, Chattogram</a>
-                      </li> -->
                                 <li>
                                     <i class="fe-icon-phone"></i><span>Call us</span>
                                     <a href="tel:+8801307883288">01307 88 32 88</a>
@@ -86,13 +82,13 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> --}}
     
                     <!-- Social-->
-                    <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="widget widget-light-skin">
-                            <h4 class="widget-title">We're Social, Join Us</h4>
-                            <div class="widget pt-2">
+                            <h4 class="widget-title widget-title-middle text-center">We're Social, Join Us</h4>
+                            <div class="widget pt-2 text-center">
                                 <a class="social-btn sb-style-5 sb-facebook sb-light-skin"
                                     href="https://facebook.com/boibhandar/" target="_blank">
                                     <i class="socicon-facebook"></i>

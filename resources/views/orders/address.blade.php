@@ -58,14 +58,28 @@
 
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label class="text-muted" for="checkout-pickup">Pick Up Point</label>
+                                    <label class="text-muted" for="checkout-pickup">Area</label>
                                     <select class="form-control" id="checkout-pickup" name="checkout_pickup" required>
-                                        <option hidden>Choose Pick Up Point</option>
-                                        <option>Chawkbazar</option>
-                                        <option>GEC</option>
-                                        <option>New Market</option>
-                                        <option>Muradpur</option>
-                                        <option>Agrabad</option>
+                                        <option hidden>Choose An Area</option>
+                                        <option></option>
+                                        <option value="GEC Circle">GEC</option>
+                                        <option value="New Market">New Market</option>
+                                        <option value="Muradpur">Muradpur</option>
+                                        <option value="Agrabad">Agrabad</option>
+                                        <option value="Chawkbazar">Chawkbazar</option>
+                                        <option value="Khulshi">Khulshi</option>
+                                        <option value="Halihsohor">Halihsohor</option>
+                                        <option value="2 No. Gate">2 No. Gate</option>
+                                        <option value="Bahaddarhat">Bahaddarhat</option>
+                                        <option value="Chandgaon">Chandgaon</option>
+                                        <option value="AK Khan">AK Khan</option>
+                                        <option value="Lalkhan Bazar">Lalkhan Bazar</option>
+                                        <option value="Wasa">Wasa</option>
+                                        <option value="Andarkilla">Andarkilla</option>
+                                        <option value="Jamal Khan Road">Jamal Khan Road</option>
+                                        <option value="Kazir Dewri">Kazir Dewri</option>
+                                        <option value="Dewanhat">Dewanhat</option>
+                                        <option value="Sholohahor">Sholohahor</option>
                                     </select>
                                 </div>
                             </div>

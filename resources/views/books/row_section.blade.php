@@ -9,6 +9,7 @@
 
     </div>
 
+    <div class="text-center pt-7"><a class="btn btn-primary" href=" {{ route('categories.show', $section_headline) }} ">See More</a></div>    
     {{-- <div class="text-center pt-7"><a class="btn btn-primary" href="#">See More</a></div> --}}
 
 </section>

@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use App\Author;
+use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
-use App\Author;
 
 class HomeController extends Controller
 {
@@ -74,10 +75,19 @@ class HomeController extends Controller
 
     public function home()
     {
-        $books = Book::all()->random(50);
-
+     
+        $cats = explode(',', env('HOME_CATS'));
+        
+        $cats_books = array_map(function($cat){             
+            $cat = Category::find(intval($cat));            
+            return [
+                'category' => $cat,
+                'books' => $cat->books()->limit(8)->get()
+            ];
+        }, $cats);
+        
         $showcase_authors = Author::has('books', '>', 15)->limit(6)->get();
-        return view('welcome', compact(['books', 'showcase_authors']));
+        return view('welcome', compact([ 'cats_books', 'showcase_authors']));
 
     }
 

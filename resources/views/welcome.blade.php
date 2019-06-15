@@ -7,7 +7,7 @@
     <div class="owl-carousel dots-inside home-img-carousel fadeOut owl-theme">
         <a class="post-preview-img" href="#"><img src="/images/banner/banner1.png" alt="Boibhandar Banner"/></a>
         <a class="post-preview-img" href="#"><img src="/images/banner/banner2.png" alt="Boibhander Banner"/></a>
-        {{-- <a class="post-preview-img" href="#"><img class="lazy" data-src="/images/components/carousel/06.jpg" alt="Carousel Image"/></a> --}}
+        <a class="post-preview-img" href="#"><img src="/images/banner/banner3.png" alt="Boibhander Banner"/></a>
     </div>
 </section>
 
@@ -27,9 +27,11 @@
 <!-- Best Seller Products-->
 
 
+@foreach ($cats_books as $book)
+    @include('books.row_section', ['category' => $book['category'], 'section_headline' => $book['category']->name, 'books' => $book['books']])    
+@endforeach
 
 
-@include('books.row_section', ['section_headline' => 'All Books', 'books' => $books])
 
 
 

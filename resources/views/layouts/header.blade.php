@@ -32,7 +32,7 @@
     <link rel="manifest" href="/webmanifest.json">
     <link rel="mask-icon" color="#343b43" href="safari-pinned-tab.svg">
     <meta name="msapplication-TileColor" content="#603cba">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#ff6700">
     
     <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
     <link rel="stylesheet" media="screen" href="{{ mix('/css/vendor.css') }}">

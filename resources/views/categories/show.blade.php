@@ -4,6 +4,6 @@
     
 
 
-    @include('books.row_section', ['section_headline' => 'Books of ' . $category->name . ' Category'])
+    @include('books.row_section', ['section_headline' => 'Category: ' . $category->name])
 
 @endsection

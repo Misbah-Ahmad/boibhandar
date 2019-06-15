@@ -65,7 +65,7 @@ class Order extends Model
     {
         $order = new Order;
         $order->delivery_date = date('Y-m-d', strtotime('+3days'));
-        $order->address = $request->address;
+        $order->address = $request->address . ', ' . $request->checkout_pickup;
         $order->district = 'Chattogram';
         $order->name = $request->fname . ' ' . $request->sname;
         $order->phone = $request->phone;

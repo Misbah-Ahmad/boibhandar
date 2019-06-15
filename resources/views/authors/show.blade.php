@@ -38,7 +38,7 @@
     
                 <section class="container py-6 mb-4 author-books-all">
 
-                    <h2 class="h4 block-title text-left mb-4 pt-3">Books of <span> {{ $author->name }} </span></h2>
+                    <h2 class="h4 block-title text-left mb-4 pt-3"><span> {{ $author->name . ' এর বই সমূহ' }} </span></h2>
 
                     <div class="row pt-4">
 

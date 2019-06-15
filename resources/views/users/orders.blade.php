@@ -34,13 +34,13 @@
                 @foreach($vars as $order)
                 <tr>
     
-                    <td><a class="navi-link" href="{{ route('orders.show', $order->id) }}" data-toggle="modal">{{ ($order->id+177) . $order->id }}</a></td>
+                    <td><a class="navi-link" href="{{ route('orders.show', $order->id) }}" data-toggle="modal" target="_blank">{{ ($order->id+177) . $order->id }}</a></td>
     
                     <td>{{ date('M d, Y', strtotime($order->created_at)) }}</td>
     
                     <td><span class="badge badge-{{ $order->statusBadge }} m-0">{{ $order->status }}</span></td>
     
-                    <td>৳ <span>{{ $order->totalPrice }}</span></td>
+                    <td>৳ <span>{{ intval($order->totalPrice) }}</span></td>
     
                 </tr>
                 @endforeach
