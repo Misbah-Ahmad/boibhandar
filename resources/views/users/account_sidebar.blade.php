@@ -24,7 +24,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                   <div><i class="fe-icon-shopping-bag mr-1 text-muted"></i>
                     <div class="d-inline-block font-weight-medium text-uppercase">Orders List</div>
-                  </div><span class="badge badge-secondary">6</span>
+                  </div><span class="badge badge-secondary">{{ $user->orders()->count() }}</span>
                 </div>
               </a>
 
@@ -32,7 +32,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                   <div><i class="fe-icon-book-open mr-1 text-muted"></i>
                     <div class="d-inline-block font-weight-medium text-uppercase">My Books</div>
-                  </div><span class="badge badge-secondary">3</span>
+                  </div><span class="badge badge-secondary"> {{ $user->orderDetails()->count() }} </span>
                 </div>
               </a>
 
@@ -44,7 +44,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                   <div><i class="fe-icon-heart mr-1 text-muted"></i>
                     <div class="d-inline-block font-weight-medium text-uppercase">My Wishlist</div>
-                  </div><span class="badge badge-secondary">3</span>
+                  </div><span class="badge badge-secondary"> {{ $user->wishlist()->count() }} </span>
                 </div>
               </a>
 
