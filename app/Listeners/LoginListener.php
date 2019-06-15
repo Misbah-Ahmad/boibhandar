@@ -45,7 +45,7 @@ class LoginListener
             $guest_books = [];
         }
 
-        $diff_books = array_values(array_diff($guest_books, $auth_books));
+        $diff_books = array_values(array_unique(array_diff($guest_books, $auth_books)));
 
         if (count($diff_books) > 0) {
             $cart->books()->attach($diff_books);
