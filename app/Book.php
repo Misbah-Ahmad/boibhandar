@@ -179,6 +179,29 @@ class Book extends Model
         }
         return $authors;
     }
+    public function anchoredEditors()
+    {
+        $editors = [];
+
+        foreach($this->editors as $editor)
+        {
+            array_push($editors, 
+                '<a class="product-meta-author" href="' . route('authors.show', $editor->id) . '">' . $editor->name . '</a>');
+        }
+        return $editors;
+    }
+    public function anchoredTranslators()
+    {
+        $translators = [];
+
+        foreach($this->translators as $translator)
+        {
+            array_push($translators, 
+                '<a class="product-meta-translator" href="' . route('authors.show', $translator->id) . '">' . $translator->name . '</a>');
+        }
+        return $translators;
+    }
+
     public function authorList()
     {
         $authors = [];
@@ -188,6 +211,28 @@ class Book extends Model
             array_push($authors, $author->name);
         }
         return $authors;
+    }
+
+    public function editorList()
+    {
+        $editors = [];
+
+        foreach($this->editors as $editor)
+        {
+            array_push($editors, $editor->name);
+        }
+        return $editors;
+    }
+
+    public function translatorList()
+    {
+        $translators = [];
+
+        foreach($this->translators as $translator)
+        {
+            array_push($translators, $translator->name);
+        }
+        return $translators;
     }
 
 
@@ -206,6 +251,21 @@ class Book extends Model
         $arr = $this->wordsOfTitle;
         return count($arr) < 4 ? implode(' ', $arr) : (implode(' ', array_slice($arr, 0, 3)) . '...');
 
+    }
+
+
+    public function getHasAuthorAttribute()
+    {
+        return $this->authors()->count() > 0;
+    }
+    public function getHasEditorAttribute()
+    {
+        return $this->editors()->count() > 0;
+    }
+
+    public function getHasTranslatorAttribute()
+    {
+        return $this->translators()->count() > 0;
     }
 
 }

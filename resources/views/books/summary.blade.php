@@ -9,12 +9,30 @@
             <th scope="row">Title</th>
             <td><span class="product-name"> {{ $book->title }} </span></td>
           </tr>
-    
-          <tr>
-            <th scope="row">Author</th>
-            <td><span class="author-profile-link">{!! implode(', ', $book->anchoredAuthors()) !!}</span></td>
-          </tr>
-    
+          @if ($book->hasAuthor)
+            <tr>
+              <th scope="row">Author</th>
+              <td><span class="author-profile-link">{!! implode(', ', $book->anchoredAuthors()) !!}</span></td>
+            </tr>
+          @endif
+
+            @if ($book->hasEditor)
+            <tr>
+              <th scope="row">Editor</th>
+              <td><span class="author-profile-link">{!! implode(', ', $book->anchoredEditors()) !!}</span></td>
+            </tr>
+              
+          @endif
+        
+          @if ($book->hasTranslator)
+            <tr>
+              <th scope="row">Translator</th>
+              <td><span class="author-profile-link">{!! implode(', ', $book->anchoredTranslators()) !!}</span></td>
+            </tr>
+          @endif
+          
+
+
           <tr>
             <th scope="row">Publisher</th>
             <td><span class="publication-name"><a href=" {{ route('publishers.show', $book->publisher->id) }} "> {{ $book->publisher->name }} </a></span></td>

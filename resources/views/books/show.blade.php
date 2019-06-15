@@ -2,7 +2,7 @@
 
 @section('og-meta')
     
-    <meta property="og:url" content="{{ 'https://test.boibhandar.com/' . request()->path() }}" />
+    <meta property="og:url" content="{{ env('APP_URL') . '/' . request()->path() }}" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="{{ $book->title }}" />
     <meta property="og:description" content="Buy books online in Chittagong" />
