@@ -10,9 +10,15 @@
     </script>
 
     <meta charset="utf-8">
-    <title>Boibhandar | Buy and Rent Books Online
-    </title>
 
+    <title>Boibhandar | Buy and Rent Books Online</title>
+    @if(request()->is('books/*') == false)
+        <meta property="og:url" content="{{ env('APP_URL') }}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Boibhandar" />
+        <meta property="og:description" content="Boibhandar - Buy and Rent Books Online" />
+        <meta property="og:image" content="{{ asset('images/logo/logo512x512.jpg') }}" />
+    @endif
 
     @yield('og-meta')
 

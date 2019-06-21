@@ -5,7 +5,7 @@
                 <img class="mx-auto mb-4" src="/images/components/icons/dt.svg" width="90" alt="Free Worldwide Shipping">
             </div>
             <h3 class="text-lg mb-2 text-body">Lowest Shipping Cost</h3>
-            <p class="text-sm text-muted mb-0">Only Tk. 30 for all orders in Chattogram</p>
+            <p class="text-sm text-muted mb-0">Only Tk. {{ env('SHIPPING_CHARGE') }} for all orders in Chattogram</p>
         </div>
         <div class="col-md-3 col-sm-6 col-3 text-center mb-30">
             <div class="shop-services-inner mb-3">

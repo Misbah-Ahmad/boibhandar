@@ -1,19 +1,24 @@
 @extends('layouts.master')
 
-@section('og-meta')
-    
-    <meta property="og:url" content="{{ env('APP_URL') . '/' . request()->path() }}" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="{{ $book->title }}" />
-    <meta property="og:description" content="Buy books online in Chittagong" />
-    <meta property="og:image" content="{{ asset($book->image) }}" />
+@if (request()->is('books/*'))
+
+  @section('og-meta')
+      
+      <meta property="og:url" content="{{ env('APP_URL') . '/' . request()->path() }}" />
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content="{{ $book->title }}" />
+      <meta property="og:description" content="Buy & Rent Books Online" />
+      <meta property="og:image" content="{{ asset($book->image) }}" />
+
+  <script>
+        const title = "{!! $book->title !!}";
+        document.title = title;
+  </script>
+  @endsection
+
+@endif
 
 
-@endsection
-<script>
-      const title = "{!! $book->title !!}";
-          document.title = title;
-</script>
 
 @section('content')
     
