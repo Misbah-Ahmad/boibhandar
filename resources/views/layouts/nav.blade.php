@@ -81,23 +81,43 @@
     <header class="navbar-wrapper navbar-sticky">
         <div class="d-table-cell align-middle pr-md-3"><a class="navbar-brand mr-1" href="/"><img src="/images/logo.svg" style="width:110px;height:60px;" alt="Boibhandar"/></a></div>
         <div class="d-table-cell w-100 align-middle pl-md-3">
-            <!--         <div class="navbar-top d-none d-lg-flex justify-content-between align-items-center">
-          <div>
-            <ul class="list-inline mb-0">
-              <li class="dropdown-toggle mr-2"><a class="navbar-link" href="account-login.html"><i class="fe-icon-user"></i>Login or Create account</a>
-                <div class="dropdown-menu right-aligned p-3 text-center" style="min-width: 200px;">
-                  <p class="text-sm opacity-70">Sign in to your account or register new one to have full control over your orders, receive bonuses and more.</p><a class="btn btn-primary btn-sm btn-block" href="account-login.html">Sign In</a>
-                  <p class="text-sm text-muted mt-3 mb-0">New customer? <a href='account-login.html'>Register</a></p>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div> -->
+
             <div class="navbar justify-content-end justify-content-lg-between">
                 <!-- Search-->
-                {{-- <form class="search-box" method="get">
-                    <input type="text" id="site-search" placeholder="Type A or C to see suggestions"><span class="search-close"><i class="fe-icon-x"></i></span>
-                </form> --}}
+                <form class="search-box" method="get">
+                    <input type="text" id="searchAsync" placeholder="Search by book or author"><span class="search-close"><i class="fe-icon-x"></i></span>
+                    <ul class="search-results">
+
+                        {{-- <li>
+                            <a href="#">
+                            <div class="search-results-item">
+                                <div class="row">
+
+                                <div class="col-md-8">
+                                    <div class="search-results-item-thumb"><img src="img/shop/01.jpg" alt="Product"></div>
+                                    <div class="search-results-item-info">
+                                        <h4 class="search-results-item-title">Ami Gorib</h4>
+                                        <span>Irfan Sifat</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 search-results-item-d-none">
+                                    <div class="text-center">
+                                    <p>
+                                        <span class="pr-3">30% off</span>
+                                        <span class="search-results-item-price font-weight-medium">Tk. 910.00</span>
+                                    </p>
+                                    </div>
+                                </div>
+
+                                </div>
+                            </div>
+                            </a>
+                        </li> --}}
+
+
+                    </ul>
+
+                </form>
                 <!-- Main Menu-->
                 <ul class="navbar-nav d-none d-lg-block">
                     <!-- Home-->
@@ -116,9 +136,9 @@
 
 
                 <ul class="navbar-buttons d-inline-block align-middle">
-                    {{-- <li class="nav-icon-custom">
+                    <li class="nav-icon-custom">
                         <a href="#" data-toggle="search"><i class="fe-icon-search"></i></a>
-                    </li> --}}
+                    </li>
                     
                     <li class="nav-icon-custom">
                         <a href=" {{ route('carts.show') }} "><i class="fe-icon-shopping-cart"></i></a>

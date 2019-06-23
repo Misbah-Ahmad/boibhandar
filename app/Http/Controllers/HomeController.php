@@ -82,7 +82,7 @@ class HomeController extends Controller
             $cat = Category::find(intval($cat));            
             return [
                 'category' => $cat,
-                'books' => $cat->books()->limit(8)->get()
+                'books' => $cat->books()->with(['authors', 'translators', 'editors'])->limit(8)->get()
             ];
         }, $cats);
         

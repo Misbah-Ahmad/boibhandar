@@ -18,7 +18,7 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
-        $books = $category->books;
+        $books = $category->books()->with(['authors', 'translators', 'editors'])->get();
 
         return view('categories.show',  compact([
             'books', 'category',

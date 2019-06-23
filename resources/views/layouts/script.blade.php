@@ -42,3 +42,5 @@
               });
             });
 </script>
+
+<script src="{{ mix('/js/ops/search.js') }}"></script>

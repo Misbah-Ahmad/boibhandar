@@ -7,17 +7,76 @@ use App\User;
 use App\Model;
 use App\Author;
 use App\Review;
+use App\Keyword;
 use App\Category;
 use App\Discount;
 use App\Publisher;
+
 use App\BookDetail;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Laravel\Scout\Searchable;
 
 class Book extends Model
 {
+    use Searchable;
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        $array = [
+            'id' => $array['id'],
+            'keywords' => implode(' ', $this->keywords->map(function ($key) {
+                return $key->name;
+            })->toArray()),
+        ];
+
+/*
+         $array['categories'] = $this->categories->map(function($cat){
+            return $cat->name;
+        })->toArray();
+
+        if(count($array['categories']) > 0)
+        {
+            $array['categories'] = implode(' ', $array['categories']);
+        }
+
+        $array['authors'] = $this->authors->map(function($auth){
+            return $auth->name;
+        })->toArray();
+
+        $array['translators'] = $this->translators->map(function($t){
+            return $t->name;
+        })->toArray();
+        $array['editors'] = $this->editors->map(function($e){
+            return $e->name;
+        })->toArray();
+
+
+
+        $array['authors'] = implode(' ', $array['authors']);
+
+        $array['translators'] = implode(' ', $array['translators']);
+
+        $array['editors'] = implode(' ', $array['editors']);
+ */
+        return $array;
+
+    }
+
+    public function keywords()
+    {
+        return $this->belongsToMany(Keyword::class, 'book_keyword', 'book_id', 'keyword_id');
+
+    }
+
 
     /* Always eager load author */
-    protected $with = ['authors', 'translators', 'editors'];
+    //protected $with = ['authors', 'translators', 'editors'];
  
     public function authors()
     {

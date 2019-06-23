@@ -17,7 +17,7 @@ class PublisherController extends Controller
 
     public function show(Publisher $publisher)
     {
-        $books = $publisher->books;
+        $books = $publisher->books()->with(['authors', 'translators', 'editors'])->get();
 
         return view('publishers.show',  compact([
             'books', 'publisher',

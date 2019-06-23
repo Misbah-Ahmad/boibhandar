@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+Route::group(['middleware' => ['throttle:60,1']], function () {
+
+    Route::get('/search', 'SearchController@search');
+});

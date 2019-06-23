@@ -10,11 +10,14 @@
     "require": {
         "php": "^7.1.3",
         "albertcht/invisible-recaptcha": "^1.9",
+        "barryvdh/laravel-cors": "^0.11.3",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "5.8.*",
+        "laravel/scout": "^7.1",
         "laravel/tinker": "^1.0",
         "maatwebsite/excel": "^3.1",
+        "teamtnt/laravel-scout-tntsearch-driver": "^7.0",
         "zizaco/entrust": "^1.9"
     },
     "require-dev": {
