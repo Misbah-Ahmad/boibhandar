@@ -35,7 +35,7 @@ class SearchController extends Controller
             return [
                 'id' => $book->id,
                 'title' => $book->title,
-                'image_link' => $book->image,
+                'image_link' => $book->thumb,
                 'authors' => implode(', ', $book->authorList()),
                 'price' => intval($book->price),
             ];

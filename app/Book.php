@@ -149,7 +149,7 @@ class Book extends Model
 
     public function getThumbAttribute()
     {
-        return $this->thumb_link == null ? env( 'DEFAULT_BOOK_THUMB', '') : $this->thumb_link;
+        return $this->image_link == null ? env( 'DEFAULT_BOOK_THUMB', '') : str_replace('books', 'thumbs', $this->image_link);
     }
 
     public function getImageAttribute()

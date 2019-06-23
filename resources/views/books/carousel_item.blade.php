@@ -11,7 +11,7 @@
         </div>
 
         <a class="product-thumb" href="{{ route('books.show', $book->id) }}">
-            <img class="lazy" data-src="{{ asset($book->image) }}"  alt="{{ $book->title }}" title=" {{ $book->title }} "> 
+            <img class="lazy" data-src="{{ asset($book->thumb) }}"  alt="{{ $book->title }}" title=" {{ $book->title }} "> 
         </a>
         
         <div class="product-card-body" style="font-size:12px;">
