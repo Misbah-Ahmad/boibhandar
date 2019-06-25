@@ -21609,3 +21609,17 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 .navbar-buttons>li.nav-icon-custom:nth-child(1)>a, .navbar-buttons>li.nav-icon-custom:nth-child(2)>a{
         border-right: 1px solid #333;
 }
+
+.btn-search-custom {
+    float: right;
+    margin-top: 5.5%;
+    margin-right: 10%;
+    border: 1px solid #ff6700;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 4px; 
+}   
+@media (min-width: 767.98px){
+    .btn-search-custom{
+        display: none;
+    } 
+}

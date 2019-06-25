@@ -84,35 +84,12 @@
 
             <div class="navbar justify-content-end justify-content-lg-between">
                 <!-- Search-->
-                <form class="search-box" method="get">
-                    <input type="text" id="searchAsync" placeholder="Search by book or author"><span class="search-close"><i class="fe-icon-x"></i></span>
+                <form class="search-box" onsubmit="event.preventDefault();">
+                    <input type="text" id="searchAsync" placeholder="Search by book or author">
+                    <span class="search-close"><i class="fe-icon-x"></i></span>
+                    <a class="btn btn-search-custom btn-sm" id="mobileSearchBtn" href="#" onclick="event.preventDefault();">Search</a>
+
                     <ul class="search-results">
-
-                        {{-- <li>
-                            <a href="#">
-                            <div class="search-results-item">
-                                <div class="row">
-
-                                <div class="col-md-8">
-                                    <div class="search-results-item-thumb"><img src="img/shop/01.jpg" alt="Product"></div>
-                                    <div class="search-results-item-info">
-                                        <h4 class="search-results-item-title">Ami Gorib</h4>
-                                        <span>Irfan Sifat</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 search-results-item-d-none">
-                                    <div class="text-center">
-                                    <p>
-                                        <span class="pr-3">30% off</span>
-                                        <span class="search-results-item-price font-weight-medium">Tk. 910.00</span>
-                                    </p>
-                                    </div>
-                                </div>
-
-                                </div>
-                            </div>
-                            </a>
-                        </li> --}}
 
 
                     </ul>

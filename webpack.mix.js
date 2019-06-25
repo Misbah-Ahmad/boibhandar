@@ -1,5 +1,5 @@
 const mix = require('laravel-mix');
-
+//require('laravel-mix-polyfill');
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -26,6 +26,11 @@ mix.styles([
    .js('resources/js/ops/wishlist.js', 'public/js/ops')
    .js('resources/js/ops/checkout.js', 'public/js/ops')
    .js('resources/js/ops/search.js', 'public/js/ops')
-
    .sourceMaps()
    .version();
+   // .polyfill({
+   //    corejs: 3,
+   //    enabled: true,
+   //    useBuiltIns: "usage",
+   //    targets: {"firefox": "40", "chrome": "40", "ie": "7"}
+   // })

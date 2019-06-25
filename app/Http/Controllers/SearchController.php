@@ -19,16 +19,15 @@ class SearchController extends Controller
 
         $term = strtolower(trim($request->__q));
 
-        \Log::debug($term);
 
-        if (in_array($term, $this->filter) || strlen($term) < 3)
+        if (in_array($term, $this->filter) || strlen($term) < 2)
         {
             return $this->getFailedResponse();
         }
     
-        $like_query = Book::where('title', 'like', $term . '%')->orWhereHas('authors', function($query) use($term){
-            $query->where('name', 'like', $term . '%');
-        })->limit(5)->get();
+        $like_query = Book::where('title', 'like', '%' . $term . '%')->orWhereHas('authors', function($query) use($term){
+            $query->where('name', 'like', '%' . $term . '%');
+        })->limit(10)->get();
         
         $results = Book::search($term)->take(10)->get()->concat($like_query)->map(function($book){
 
@@ -46,6 +45,7 @@ class SearchController extends Controller
             return $this->getFailedResponse();
         }
 
+        \Log::debug('Sending Search Result For ' . $term . ' '. count($results) .' Books Found!');
         return response()->json([
             'success' => true,
             'message' => 'Found ' . count($results) . ' Results!',
