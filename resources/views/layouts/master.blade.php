@@ -31,7 +31,8 @@
   page_id="539919759792664"
   theme_color="#ff6700"
   logged_in_greeting="Hi! You Can Chat With Us Using Your Facebook Account."
-  logged_out_greeting="Hi! Please Log Into Your Facebook Account To Get Live Support.">
+  logged_out_greeting="Hi! Please Log Into Your Facebook Account To Get Live Support."
+  greeting_dialog_display="hide">
 </div>
 
 @include('layouts.nav')

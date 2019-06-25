@@ -129,7 +129,7 @@ window.result = false;
                             <div class="col-md-4 search-results-item-d-none">
                                 <div class="text-center">
                                 <p>
-                                    <span class="pr-3">30%</span>
+                                    <span class="pr-3"></span>
                                     <span class="search-results-item-price font-weight-medium">Tk. ${d.price}</span>
                                 </p>
                                 </div>
