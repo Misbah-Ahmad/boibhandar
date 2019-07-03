@@ -21603,7 +21603,10 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 	}
 	.search-results{
 		max-height: 240px;
-	}
+    }
+    .product-card .product-head {
+        padding: 2px;
+    }
 }
 
 .navbar-buttons>li.nav-icon-custom:nth-child(1)>a, .navbar-buttons>li.nav-icon-custom:nth-child(2)>a{

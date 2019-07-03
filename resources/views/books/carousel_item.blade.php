@@ -2,9 +2,10 @@
         
         <div class="product-head d-flex justify-content-between align-items-center">
             
-            @if($book->hasSale)
-                <span class="badge badge-danger">Sale</span>
-            @endif
+            {{-- @if($book->hasDiscount)
+
+                <span class="badge badge-danger" style="background-color:#ff0000;">{{ 'Sale ' . $book->discountPercent . '%' }}</span>
+            @endif --}}
 
             @include('books.rating', ['score' => $book->starScore])
 
@@ -20,16 +21,16 @@
                 <a href="{{ route('books.show', $book->id) }}">{{ $book->shortTitle  }}</a>
             </h5>
 
-            @php
+            {{-- @php
              $authorsTwo = $book->authorList();
              if(is_array($authorsTwo) && count($authorsTwo) > 2)
              {
                  $authorsTwo = [$authorsTwo[0], $authorsTwo[1]];
              }   
-            @endphp
+            @endphp --}}
 
-            {!! implode(', ', $authorsTwo) !!}
-            
+            {{-- {!! implode(', ', $authorsTwo) !!} --}}
+            {{  $book->shortAuthor  }}
         
             <span class="product-price">
 

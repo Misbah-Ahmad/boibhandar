@@ -197,6 +197,24 @@ class Book extends Model
 
     }
 
+    public function getDiscountPercentAttribute()
+    {
+        if($this->hasDiscount == false) 
+        {
+            return 0;
+        }
+
+        $discount = Discount::where('type', 'global')->activeAndNotExpired()->first();
+
+        return intval(max([
+            $discount == null ? 0 : $discount->percent,
+            $this->discount == null ? 0 : $this->discount->percent,
+            //$this->author->discount == null ? 0 : $this->author->discount->percent,
+            $this->publisher->discount == null ? 0 : $this->publisher->discount->percent,
+        ]));
+
+    }
+
     public function getHasDiscountAttribute()
     {
 
@@ -308,6 +326,18 @@ class Book extends Model
     public function getShortTitleAttribute()
     {
         $arr = $this->wordsOfTitle;
+        return count($arr) < 4 ? implode(' ', $arr) : (implode(' ', array_slice($arr, 0, 3)) . '...');
+
+    }
+
+    public function getShortAuthorAttribute()
+    {
+        $author = $this->authors()->first();
+        if($author == null)
+        {
+            return '';
+        }
+        $arr = explode(' ', $author->name);
         return count($arr) < 4 ? implode(' ', $arr) : (implode(' ', array_slice($arr, 0, 3)) . '...');
 
     }
