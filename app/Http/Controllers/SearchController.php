@@ -36,7 +36,9 @@ class SearchController extends Controller
                 'title' => $book->title,
                 'image_link' => $book->thumb,
                 'authors' => implode(', ', $book->authorList()),
-                'price' => intval($book->price),
+                'price' => intval($book->hasDiscount ? $book->discountedPrice : $book->price),
+                'discount' => $book->discountPercent,
+                'discount_percent' => $book->discountPercent . '%',
             ];
         });
 
