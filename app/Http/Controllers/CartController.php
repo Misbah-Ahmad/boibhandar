@@ -133,4 +133,29 @@ class CartController extends Controller
 
 
     }
+
+
+    public function deleteAll(Request $request){
+        
+        $cookie_name = auth()->check() ? env('AUTH_CART_COOKIE') : env('GUESTA_CART_COOKIE');
+
+        $cookie = json_decode(Cookie::get($cookie_name));
+        $cart = auth()->user()->cart;
+
+
+        if($cart->books->count() ==  0 && (!is_array($cookie) || count($cookie) == 0)){
+            return back()->with('message', 'Your do not any book in your cart.');
+        }
+
+
+        $cookie = [];
+
+        Cookie::queue(Cookie::make($cookie_name, json_encode($cookie), intval(env('CART_COOKIE_AGE')), '/'));
+
+
+        $cart->books()->detach($cart->books->pluck('id')->toArray());
+
+        return back()->with('message', 'All books are deleted from the cart.');
+   
+    }
 }
