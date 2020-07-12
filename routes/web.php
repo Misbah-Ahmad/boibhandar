@@ -28,6 +28,8 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
     
     Route::get('/cart', 'CartController@show')->name('carts.show');
 
+    Route::post('/cart/{book}/delete', 'CartController@delete')->name('carts.delete');
+
     Route::get('/user/orders/{order}', 'OrderController@show')->name('orders.show');
 
     Route::get('/orders/checkout', 'OrderController@checkout')->name('checkout');
@@ -96,7 +98,6 @@ Route::get('/publishers/{publisher}', 'PublisherController@show')->name('publish
 
 
 Route::post('/user/cart/add', 'CartController@store');
-Route::post('/cart/{book}/delete', 'CartController@delete')->name('carts.delete');
 
 Route::get('/about', 'HomeController@about')->name('about');
 Route::get('/faq', 'HomeController@faq')->name('faq');
