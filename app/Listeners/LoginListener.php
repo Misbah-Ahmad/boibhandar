@@ -53,6 +53,9 @@ class LoginListener
         }
 
         Cookie::queue(Cookie::make(env('AUTH_CART_COOKIE'), json_encode($auth_books), intval(env('CART_COOKIE_AGE')), '/'));
+
+        // Delete from Guest Cart
+        Cookie::queue(Cookie::make(env('GUEST_CART_COOKIE'), json_encode([]), intval(env('CART_COOKIE_AGE')), '/'));
     
     }
 }
