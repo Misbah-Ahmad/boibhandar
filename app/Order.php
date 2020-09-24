@@ -71,6 +71,7 @@ class Order extends Model
         $order->phone = $request->phone;
         $order->reference = $request->reference;
         $order->is_gift =$request->_b_g;
+        $order->shipping_charge = intval(env('SHIPPING_CHARGE'));
         return $user->orders()->save($order);
     } 
 
