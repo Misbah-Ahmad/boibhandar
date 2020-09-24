@@ -40,7 +40,7 @@
     
                     <td><span class="badge badge-{{ $order->statusBadge }} m-0">{{ $order->status }}</span></td>
     
-                    <td>৳ <span>{{ intval($order->totalPrice) }}</span></td>
+                    <td>৳ <span>{{ intval($order->totalPrice) + $order->shipping_charge }}</span></td>
     
                 </tr>
                 @endforeach
