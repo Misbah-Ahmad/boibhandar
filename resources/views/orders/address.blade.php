@@ -59,8 +59,8 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label class="text-muted" for="checkout-pickup">Area</label>
-                                    <select class="form-control" id="checkout-pickup" name="checkout_pickup" required>
-                                        <option hidden>Choose An Area</option>
+                                    <select class="form-control {{ $errors->has('checkout_pickup') ? ' is-invalid' : '' }}" id="checkout-pickup" name="checkout_pickup" required>
+                                        <option selected disabled value="">Choose An Area</option>
                                         <option value="GEC Circle">GEC</option>
                                         <option value="New Market">New Market</option>
                                         <option value="Muradpur">Muradpur</option>
@@ -80,6 +80,9 @@
                                         <option value="Dewanhat">Dewanhat</option>
                                         <option value="Sholohahor">Sholohahor</option>
                                     </select>
+                                        @if ($errors->has('checkout_pickup'))
+                                            <div class="invalid-feedback"> <strong>{{ $errors->first('checkout_pickup') }}</strong></div>                                                
+                                        @endif                                    
                                 </div>
                             </div>
                         </div>

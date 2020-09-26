@@ -53,8 +53,10 @@ class OrderController extends Controller
             'sname' => ['required', 'string', 'min:1', 'max:255'],
             'phone' => ['required', 'string', 'regex:/^(01)[3-9]{1,1}[0-9]{8,8}$/i'], // needs to check unique phone later if different from current
             'address' => ['required', 'string', 'min:10', 'max:40'],
-            'bkash_phone' => ['requiredif:payment_method,bkash', 'string', 'regex:/^(01)[3-9]{1,1}[0-9]{8,8}$/i']
-        ]);
+            'bkash_phone' => ['requiredif:payment_method,bkash', 'string', 'regex:/^(01)[3-9]{1,1}[0-9]{8,8}$/i'],
+            'checkout_pickup' =>
+            ['required', 'string', 'min:3', 'max:40'],
+        ], [], ['checkout_pickup' => 'Area']);
 
         if ($validator->fails()) 
         {
