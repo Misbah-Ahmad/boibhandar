@@ -25,8 +25,7 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
 
     Route::post('user/profile/changePassword', 'UserController@changePassword')->name('user.profile.changePassword');
 
-    
-    Route::get('/cart', 'CartController@show')->name('carts.show');
+
 
     Route::post('/cart/{book}/delete', 'CartController@delete')->name('carts.delete');
 
@@ -82,6 +81,8 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
 
 
 });
+
+Route::get('/cart', 'CartController@show')->name('carts.show');
 
 Route::get('/categories', 'CategoryController@index')->name('categories.index');
 

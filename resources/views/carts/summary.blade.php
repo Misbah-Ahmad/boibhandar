@@ -80,10 +80,14 @@
 
             <div class="col-md-12 mb-3 mt-3">
                 <a class="btn btn-primary btn-block" id="submitCart" onclick="event.preventDefault()">
-                    <i class="fe-icon-credit-card"></i>&nbsp;Checkout
+                    <i class="fe-icon-credit-card"></i>&nbsp;{{ auth()->check() ? "Checkout" : "Login / Register" }}
                 </a>
-                @if (auth()->user()->hasPendingOrder)
-                    <p style="color:#ff0000;" >You've pending order(s) in your order list. Please, confirm them to order new books!</p>
+                @if (auth()->check() && auth()->user()->hasPendingOrder)
+                    <p style="color:#ff0000;"><b>You've pending order(s) in your order list. Please, confirm them to order new books!</b></p>
+                @endif
+                
+                @if (auth()->check() == false)
+                    <p style="color:#ff0000;"><b>{{ __('cart.login_to_continue_order') }}</b></p>                    
                 @endif
 
             </div>

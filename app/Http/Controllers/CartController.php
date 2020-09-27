@@ -12,11 +12,27 @@ class CartController extends Controller
 
     public function show(Request $request)
     {
-        $user = auth()->user();
-        $books = $user->cart->books;
 
-        if($books->count() < 1)
-        {
+        $books = [];
+
+        if(auth()->check()) {
+            $user = auth()->user();
+            $books = $user->cart->books;
+
+        } else {
+
+            $book_ids = json_decode(Cookie::get(env('GUEST_CART_COOKIE')));
+
+            if ($book_ids == null || !is_array($book_ids)) {
+                $books = [];
+            } else {
+                $books = Book::find($book_ids);
+            }
+
+        }
+
+
+        if (count($books) < 1) {
             return redirect('/');
         }
 
