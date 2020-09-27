@@ -26,11 +26,6 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
     Route::post('user/profile/changePassword', 'UserController@changePassword')->name('user.profile.changePassword');
 
 
-
-    Route::post('/cart/{book}/delete', 'CartController@delete')->name('carts.delete');
-
-    Route::post('/cart/delete', 'CartController@deleteAll')->name('carts.delete_all');
-
     Route::get('/user/orders/{order}', 'OrderController@show')->name('orders.show');
 
     Route::get('/orders/checkout', 'OrderController@checkout')->name('checkout');
@@ -83,6 +78,10 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
 });
 
 Route::get('/cart', 'CartController@show')->name('carts.show');
+
+Route::post('/cart/{book}/delete', 'CartController@delete')->name('carts.delete');
+
+Route::post('/cart/delete', 'CartController@deleteAll')->name('carts.delete_all');
 
 Route::get('/categories', 'CategoryController@index')->name('categories.index');
 

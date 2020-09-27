@@ -117,59 +117,54 @@ class CartController extends Controller
     public function delete(Request $request, Book $book)
     {
 
-        $cookie_name = auth()->check() ? env('AUTH_CART_COOKIE') : env('GUESTA_CART_COOKIE');
+        $cookie_name = auth()->check() ? env('AUTH_CART_COOKIE') : env('GUEST_CART_COOKIE');
 
         $cookie = json_decode(Cookie::get($cookie_name));
-        $cart = auth()->user()->cart;
 
-        if($cart->hasBook($book))
-        {
-            if(!is_array($cookie))
-            {
-                $cookie = [];
-            }
-            $diff = array_values(array_diff($cookie, [$book->id]));
-            Cookie::queue(Cookie::make($cookie_name, json_encode($diff), intval(env('CART_COOKIE_AGE')), '/'));            
+        if (!is_array($cookie)) {
+            $cookie = [];
+        }
 
-            if(auth()->check())
-            {
-                $cart = auth()->user()->cart;
+        $diff = array_values(array_diff($cookie, [$book->id]));
+
+        Cookie::queue(Cookie::make($cookie_name, json_encode($diff), intval(env('CART_COOKIE_AGE')), '/'));
+
+        if (auth()->check()) {
+            
+            $cart = auth()->user()->cart;
+
+            if ($cart->hasBook($book)) {
                 $cart->books()->detach($book->id);
-
             }
-
-            return back()->with('message', 'Book is deleted from cart.');        
-
-
-        } else {
-            return back()->with('message', 'Your do not have this book in your cart.');        
 
         }
 
-
+        return back()->with('message', 'Book is deleted from cart.');        
 
     }
 
 
     public function deleteAll(Request $request){
         
-        $cookie_name = auth()->check() ? env('AUTH_CART_COOKIE') : env('GUESTA_CART_COOKIE');
+        $cookie_name = auth()->check() ? env('AUTH_CART_COOKIE') : env('GUEST_CART_COOKIE');
 
         $cookie = json_decode(Cookie::get($cookie_name));
-        $cart = auth()->user()->cart;
 
 
-        if($cart->books->count() ==  0 && (!is_array($cookie) || count($cookie) == 0)){
+        if (!is_array($cookie) || count($cookie) == 0) {
             return back()->with('message', 'Your do not any book in your cart.');
         }
 
 
         $cookie = [];
-
         Cookie::queue(Cookie::make($cookie_name, json_encode($cookie), intval(env('CART_COOKIE_AGE')), '/'));
 
 
-        $cart->books()->detach($cart->books->pluck('id')->toArray());
+        if (auth()->check()) {
+            $cart = auth()->user()->cart;
+
+            $cart->books()->detach($cart->books->pluck('id')->toArray());
+        }
 
         return back()->with('message', 'All books are deleted from the cart.');
    
