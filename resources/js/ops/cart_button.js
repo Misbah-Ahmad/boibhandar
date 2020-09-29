@@ -1,8 +1,10 @@
 function changePrice(quantity, index)
 {
+    quantity = parseInt(quantity);
     index = index.replace(/[^\d]/g, '');
 
-    var unit =  parseFloat(document.getElementById(`unitHidden${index}`).innerText);
+    // Get the hidden unit price from html for this item and Calculate total price for this particular item
+    var unit = parseFloat(document.getElementById(`unitHidden${index}`).innerText);
     document.getElementById(`subPrice${index}`).innerText = unit*quantity;
 
     //update summary
@@ -71,30 +73,16 @@ $('.input-number').change(function () {
     valueCurrent = parseInt($(this).val());
     name = $(this).attr('name');
 
+    if (valueCurrent >= minValue && valueCurrent <= maxValue) {
 
-
-    if (valueCurrent >= minValue) {
-        $(".btn-number[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
-
-        changePrice(valueCurrent, name)
+        managePlusMinusButton(name, valueCurrent, minValue, maxValue);
+        changePrice(valueCurrent, name);
 
     } else {
 
         $(this).val($(this).data('oldValue'));
 
-        changePrice($(this).data('oldValue'), name)
-    }
-
-    if (valueCurrent <= maxValue) {
-        $(".btn-number[data-type='plus'][data-field='" + name + "']").removeAttr('disabled')
-
-        changePrice(valueCurrent, name)
-
-    } else {
-
-        $(this).val($(this).data('oldValue'));
-        changePrice($(this).data('oldValue'), name)
-
+        changePrice($(this).data('oldValue'), name);
     }
 
 
@@ -115,6 +103,25 @@ $(".input-number").keydown(function (e) {
         e.preventDefault();
     }
 });
+
+
+function managePlusMinusButton(name, currentValue, minValue, maxValue) {
+
+    if (currentValue == minValue) {
+//        $(".btn-number[data-type='minus'][data-field='" + name + "']").attr('disabled');
+        document.querySelector(".btn-number[data-type='minus'][data-field='" + name + "']").disabled = true;
+    } else {
+        // $(".btn-number[data-type='minus'][data-field='" + name + "']").removeAttr('disabled');
+        document.querySelector(".btn-number[data-type='minus'][data-field='" + name + "']").disabled = false;
+    }
+
+    if (currentValue == maxValue) {
+        //$(".btn-number[data-type='plus'][data-field='" + name + "']").attr('disabled');
+        document.querySelector(".btn-number[data-type='plus'][data-field='" + name + "']").disabled = true;
+    } else {
+        document.querySelector(".btn-number[data-type='plus'][data-field='" + name + "']").disabled = false;
+    }
+}
 
 
 function _checkGift()
