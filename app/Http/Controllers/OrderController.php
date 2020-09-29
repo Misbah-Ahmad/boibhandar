@@ -28,7 +28,7 @@ class OrderController extends Controller
         $user = auth()->user(); 
         if($user->hasPendingOrder)
         {
-            return back();
+            return redirect(route('carts.show'));
         }
         $cartList = json_decode($request->cart_list);
 
