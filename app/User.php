@@ -123,7 +123,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getHasPendingOrderAttribute()
     {
-        return $this->orders()->where('status', 'Pending')->count() > 0;
+        return $this->orders()->where('status', 'Pending')->today()->count() > 2;
     }
 
 }
