@@ -55,7 +55,7 @@ class CartController extends Controller
                 $books = [];
             }
 
-            if($book instanceof Book)
+            if($book instanceof Book && in_array($book->id, $books) == false)
             {
                 array_push($books, $book->id);
             }
