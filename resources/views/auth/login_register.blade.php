@@ -82,12 +82,12 @@
 
                                 <hr class="mt-3">
                                 
-                                {{-- <h3 class="text-center h5 pt-3 pb-2">Or, Login Using Social Accounts</h3> --}}
+                                <h3 class="text-center h5 pt-3 pb-2">Or, Login Using Social Accounts</h3>
                                 
-                                {{-- <div class="d-sm-flex justify-content-between pb-2">
-                                    <a class="btn btn-secondary btn-lg btn-block my-2 mr-3" href="#"><img src="img/social/fb.svg">&nbsp;Login</a>
-                                    <a class="btn btn-secondary btn-lg btn-block my-2 mr-3" href="#"><img src="img/social/tt.svg">&nbsp;Login</a>
-                                </div> --}}
+                                <div class="d-sm-flex justify-content-between pb-2">
+                                    <a class="btn btn-secondary btn-lg btn-block my-2 mr-3" href="{{ route('social.login', ['provider' => 'facebook']) }}"><img src="/images/social/fb.svg" alt="Continue with Facebook">&nbsp;Continue with Facebook</a>
+                                    <a class="btn btn-secondary btn-lg btn-block my-2 mr-3" href="{{ route('social.login', ['provider' => 'google']) }}"><img src="/images/social/google-icon.svg" alt="Continue with Google">&nbsp;Continue with Google</a>
+                                </div>
 
                                 <hr class="mt-3">
 
@@ -254,7 +254,14 @@
                                 <div class="text-right">
                                     <button class="btn btn-primary" type="submit">Register</button>
                                 </div>
-
+                                <hr class="mt-3">
+                                
+                                <h3 class="text-center h5 pt-3 pb-2">Or, Login Using Social Accounts</h3>
+                                
+                                <div class="d-sm-flex justify-content-between pb-2">
+                                    <a class="btn btn-secondary btn-lg btn-block my-2 mr-3" href="{{ route('social.login', ['provider' => 'facebook']) }}"><img src="/images/social/fb.svg" alt="Continue with Facebook">&nbsp;Continue with Facebook</a>
+                                    <a class="btn btn-secondary btn-lg btn-block my-2 mr-3" href="{{ route('social.login', ['provider' => 'google']) }}"><img src="/images/social/google-icon.svg" alt="Continue with Google">&nbsp;Continue with Google</a>
+                                </div>
                             </form>
 
                             <hr class="mt-3">

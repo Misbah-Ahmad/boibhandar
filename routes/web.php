@@ -109,3 +109,7 @@ Route::get('/shopping-guideline', 'HomeController@guideline')->name('guideline')
 Route::get('/terms-conditions', 'HomeController@terms')->name('terms');
 Route::get( '/return-policy', 'HomeController@returnPolicy')->name( 'return_policy');
 Route::post('/contact', 'HomeController@storeContact')->name('contacts.store');
+
+
+Route::get('/redirect/{provider}/auth', 'Auth\SocialLoginController@redirectToProvider')->name('social.login');
+Route::get('/callback/{provider}/auth', 'Auth\SocialLoginController@handleProviderCallback');
