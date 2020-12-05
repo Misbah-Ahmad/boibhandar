@@ -95,4 +95,9 @@ class Order extends Model
     }
 
 
+    public function getIsUserNeedActionButtonAttribute()
+    {
+        return preg_match('/(pending|approved)/i', $this->status);
+    }
+
 }

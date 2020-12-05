@@ -26,6 +26,7 @@
                     <th>Date Purchased</th>
                     <th>Status</th>
                     <th>Total</th>
+                    <th>Action</th>
                 </tr>
             </thead>
     
@@ -41,13 +42,25 @@
                     <td><span class="badge badge-{{ $order->statusBadge }} m-0">{{ $order->status }}</span></td>
     
                     <td>৳ <span>{{ intval($order->totalPrice) + $order->shipping_charge }}</span></td>
-    
+                    
+                    <td>
+                        @if ($order->isUserNeedActionButton == false)
+                            {{ 'N/A' }}
+                        @else
+                            <button onclick="cancelOrder('{{ route('orders.cancel', $order->id) }}')" class="btn btn-sm btn-danger">Cancel</button>
+                        @endif
+                    </td>
+
                 </tr>
                 @endforeach
     
             </tbody>
     
         </table>
+        {{-- This form will be triggered from the js section of profile.blade.php --}}
+        <form style="display:none;" method="POST" action="" id="userOrderCancellationForm">
+            @csrf
+        </form>
     </div>
 
     </div>

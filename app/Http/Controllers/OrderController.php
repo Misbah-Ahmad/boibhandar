@@ -189,5 +189,21 @@ class OrderController extends Controller
 
     }
 
+    public function cancel(Order $order)
+    {
+        $status_array = ['Approved', 'Pending'];
+
+        $message = 'Ops! Something went wrong.';
+
+        if ($order instanceof Order && in_array($order->status, $status_array) && $order->status != 'Cancelled') {
+            $order->status = 'Cancelled';
+
+            if ($order->save()) {
+                $message = 'Order status was changed to Cancelled successfully!';
+            }
+        }
+
+        return back()->with('message', $message);        
+    }
 
 }
