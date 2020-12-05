@@ -6,7 +6,9 @@ use App\Order;
 use App\OrderDetail;
 use App\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
@@ -164,14 +166,14 @@ class OrderController extends Controller
             'email' => ['required', 'string', 'email', 'max:255'],
             'org_address' => ['required', 'string', 'min:5', 'max:60'],
             'c_message' => ['required', 'string', 'min:8', 'max:150'],
-            'c_file' => ['required', 'file', 'mimes:doc,docx,xls,xlsx', 'max:20240'],
+            'c_file' => ['file', 'mimes:doc,docx,xls,xlsx,zip', 'max:20240'],
         ]);
 
-        if ($validator->fails()) 
-        {
+        if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
-        $file = $request->file('c_file');
+
+        $file = $request->hasFile('c_file') ? $request->file('c_file') : null;
         $noti = [
             'contact_person' => $request->c_name,
             'organization' => $request->org_name,
@@ -179,13 +181,16 @@ class OrderController extends Controller
             'email' => $request->email,
             'address' => $request->org_address,
             'message' => $request->c_message, 
-            'file_name' => $request->c_name . '_' . strtotime('now'),
+            'file_name' => $file ? $request->c_name . '_' . strtotime('now') : null,
         ];
 
-        \Log::channel('slack_quote')->info(json_encode($noti, JSON_PRETTY_PRINT));
-        \Storage::put( $request->c_name . '_' . strtotime('now'), $file);
-        return back()->with('message', 'We\'ve got your request, our corporate sales team will be in touch with you shortly.');
+        Log::channel('slack_quote')->info(json_encode($noti, JSON_PRETTY_PRINT));
 
+        if ($file) {
+            Storage::put($request->c_name . '_' . strtotime('now'), $file);
+        }
+
+        return back()->with('message', 'We\'ve got your request, our corporate sales team will be in touch with you shortly.');
 
     }
 

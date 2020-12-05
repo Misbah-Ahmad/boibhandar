@@ -15,6 +15,10 @@ Route::get('/', 'HomeController@home')->name('home');
 
 Auth::routes(['verify' => true]);
 
+Route::get('/corporates', 'OrderController@corporateShow')->name('corporates.create');
+
+Route::post('/corporates/request', 'OrderController@saveQuoteRequest')->name('corporates.store');
+
 Route::group(['middleware' => ['verified', 'auth']], function () {
 
     Route::get('/dash', 'HomeController@index')->name('dash');
@@ -37,9 +41,6 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
     Route::post('/orders/{order}/cancel', 'OrderController@cancel')->name('orders.cancel');
 
     Route::post('/wishlist/{book}/delete', 'WishlistController@delete')->name('wishlist.delete');
-
-    Route::get('/corporates', 'OrderController@corporateShow')->name('corporates.create');
-    Route::post('/corporates/request', 'OrderController@saveQuoteRequest')->name('corporates.store');
 
     Route::post('/reviews', 'ReviewController@store')->name('reviews.store');
 

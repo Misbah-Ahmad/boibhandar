@@ -165,10 +165,10 @@
 
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="quote-file">Attachment</label>
+                                <label for="quote-file">Attachment (optional)</label>
                                 <div class="custom-file">
 
-                                    <input class="custom-file-input {{ $errors->has('c_name') ? ' is-invalid' : '' }}"  type="file" accept=".doc,.docx,.xls,.xlsx" id="quote-file" name="c_file" onchange="readURL(this)" required>
+                                    <input class="custom-file-input {{ $errors->has('c_name') ? ' is-invalid' : '' }}"  type="file" accept=".doc,.docx,.xls,.xlsx" id="quote-file" name="c_file" onchange="readURL(this)">
 
                                     @if($errors->has('c_file'))
                                             <div class="invalid-feedback">{{ $errors->first('c_file') }}</div>
