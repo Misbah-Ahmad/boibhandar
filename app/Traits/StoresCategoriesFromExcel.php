@@ -21,7 +21,7 @@ trait StoresCategoriesFromExcel
 
     public function processAndStoreCategoryFile($rows)
     {
-        \DB::table('categories')->delete();
+        //\DB::table('categories')->delete();
         $failed = [];
 
         foreach ($rows as  $row)

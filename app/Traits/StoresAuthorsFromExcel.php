@@ -23,7 +23,7 @@ trait StoresAuthorsFromExcel
     {
 
         $failed = [];
-        \DB::table('authors')->delete();
+        //\DB::table('authors')->delete();
         foreach ($rows as  $row)
         {
             

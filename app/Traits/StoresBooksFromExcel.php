@@ -23,11 +23,11 @@ trait StoresBooksFromExcel
     {
 
         $failed = [];
-        \DB::table('author_book')->delete();
-        \DB::table('book_category')->delete();
-        \DB::table('book_editor')->delete();
-        \DB::table('book_translator')->delete();
-        \DB::table('books')->delete();
+        //\DB::table('author_book')->delete();
+        //\DB::table('book_category')->delete();
+        //\DB::table('book_editor')->delete();
+        //\DB::table('book_translator')->delete();
+        //\DB::table('books')->delete();
         foreach ($rows as  $row)
         {
             
