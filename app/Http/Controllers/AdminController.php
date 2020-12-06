@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Author;
-use App\Http\Requests\CreateAuthorRequest;
 use App\Role;
 use App\User;
 use App\Order;
+use App\Author;
 use App\UploadedFile;
 use Illuminate\Http\Request;
 use App\Traits\StoresBooksFromExcel;
@@ -15,6 +14,9 @@ use App\Traits\StoresAuthorsFromExcel;
 use Illuminate\Support\Facades\Storage;
 use App\Traits\StoresCategoriesFromExcel;
 use App\Traits\StoresPublishersFromExcel;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\CreateAuthorRequest;
+use App\Publisher;
 
 class AdminController extends Controller
 {
@@ -500,5 +502,42 @@ class AdminController extends Controller
         }
 
         return back()->with('author_saved', 'Author is saved successfully!');
+    }
+
+    public function savePublisher(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'password' => ['required', 'string', 'min:6'],
+            'publisher_name' => ['required', 'string', 'min:3',],
+            'en_name' => ['nullable', 'string', 'min:4',],
+            'location' => ['nullable', 'string', 'min:4',],
+            'contact' => ['nullable', 'string', 'min:6',],                        
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $user = auth()->user();
+
+        if (Hash::check($request->password, $user->password) == false) {
+            return back()->withErrors(['password' => 'Admin password doesn\'t match'])->withInput();
+        }
+
+        if (Publisher::where('name', $request->author_name)->count() > 0) {
+            return back()->withErrors(['author_name' => 'Author name already exists'])->withInput();
+        }
+
+        $publihser = new Publisher;
+
+        $publihser->name = $request->publisher_name;
+        $publihser->en_name = $request->en_name;
+        $publihser->location = $request->location;
+        $publihser->contact = $request->contact;
+        
+        $publihser->save();
+
+        return back()->with('publisher_saved', 'Pulisher is saved successfully!');
     }
 }

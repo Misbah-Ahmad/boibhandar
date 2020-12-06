@@ -57,6 +57,8 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
         Route::get('/creator', 'AdminController@creator')->name('admins.creator');
 
         Route::post('/creator/save/author', 'AdminController@saveAuthor')->name('admins.creator.author.save');
+
+        Route::post('/creator/save/publisher', 'AdminController@savePublisher')->name('admins.creator.publisher.save');
         
         Route::group(['middleware' => ['role:super-admin']], function () {
 
