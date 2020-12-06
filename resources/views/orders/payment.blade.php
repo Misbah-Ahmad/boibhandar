@@ -12,7 +12,7 @@
             <input class="custom-control-input" type="radio" id="bkash" name="payment_method" value="bkash" {{ $is_gift ? 'checked' : '' }}>
             <label class="custom-control-label" for="bkash"><h6><i class="fe-icon-package"></i> bkash</h6></label><br>
             
-            <div class="bg-dark-faded p-4">
+            <div class="bg-dark-faded p-4 bkash-detail" style="display: {{ $is_gift ? 'block' : 'none'}}">
                 <h6 class="block-title">Step-1:</h6>
                 <p class="pl-4">Send money to <span class="font-weight-bold">01726833399 (Use "Send Money" Option)</span></p>
 
