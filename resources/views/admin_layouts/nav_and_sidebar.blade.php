@@ -57,11 +57,12 @@
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="active treeview menu-open">
 
-                        <ul class="treeview-menu">
+                        <ul style="font-weight: 700;" class="treeview-menu">
                             <li class="active"><a href="/admin/dash"><i class="fa fa-circle-o"></i>Dashboard</a></li>
                             <li class="active"><a href="{{ route('uploads.create') }}"><i class="fa fa-circle-o"></i>Uploads</a></li>
                             <li class="active"><a href="{{ route('admins.users') }}"><i class="fa fa-circle-o"></i>Customers</a></li>
                             <li class="active"><a href="{{ route('admins.orders') }}"><i class="fa fa-circle-o"></i>Orders</a></li>
+                            <li class="active"><a href="{{ route('admins.creator') }}"><i class="fa fa-circle-o"></i>Creators</a></li>                            
                         </ul>
                     </li>
                 </ul>

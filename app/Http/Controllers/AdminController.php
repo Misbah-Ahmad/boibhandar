@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Author;
+use App\Http\Requests\CreateAuthorRequest;
 use App\Role;
 use App\User;
 use App\Order;
@@ -456,5 +458,47 @@ class AdminController extends Controller
         $upload->delete();
 
         return back();
+    }
+
+    public function creator()
+    {
+        return view('admins.creators.creator');
+    }
+
+    public function saveAuthor(CreateAuthorRequest $request)
+    {
+        $user = auth()->user();
+
+        if (Hash::check($request->password, $user->password) == false) {
+            return back()->withErrors(['password' => 'Admin password doesn\'t match'])->withInput();
+        }
+
+        if (Author::where('name', $request->author_name)->count() > 0) {
+            return back()->withErrors(['author_name' => 'Author name already exists'])->withInput();            
+        }
+
+        $image = $request->hasFile('author_image') ? $request->file('author_image') : null;
+
+        $author = new Author;
+
+        $author->name = $request->author_name;
+        $author->en_name = $request->en_name;
+        $author->image_link = 'author-default.jpg';
+
+        $author->save();
+
+        if ($image) {
+            $path = '/images/author/';
+            $file_name = $author->id . '.' . $image->getClientOriginalExtension();
+
+            $result = Storage::disk('public_folder')->putFileAs($path, $image, $file_name);
+
+            if ($result) {
+                $author->image_link = $file_name;
+                $author->save();
+            }
+        }
+
+        return back()->with('author_saved', 'Author is saved successfully!');
     }
 }

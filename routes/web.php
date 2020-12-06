@@ -54,8 +54,10 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
 
         Route::post('/dash/orders/change_status', 'AdminController@changeOrderStatus')->name('admins.orders.change_status');
 
+        Route::get('/creator', 'AdminController@creator')->name('admins.creator');
 
-
+        Route::post('/creator/save/author', 'AdminController@saveAuthor')->name('admins.creator.author.save');
+        
         Route::group(['middleware' => ['role:super-admin']], function () {
 
             Route::post('/users/{user}/attachrole', 'AdminController@attachRole')->name('admins.attach.role');
