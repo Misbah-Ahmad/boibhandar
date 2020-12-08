@@ -61,12 +61,12 @@ class Order extends Model
 
 
 
-    public static function saveNewOrder($request, $user)
+    public static function saveNewOrder($request, $address, $user)
     {
         $order = new Order;
         $order->delivery_date = date('Y-m-d', strtotime('+3days'));
-        $order->address = $request->address . ', ' . $request->checkout_pickup;
-        $order->district = 'Chattogram';
+        $order->address = $request->address . ', ' . $address['sub_district']['name'];
+        $order->district = $address['district']['name'];
         $order->name = $request->fname . ' ' . $request->sname;
         $order->phone = $request->phone;
         $order->reference = $request->reference;

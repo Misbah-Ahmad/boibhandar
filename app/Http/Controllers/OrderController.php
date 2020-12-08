@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
 {
-    
+
     public function show(Order $order)
     {
         $total = $order->orderDetails->sum('total_price');
@@ -41,34 +41,80 @@ class OrderController extends Controller
         
         $is_gift = intval($cartList->_b_g);
 
-        return view('orders.checkout', compact(['user', 'reference', 'is_gift']));
+        $districts_data = file_get_contents(storage_path('json\districts.json'));
+
+        return view('orders.checkout', compact(['user', 'reference', 'is_gift', 'districts_data']));
 
     }
 
 
+    private function checkDistrictAndSubDistrict(Request $request)
+    {
+        $district_id = (int) $request->district;
+        $sub_district_id = (int) $request->checkout_pickup;
+
+        $districts_data = json_decode(file_get_contents(storage_path('json\districts.json')));
+
+        $district = array_values(array_filter($districts_data->combined, function($item) use($district_id) {
+            return $item->id == $district_id;
+        }));
+
+        $district = is_array($district) && count($district) > 0 ? $district[0] : null;
+
+        if ($district == null) {
+            return null;
+        }
+
+        $sub_district = array_values(array_filter($district->sub_districts, function($item) use ($sub_district_id) {
+
+            return $item->id == $sub_district_id;
+        }));
+
+        $sub_district = is_array($sub_district) && count($sub_district) > 0 ? $sub_district[0] : null;
+
+        if ($sub_district == null) {
+            return null;
+        }
+
+        return [
+            'district' => ['id' => $district->id, 'name' => $district->name],
+            'sub_district' => ['id' => $sub_district->id, 'name' => $sub_district->name],
+        ];
+
+
+    }
+
     public function confirm(Request $request)
     {
+        logger('Confirming order');
+        logger(json_encode($request->all(), JSON_PRETTY_PRINT));
 
         $validator = Validator::make($request->all(), [
 
             'fname' => ['required', 'string', 'min:1', 'max:255'],
             'sname' => ['required', 'string', 'min:1', 'max:255'],
-            'phone' => ['required', 'string', 'regex:/^(01)[3-9]{1,1}[0-9]{8,8}$/i'], // needs to check unique phone later if different from current
+            'phone' => ['required', 'string', 'regex:/^(8801|\+8801|01)[3-9]{1,1}[0-9]{8,8}$/i'], // needs to check unique phone later if different from current
             'address' => ['required', 'string', 'min:10', 'max:40'],
-            'bkash_phone' => ['requiredif:payment_method,bkash', 'string', 'regex:/^(01)[3-9]{1,1}[0-9]{8,8}$/i'],
-            'checkout_pickup' =>
-            ['required', 'string', 'min:3', 'max:40'],
-        ], [], ['checkout_pickup' => 'Area']);
+            'bkash_phone' => ['requiredif:payment_method,bkash', 'string', 'regex:/^(8801|\+8801|01)[3-9]{1,1}[0-9]{8,8}$/i'],
+            'district' => ['required', 'string',],
+            'checkout_pickup' =>['required', 'string'],
+        ], ['phone.regex' => 'Invalid phone number', 'bkash_phone.regex' => 'Invalid bkash phone number'], ['checkout_pickup' => 'Area']);
 
         if ($validator->fails()) 
         {
             return back()->withErrors($validator)->withInput();
         }
 
+        $district_info = $this->checkDistrictAndSubDistrict($request);
+
+        if ($district_info == null) {
+            return back()->withErrors(['district' => 'Address information is invalid!'])->withInput();
+        }
+
         $user = auth()->user();
 
         $user = auth()->user();
-        if ($user->hasPendingOrder) 
+        if ($user->hasPendingOrder)
         {
             return back()->withInput();
         }
@@ -77,8 +123,7 @@ class OrderController extends Controller
 
         $orderDetails = [];
 
-    
-        $order = Order::saveNewOrder($request, $user);
+        $order = Order::saveNewOrder($request, $district_info, $user);
 
         foreach($books as $book)
         {

@@ -17,3 +17,37 @@ function handlePaymentMethodChange(event) {
 }
 
 document.querySelectorAll("input[name=payment_method]").forEach(element => element.addEventListener('change', handlePaymentMethodChange));
+
+
+function handleDistrictChange(event) {
+
+    let selectedDistrictId = parseInt(event.target.value);
+
+    if (selectedDistrictId < 1 || selectedDistrictId > 64) {
+        return;
+    }
+
+    let subDistrictSelect = document.querySelector("select[name=checkout_pickup]");
+
+    subDistrictSelect.innerHTML = window.districtData.sub_districts.reduce((acc, item) => {
+
+        return selectedDistrictId == item.district_id ? `${acc}<option value="${item.id}">${item.name}</option>` : acc;
+
+    }, `<option selected disabled value="">Choose An Area</option>`);
+
+}
+
+function loadDistrictData() {
+    let data = JSON.parse(document.querySelector('p#districts_data').innerText);
+    window.districtData = data;
+    
+    let districtSelect = document.querySelector("select[name=district]");
+    
+    districtSelect.innerHTML = data.districts.reduce((acc, item) => {
+        return `${acc}<option value="${item.id}">${item.name}</option>`;    
+    }, districtSelect.innerHTML.toString().trim());
+
+    districtSelect.addEventListener('change', handleDistrictChange);
+}
+
+window.addEventListener("load", loadDistrictData);
