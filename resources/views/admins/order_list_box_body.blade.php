@@ -96,14 +96,13 @@
                                 </td>
 
                                 <td>
-                                    @if($status != 'cancelled' && $status != 'delivered')
-
-                                        <span>{{ $order->deliveryVendor != null ? $order->deliveryVendor->name : 'N/A' }}</span>
-
-                                        <span><button type="button" data-toggle="modal" data-target="#vendorAssignModal" class="btn btn-sm btn-danger" onclick="setOrderIdToAssignDeliveryVendor('{{ $order->id }}')">Assign</button></span>
-
+                                    @if ($status != 'cancelled')
+                                        <span>{{ $order->deliveryVendor != null ? $order->deliveryVendor->name : 'N/A' }}</span>                                        
                                     @else
-                                        <span>N/A</span>  
+                                        <span>N/A</span>
+                                    @endif
+                                    @if($status != 'cancelled' && $status != 'delivered')
+                                        <span><button type="button" data-toggle="modal" data-target="#vendorAssignModal" class="btn btn-sm btn-danger" onclick="setOrderIdToAssignDeliveryVendor('{{ $order->id }}')">Assign</button></span>
                                     @endif
 
                                 </td>
