@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DeliveryVendor;
+use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -58,6 +59,20 @@ class DeliveryVendorController extends Controller
         } else {
             return back()->with('vendor_delete', 'Could not delete the vendor!');
         }
+    }
+
+    public function assign(Request $request)
+    {
+
+        $vendor = DeliveryVendor::find($request->vendor_id);
+        $order = Order::find($request->order_id);
+        if ($vendor == null || $order == null || strtolower($order->status) == 'delivered' || strtolower($order->status) == 'cancelled') {
+            return back();
+        }
+
+        $order->delivery_vendor_id = $vendor->id;
+        $order->save();
+        return back();
     }
 
 }

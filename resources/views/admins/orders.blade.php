@@ -37,6 +37,55 @@
         
     </form>
 
+
+<div class="modal fade in" id="vendorAssignModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" id="vendorAssignModalDismissBtn" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">{{ "Assign a delivery vendor to order" }}</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+    
+                        <div class="col-md-12">
+    
+                                <form onsubmit="document.querySelector('#vendorAssignModalDismissBtn').click();" role="form" id="assignDeliveryVendorForm" method="POST" action="{{ route('admins.deliveryvendor.assign') }}">
+                                    @csrf
+                                    <input type="hidden" name="order_id" required>                                    
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label class="control-label" for="vendorAssign">Vendor</label>
+                                            <select class="form-control" name="vendor_id" id="vendorAssign" required>
+                                                <option selected disabled value="">Choose Vendor</option>
+                                                @foreach ($deliveryVendors as $item)
+                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+    
+                                    </div>
+    
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                                    </div>
+                                </form>
+    
+                            </div>
+    
+                        </div>
+                    </div>
+                </div>
+                {{--<div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>--}}
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
 </section>
 
 
@@ -75,6 +124,11 @@
             
             form.submit();
 
+        }
+
+        function setOrderIdToAssignDeliveryVendor(orderId)
+        {
+            document.querySelector('#vendorAssignModal #assignDeliveryVendorForm input[name=order_id]').value = orderId;
         }
 
     </script>

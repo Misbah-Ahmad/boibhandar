@@ -6,6 +6,7 @@ use App\Role;
 use App\User;
 use App\Order;
 use App\Author;
+use App\DeliveryVendor;
 use App\UploadedFile;
 use Illuminate\Http\Request;
 use App\Traits\StoresBooksFromExcel;
@@ -83,8 +84,11 @@ class AdminController extends Controller
                 break;
         }
 
+        $deliveryVendors = DeliveryVendor::all();
+
         return view('admins.orders', compact([
             'orders',
+            'deliveryVendors',
         ]));
     }
 

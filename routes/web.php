@@ -64,7 +64,9 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
 
         Route::post('/vendors', 'DeliveryVendorController@store')->name('admins.deliveryvendor.store');
 
-        Route::post('/vendors/{vendor}/delete', 'DeliveryVendorController@delete')->name('admins.deliveryvendor.delete');        
+        Route::post('/vendors/{vendor}/delete', 'DeliveryVendorController@delete')->name('admins.deliveryvendor.delete');
+
+        Route::post('/vendors/assign/order', 'DeliveryVendorController@assign')->name('admins.deliveryvendor.assign');        
         
         Route::group(['middleware' => ['role:super-admin']], function () {
 

@@ -54,6 +54,8 @@
                                     aria-label="CSS grade: activate to sort column ascending">Total</th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                     aria-label="CSS grade: activate to sort column ascending">Action</th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                    aria-label="CSS grade: activate to sort column ascending">Shipper</th>
 
                             </tr>
                         </thead>
@@ -64,8 +66,8 @@
                             <tr role="row" class=" {{ $loop->iteration&1 ? 'odd' : 'even'}} ">
                                 <td> {{ $loop->iteration }}</td>
                                 <td> <a href="{{ route('admins.orders.show', $order->id) }}">{{ 'BOID' . $order->id }}</a></td>
-                                <td class=""> <a href="{{ route ('admins.user_profile', $order->user->id) }}"> {{ $order->user->fullName }} </a> </td>
-                                <td class="sorting_1"> {{ $order->name }} </td>
+                                <td class=""> <a href="{{ route ('admins.user_profile', $order->user->id) }}"> {{ $order->user->fname }} </a> </td>
+                                <td class="sorting_1"> {{ explode(" ", $order->name)[0] }} </td>
                                 <td> {{ $order->phone }} </td>
                                 <td> {{ $order->is_gift ? 'Yes' : 'No' }} </td>
                                 <td> {{ $order->transaction->pay_type }} </td>
@@ -90,7 +92,21 @@
                                     @else
                                         <span>N/A</span>
                                     @endif
-                                </td>                                
+
+                                </td>
+
+                                <td>
+                                    @if($status != 'cancelled' && $status != 'delivered')
+
+                                        <span>{{ $order->deliveryVendor != null ? $order->deliveryVendor->name : 'N/A' }}</span>
+
+                                        <span><button type="button" data-toggle="modal" data-target="#vendorAssignModal" class="btn btn-sm btn-danger" onclick="setOrderIdToAssignDeliveryVendor('{{ $order->id }}')">Assign</button></span>
+
+                                    @else
+                                        <span>N/A</span>  
+                                    @endif
+
+                                </td>
                             </tr>
 
                             @endforeach
