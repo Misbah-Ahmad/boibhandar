@@ -6,6 +6,7 @@ use App\User;
 use App\Model;
 use App\OrderDetail;
 use App\Transaction;
+use App\DeliveryVendor;
 
 class Order extends Model
 {
@@ -23,6 +24,11 @@ class Order extends Model
     public function transaction()
     {
         return $this->hasOne(Transaction::class);
+    }
+
+    public function deliveryVendor()
+    {
+        return $this->belongsTo(DeliveryVendor::class, 'delivery_vendor_id', 'id');
     }
 
     public function getTotalPriceAttribute()

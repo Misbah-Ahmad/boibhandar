@@ -59,6 +59,12 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
         Route::post('/creator/save/author', 'AdminController@saveAuthor')->name('admins.creator.author.save');
 
         Route::post('/creator/save/publisher', 'AdminController@savePublisher')->name('admins.creator.publisher.save');
+
+        Route::get('/vendors', 'DeliveryVendorController@index')->name('admins.deliveryvendor.index');
+
+        Route::post('/vendors', 'DeliveryVendorController@store')->name('admins.deliveryvendor.store');
+
+        Route::post('/vendors/{vendor}/delete', 'DeliveryVendorController@delete')->name('admins.deliveryvendor.delete');        
         
         Route::group(['middleware' => ['role:super-admin']], function () {
 
