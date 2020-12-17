@@ -41,7 +41,7 @@ class OrderController extends Controller
         
         $is_gift = intval($cartList->_b_g);
 
-        $districts_data = file_get_contents(storage_path('json\districts.json'));
+        $districts_data = file_get_contents(storage_path('json/districts.json'));
 
         return view('orders.checkout', compact(['user', 'reference', 'is_gift', 'districts_data']));
 
@@ -53,7 +53,7 @@ class OrderController extends Controller
         $district_id = (int) $request->district;
         $sub_district_id = (int) $request->checkout_pickup;
 
-        $districts_data = json_decode(file_get_contents(storage_path('json\districts.json')));
+        $districts_data = json_decode(file_get_contents(storage_path('json/districts.json')));
 
         $district = array_values(array_filter($districts_data->combined, function($item) use($district_id) {
             return $item->id == $district_id;
