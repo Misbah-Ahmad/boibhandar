@@ -6,8 +6,10 @@ use App\Role;
 use App\User;
 use App\Order;
 use App\Author;
-use App\DeliveryVendor;
+use App\Category;
+use App\Publisher;
 use App\UploadedFile;
+use App\DeliveryVendor;
 use Illuminate\Http\Request;
 use App\Traits\StoresBooksFromExcel;
 use Illuminate\Support\Facades\Hash;
@@ -17,7 +19,6 @@ use App\Traits\StoresCategoriesFromExcel;
 use App\Traits\StoresPublishersFromExcel;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\CreateAuthorRequest;
-use App\Publisher;
 
 class AdminController extends Controller
 {
@@ -543,5 +544,35 @@ class AdminController extends Controller
         $publihser->save();
 
         return back()->with('publisher_saved', 'Pulisher is saved successfully!');
+    }
+
+    public function saveCategory(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'password' => ['required', 'string', 'min:6'],
+            'category' => ['required', 'string', 'min:3',],                        
+        ]);
+        
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $user = auth()->user();
+
+        if (Hash::check($request->password, $user->password) == false) {
+            return back()->withErrors(['password' => 'Admin password doesn\'t match'])->withInput();
+        }
+
+        if (Category::where('name', $request->category)->count() > 0) {
+            return back()->withErrors(['category' => 'Category already exists'])->withInput();
+        }
+
+        $category = new Category;
+
+        $category->name = $request->category;        
+        $category->save();
+
+        return back()->with('category_saved', 'Category is saved successfully!');
     }
 }
