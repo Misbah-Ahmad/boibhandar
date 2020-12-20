@@ -47,21 +47,21 @@ trait StoresBooksFromExcel
             $book->country = $row['country'];
             $book->en_country = $row['en_country'];
             $book->quantity = intval($row['quantity']);
-            
+
 
             if($book->save())
             {
-                $this->attachAuthorsToBook($book, $row);
-                $this->attachCategoriesToBook($book, $row);
+                $this->attachAuthorsToBook($book, explode(",", $row['author']));
+                $this->attachCategoriesToBook($book,  explode(",", $row['category']));
 
                 if($row['translator'] != null)
                 {
-                    $this->attachTranslatorsToBook($book, $row);
+                    $this->attachTranslatorsToBook($book, explode(",", $row['translator']));
                 }
 
                 if($row['editor'] != null)
                 {
-                    $this->attachEditorsToBook($book, $row);
+                    $this->attachEditorsToBook($book, explode(",", $row['editor']));
                 }
 
             } else {
@@ -76,9 +76,8 @@ trait StoresBooksFromExcel
     }
 
 
-    public function attachAuthorsToBook($book, $row)
+    public function attachAuthorsToBook($book, $authors)
     {
-        $authors = explode(",", $row['author']);
         $authors = array_map(function ($author) {
 
             return intval($author);
@@ -90,9 +89,8 @@ trait StoresBooksFromExcel
     }
 
 
-    public function attachCategoriesToBook($book, $row)
+    public function attachCategoriesToBook($book, $categories)
     {
-        $categories = explode(",", $row['category']);
         $categories = array_map(function ($cat) {
 
             return intval($cat);
@@ -103,9 +101,8 @@ trait StoresBooksFromExcel
     }
 
 
-    public function attachTranslatorsToBook($book, $row)
+    public function attachTranslatorsToBook($book, $translators)
     {
-        $translators = explode(",", $row['translator']);
         $translators = array_map(function ($t) {
 
             return intval($t);
@@ -119,9 +116,8 @@ trait StoresBooksFromExcel
     }
 
 
-    public function attachEditorsToBook($book, $row)
+    public function attachEditorsToBook($book, $editors)
     {
-        $editors = explode(",", $row['editor']);
         $editors = array_map(function ($e) {
 
             return intval($e);

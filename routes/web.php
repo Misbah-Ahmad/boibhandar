@@ -62,6 +62,8 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
 
         Route::post('/creator/save/publisher', 'AdminController@savePublisher')->name('admins.creator.publisher.save');
 
+        Route::post('/creator/save/book', 'AdminController@saveBook')->name('admins.creator.book.save');
+
         Route::get('/vendors', 'DeliveryVendorController@index')->name('admins.deliveryvendor.index');
 
         Route::post('/vendors', 'DeliveryVendorController@store')->name('admins.deliveryvendor.store');

@@ -13,6 +13,7 @@ use App\Discount;
 use App\Publisher;
 
 use App\BookDetail;
+use Exception;
 use Laravel\Scout\Searchable;
 
 class Book extends Model
@@ -155,7 +156,7 @@ class Book extends Model
     public function getImageAttribute()
     {
         return $this->image_link == null ? env('DEFAULT_BOOK_IMAGE', '') : $this->image_link;
-    }    
+    }
 
     // public function getMinPriceAttribute()
     // {
@@ -357,4 +358,33 @@ class Book extends Model
         return $this->translators()->count() > 0;
     }
 
+
+    public static function saveSingleBook($request)
+    {
+        try {
+            return  Book::create([
+                'title' => $request->book_title,
+                'en_title' => $request->book_title_en,
+                'publisher_id' => intval($request->book_publisher[0]),
+                'isbn' => $request->book_isbn ?? 'N/A',
+                'edition' => $request->book_edition,
+                'pages' => intval($request->book_pages),
+                'price' => intval($request->printed_price),
+                'buying_price' => intval($request->buying_price),
+                'quantity' => intval($request->book_quantity),
+                'language' => $request->language_en,
+                'language' => $request->language_bn,
+                'en_language' => $request->language_en,
+                'country' => $request->country_bn,
+                'en_country' => $request->country_en,
+            ]);
+
+        } catch (Exception $e) {
+            logger('Single Book Create Exception');
+            logger($e->getMessage());
+            logger($e->getTraceAsString());
+            return null;
+        }
+
+    } 
 }

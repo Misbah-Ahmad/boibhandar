@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
 use App\Role;
 use App\User;
 use App\Order;
@@ -11,6 +12,7 @@ use App\Publisher;
 use App\UploadedFile;
 use App\DeliveryVendor;
 use Illuminate\Http\Request;
+use App\Traits\DataValidator;
 use App\Traits\StoresBooksFromExcel;
 use Illuminate\Support\Facades\Hash;
 use App\Traits\StoresAuthorsFromExcel;
@@ -19,6 +21,7 @@ use App\Traits\StoresCategoriesFromExcel;
 use App\Traits\StoresPublishersFromExcel;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\CreateAuthorRequest;
+use App\Http\Requests\CreateSingleBookRequest;
 
 class AdminController extends Controller
 {
@@ -469,7 +472,12 @@ class AdminController extends Controller
 
     public function creator()
     {
-        return view('admins.creators.creator');
+        $authors = Author::orderBy('name', 'asc')->get();
+        $publishers = Publisher::orderBy('name', 'asc')->get();
+        $categories = Category::orderBy('name', 'asc')->get();
+        return view('admins.creators.creator', compact([
+            'authors', 'publishers', 'categories'
+        ]));
     }
 
     public function saveAuthor(CreateAuthorRequest $request)
@@ -490,7 +498,7 @@ class AdminController extends Controller
 
         $author->name = $request->author_name;
         $author->en_name = $request->en_name;
-        $author->image_link = 'author-default.jpg';
+        $author->image_link = 'author-default.jpg'; 
 
         $author->save();
 
@@ -575,4 +583,111 @@ class AdminController extends Controller
 
         return back()->with('category_saved', 'Category is saved successfully!');
     }
+
+    public function saveBook(CreateSingleBookRequest $request)
+    {
+        logger('Create Single Book Request');
+        logger(json_encode($request->all()));
+
+        $user = auth()->user();
+
+        if (Hash::check($request->password, $user->password) == false) {
+            $this->returnWithError('password', 'Admin password doesn\'t match');
+        }
+        
+
+        /* Check book writers and check if exists in the DB */
+        $writers = $request->book_writers;
+        if (DataValidator::authorsExist($writers) == false) {
+            $this->returnWithError('book_writers', 'Some writer(s) don\'t exist');            
+        }
+
+
+        /* Check book translators and check if exists in the DB */
+        $translators = $request->has('book_translators') ? $request->book_translators : [];
+        if (count($translators) > 1 && DataValidator::authorsExist($translators) == false) {
+            $this->returnWithError('book_translators', 'Some translator(s) don\'t exist');            
+        }
+
+
+        /* Check book editors and check if exists in the DB */
+        $editors = $request->has('book_editors') ? $request->book_editors : [];
+        if (count($editors) > 1 && DataValidator::authorsExist($editors) == false) {
+            $this->returnWithError('book_editors', 'Some editor(s) don\'t exist');            
+        }
+
+
+        /* Check publisher and check if exists in the DB */
+        $publihser = $request->book_publisher;
+        if (DataValidator::publishersExist($publihser) == false) {
+            $this->returnWithError('book_publisher', 'Publisher doesn\'t exist');            
+        }
+
+
+        /* Check book categories and check if exists in the DB */
+        $categories = $request->book_categories;
+        if (DataValidator::categoriesExist($categories) == false) {
+            $this->returnWithError('book_categories', 'Some categories don\'t exist');
+        }
+
+        $book = Book::saveSingleBook($request);
+
+        if ($book == null || !($book instanceof Book)) {
+            return back()->with('book_saved', 'Could not save the book!')->withInput();
+        }
+
+        $this->attachAuthorsToBook($book, $writers);
+        $this->attachCategoriesToBook($book, $categories);
+
+        if (count($translators) > 0) {
+            $this->attachTranslatorsToBook($book, $translators);
+        }
+
+        if (count($editors) > 0) {
+            $this->attachEditorsToBook($book, $editors);
+        }
+
+
+        $image = $request->hasFile('book_image') ? $request->file('book_image') : null;
+        $thumb = $request->hasFile('book_thumb') ? $request->file('book_thumb') : null;
+
+        if (!$image || !$thumb) {
+            return back()->with('book_saved', 'Book is saved BUT Could not save the image and thumb!');            
+        }
+
+        $image_dir = '/images/books/';
+        $thumb_dir = '/images/thumbs/';
+        $file_name = $book->id . '.' . $image->getClientOriginalExtension();
+
+        $full_image_path = $image_dir . $file_name;
+        $full_thumb_path = $thumb_dir . $file_name;
+
+        $image_saved = Storage::disk('public_folder')->putFileAs($image_dir, $image, $file_name);
+        $thumb_saved = Storage::disk('public_folder')->putFileAs($thumb_dir, $thumb, $file_name);
+
+        if (!$image_saved || !$thumb_saved) {
+            if ($image_saved) {
+                Storage::disk('public_folder')->delete($full_image_path);
+            }
+            if ($thumb_saved) {
+                Storage::disk('public_folder')->delete($full_thumb_path);
+            }
+
+            return back()->with('book_saved', 'Book is saved BUT Could not save the image and thumb!');
+        }
+
+        /* Successfully saved image and thumb */
+        $book->image_link = $full_image_path;
+        $book->thumb_link = $full_thumb_path;
+        $book->save();
+
+        return back()->with('book_saved', 'Book is saved successfully!');
+
+    }
+
+    private function returnWithError($key, $message)
+    {
+        return back()->withErrors([$key => $message])->withInput();
+    }
+
 }

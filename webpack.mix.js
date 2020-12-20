@@ -19,7 +19,7 @@ mix.styles([
    .styles([
       'resources/css/theme.css',
    ], 'public/css/theme.css')
-
+   .styles(['resources/css/admin_custom.css'], 'public/admin/admin_css/admin_custom.css')
    .js('resources/js/ops/add_to_cart.js', 'public/js/ops')
    .js('resources/js/ops/cart_button.js', 'public/js/ops')
    .js('resources/js/ops/submit_cart.js', 'public/js/ops')
