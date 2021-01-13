@@ -71,7 +71,11 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
         Route::post('/vendors/{vendor}/delete', 'DeliveryVendorController@delete')->name('admins.deliveryvendor.delete');
 
         Route::post('/vendors/assign/order', 'DeliveryVendorController@assign')->name('admins.deliveryvendor.assign');        
+
         
+        Route::post('/creator/stock/get', 'AdminController@getStock')->name('admins.stock.get');
+        Route::post('/creator/stock/update', 'AdminController@updateStock')->name('admins.stock.update');
+
         Route::group(['middleware' => ['role:super-admin']], function () {
 
             Route::post('/users/{user}/attachrole', 'AdminController@attachRole')->name('admins.attach.role');

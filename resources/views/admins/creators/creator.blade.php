@@ -568,6 +568,93 @@
 
             </div>
 
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><b>Fetch Stock</b></h3>
+
+                @if (session()->has('stock_updated'))
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        {{ session('stock_updated') }}
+                    </div>
+                @endif
+
+                </div>
+
+                <form role="form" method="POST" action="{{ route('admins.stock.get') }}">
+                    @csrf
+                    <div class="box-body">
+                        <div class="form-group {{ $errors->has('stock_book_id') ? 'has-error' : '' }}">
+                            <label class="control-label" for="stockBookId">Book ID</label>
+                            <input type="text" value="{{old('stock_book_id')}}" class="form-control" name="stock_book_id" id="stockBookId"
+                                placeholder="Book Id" required>
+
+                            @if ($errors->has('stock_book_id'))
+                                <span class="help-block">{{ $errors->first('stock_book_id') }}</span>                                
+                            @endif
+                        </div>
+
+                    </div>
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary pull-right">Get</button>
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><b>Update Stock</b></h3>
+
+                @if (session()->has('stock_updated'))
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        {{ session('stock_updated') }}
+                    </div>
+                @endif
+
+                </div>
+
+                <form role="form" method="POST" action="{{ route('admins.stock.update') }}">
+                    @csrf
+                    <div class="box-body">
+
+                        <div class="form-group {{ $errors->has('stock_book_id') ? 'has-error' : '' }}">
+                            <label class="control-label" for="stockBookId">Book ID</label>
+                            <input type="text" value="{{old('stock_book_id')}}" class="form-control" name="stock_book_id" id="stockBookId"
+                                placeholder="Book Id" required>
+
+                            @if ($errors->has('stock_book_id'))
+                                <span class="help-block">{{ $errors->first('stock_book_id') }}</span>                                
+                            @endif
+                        </div>
+                        @if (session()->has('book_title'))
+                            <div class="form-group">
+                                <p> <span style="font-weight: 700;">Book Name: </span> {{ session('book_title') }}</p>
+                            </div>
+                            
+                        @endif
+
+                        <div class="form-group {{ $errors->has('stock_book_count') ? 'has-error' : '' }}">
+                            <label class="control-label" for="stockBookCount">Count</label>
+                            <input type="text" value="{{ session('stock_book_count') }}" class="form-control" name="stock_book_count" id="stockBookCount"
+                                placeholder="Count" required>
+
+                            @if ($errors->has('stock_book_count'))
+                                <span class="help-block">{{ $errors->first('stock_book_count') }}</span>                                
+                            @endif
+                        </div>
+
+                    </div>
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary pull-right">Update</button>
+                    </div>
+                </form>
+
+            </div>
+
         </div>
 
 

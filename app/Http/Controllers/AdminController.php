@@ -685,6 +685,36 @@ class AdminController extends Controller
 
     }
 
+    public function getStock(Request $request)
+    {
+        $book_id = (int) $request->stock_book_id;
+        $book = Book::find($book_id);
+        logger($book_id);
+        logger(json_encode($book));
+        if ($book instanceof Book) {
+            return back()->with([
+                'stock_book_count' => $book->quantity,
+                'book_title' => $book->title,
+            ])->withInput();
+        } else {
+            return back()->with('stock_updated', 'Book was not found');
+        }
+    }
+
+    public function updateStock(Request $request)
+    {
+        $book_id = (int) $request->stock_book_id;
+        $book = Book::find($book_id);
+        if ($book instanceof Book) {
+            $book->quantity = (int) $request->stock_book_count;
+            $book->save();
+            return back()->with('stock_updated', 'Stock updated');
+
+        } else {
+            return back()->with('stock_updated', 'Book was not found');
+        }
+    }
+
     private function returnWithError($key, $message)
     {
         return back()->withErrors([$key => $message])->withInput();
